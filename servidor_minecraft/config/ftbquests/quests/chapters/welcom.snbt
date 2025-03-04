@@ -1,0 +1,401 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "welcom"
+	group: ""
+	icon: "minecraft:writable_book"
+	id: "419B5D1735458E5F"
+	images: [{
+		height: 1.0d
+		image: "minecraft:item/intro"
+		rotation: 0.0d
+		width: 3.7948717948717947d
+		x: 0.5d
+		y: -3.5d
+	}]
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"Welcome To DarkRPG, a world full of magic and exploration."
+				""
+				"This book aims to help you learn the basics to our core mods and give some challenges for you to complete"
+				""
+				"&7&oUse the orb of origin if you wish to change your Origin&r&r"
+			]
+			icon: "origins:orb_of_origin"
+			id: "4DBEFF0D3E4E2FEB"
+			rewards: [
+				{
+					id: "4ED93B072D9161E7"
+					item: "origins:orb_of_origin"
+					type: "item"
+				}
+				{
+					id: "1D94EE158A71BBA4"
+					item: "ftbquests:book"
+					type: "item"
+				}
+			]
+			shape: "diamond"
+			size: 2.0d
+			subtitle: "Book made by SnowTheArcticFox"
+			tasks: [{
+				id: "62ECA93018BBD437"
+				title: "Welcome"
+				type: "checkmark"
+			}]
+			x: 0.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"To claim open your map (default key is &cM&r), right click a chunck and click claim."
+				""
+				"To create a party use &c/openpac-parties create&r, then add people with &c/openpac-parties member invite <name>&r. Alternatively you can ally other parties with &c/openpac-parties ally <name>&r."
+				""
+				"You can edit claim perms by clicking &c'&r"
+				""
+				"To rtp (randomly tp) use &c/trigger darkrtp&r"
+				"If you get stuck use &c/trigger darkdeath&r (kills you instantly) or &cdarkspawn&r (will tp you to world spawn)"
+				""
+				"{@pagebreak}"
+				"Our economy works on diamonds (1 diamond = $1)"
+				"&4/diamonds&r is the main command you will use for this"
+				"&4/diamonds deposit/withdraw <amount>&r will add ot take from your balance and give you the diamonds back, or take diamonds from your in and add them to your balance"
+				"to see your balance do &4/diamonds balance&r"
+				""
+				"to spend your diamonds you can go to the auction house (&4/auc&r)"
+				"to add an item do &4/auc <price>&r with the item in hand"
+				""
+				"you can also use vending machines to sell any item for any item"
+			]
+			icon: "minecraft:writable_book"
+			id: "7FF27A2AEAD5A672"
+			subtitle: "Useful commands"
+			tasks: [{
+				id: "1D69C108F0EA17EA"
+				title: "Multiplayer"
+				type: "checkmark"
+			}]
+			title: "Commands"
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			description: [
+				"If you have any questions, or need support feel free to join our discord. We would love to welcome you to our growing community"
+				""
+				"If the link doesnt work look for GamerPotion Official"
+				""
+				"[\"\",{\"text\":\"Click For Discord\",\"color\":\"blue\",\"bold\":true,\"underlined\":false,\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://discord.com/invite/uCPfPBvsRJ\"}}]"
+			]
+			icon: "minecraft:writable_book"
+			id: "4716678AF0C535B5"
+			tasks: [{
+				id: "657C1E2855239789"
+				title: "Discord"
+				type: "checkmark"
+			}]
+			x: -1.0d
+			y: -1.0d
+		}
+		{
+			description: [
+				"No Griefing or stealing from others."
+				"PVP without consent is considered griefing and harassment"
+				""
+				"No Spamming/Full caps messages"
+				""
+				"No Advertising"
+				""
+				"No Cursing/No Constant Cursing"
+				""
+				"No Trolling/Flaming"
+				""
+				"No Banned Items"
+				""
+				"Do Not Intentuanly block/break lootr chests"
+				"{@pagebreak}"
+				"No Asking for OP"
+				""
+				"Respect all Players"
+				""
+				"Obey Staff Members"
+				""
+				"No Racist, Sexist or other discrimitory Remarks"
+				""
+				"No Hacks (includes any form of x-ray, scripts or macros)"
+				""
+				"No Builds Near Spawn"
+				""
+				"Ask before claiming right next to players (leave a few chunks between you both so you can both have space to expand)"
+				"{@pagebreak}"
+				"No 1x1 Towers"
+				""
+				"No malicious targeting of anybody's physical, mental or social conditions verbally or textually"
+				""
+				"No inappropriate usernames or skins"
+				""
+				"Any Player, Item, Farm, Claimed Chunk, found to be a cause of severe server lag may be removed by a server admin at their discretion."
+				""
+				"{@pagebreak}"
+				"Please do not try starting cults or religions in the server."
+				""
+				"No impersonating a staff member, be it using their skin or pretending to be them"
+				""
+				"Don't use immersive paintings to place NSFW images"
+				""
+				"NO NSFW/Offensive builds or text (this also means in chat)"
+			]
+			icon: "minecraft:writable_book"
+			id: "656FBF5231240143"
+			subtitle: "Rules For Our Public servers"
+			tasks: [{
+				id: "577C8ECBFD73C193"
+				title: "Public Server Rules"
+				type: "checkmark"
+			}]
+			x: -1.0d
+			y: 1.0d
+		}
+		{
+			description: [
+				"&l&nGeneral&r&r"
+				""
+				"Agglomerations"
+				"Broken Watch"
+				"Displacement Tome"
+				"Ender Bow"
+				"Hardening Catalyst"
+				"Infernal Scepter"
+				"Legendary Banglum Pickaxe"
+				"Legendary Banglum Shovel"
+				"Legia Bow"
+				"Nukes"
+				"Stormyx Shield"
+				"{@pagebreak}"
+				"&n&lMarium's Soulslike Weaponry&r&r"
+				""
+				"Cape of Chaos"
+				"Comet Spear"
+				"Dragon Staff"
+				"Dragonslayer Swordspear"
+				"Frostmourne"
+				"Leviathan Axe"
+				"Mjölnir"
+				"Whirligig Sawblade"
+				"Soul Reaper scythe"
+				"Withered Wabbajack"
+				"{@pagebreak}"
+				"&l&nEnchants&r&r"
+				""
+				"Immunity"
+				"Lifesteal"
+				"Steadfast"
+				"Soulbinding"
+				"Shielding"
+				""
+				"&l&nExtra Info&r&r"
+				""
+				"Endermites and Bats auto-killed every 1 minute"
+				"Phantom origin is banned"
+			]
+			icon: "minecraft:writable_book"
+			id: "05440732976807C4"
+			subtitle: "List wont always be up to date"
+			tasks: [{
+				id: "6FBD9D07AD1B5108"
+				title: "Public Server Banned Items"
+				type: "checkmark"
+			}]
+			x: 2.0d
+			y: 1.0d
+		}
+		{
+			description: [
+				"A waystone is a great way to go from point A to point B in an instant"
+				""
+				"useing XP you can telport from one waystone to another"
+			]
+			icon_scale: 1.5d
+			id: "544B1DBE4922CFFF"
+			rewards: [{
+				id: "4DD65D4FD0C472E2"
+				type: "xp"
+				xp: 100
+			}]
+			shape: "diamond"
+			tasks: [{
+				id: "0D04EA3C9F6032B2"
+				item: "fwaystones:waystone"
+				type: "item"
+			}]
+			x: -3.0d
+			y: -2.0d
+		}
+		{
+			description: [
+				"A post box allows you to send mail to other players on your server. You can include items and an optional message to any mailbox placed in the world. It also works across dimensions. When you receive mail, your mailbox will appear with a little red flag."
+				"{@pagebreak}"
+				"This is crafted using a workbench that also needs electricity from generators. Make sure to craft a wrench to help with that"
+			]
+			icon_scale: 1.5d
+			id: "6A88DF3106CC6528"
+			rewards: [
+				{
+					id: "5DE7CE7EBF911646"
+					type: "xp"
+					xp: 150
+				}
+				{
+					count: 2
+					id: "75F3E2F18C0BD200"
+					item: "refurbished_furniture:cheese_sandwich"
+					type: "item"
+				}
+			]
+			shape: "diamond"
+			tasks: [{
+				id: "5A896B70AF071E65"
+				item: "refurbished_furniture:post_box"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			description: [
+				"The type of magnum torch you craft defines what kind of mobs will be prevented from spawning. Only new mobs are prevented from spawning, mobs already in the world will not instantly vanish upon placing a magnum torch!"
+				"{@pagebreak}"
+				"&9Diamond&r: All monsters, such as zombies, skeletons, creepers, spiders, phantoms and so on."
+				"&9Emerald&r: Passive mobs such as wandering traders and trader llamas (animals are technically affected, but not really, since they only spawn during world gen or from breeding, which are both unaffected by magnum torches)"
+				"&9Amethyst&r: Cave and water mobs, such as bats, all squids, axolotls, and all fish"
+			]
+			icon: "magnumtorch:diamond_magnum_torch"
+			icon_scale: 2.0d
+			id: "1A3479149A902D27"
+			rewards: [{
+				id: "5E163DED47EA1351"
+				type: "xp_levels"
+				xp_levels: 5
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					id: "7A503421374968C5"
+					item: "magnumtorch:diamond_magnum_torch"
+					type: "item"
+				}
+				{
+					id: "4DC5C2AC2B79F2FD"
+					item: "magnumtorch:emerald_magnum_torch"
+					type: "item"
+				}
+				{
+					id: "4F1F034B4094D27D"
+					item: "magnumtorch:amethyst_magnum_torch"
+					type: "item"
+				}
+			]
+			title: "Magnum Torches"
+			x: -3.0d
+			y: 0.0d
+		}
+		{
+			description: ["Zzzzz ZZzzz Zzz zzzz....."]
+			icon_scale: 1.5d
+			id: "55F8E782B962F220"
+			rewards: [{
+				count: 3
+				id: "218354AC61E3D9AC"
+				item: "croptopia:nutty_cookie"
+				type: "item"
+			}]
+			shape: "heart"
+			tasks: [{
+				id: "02CEAFEF925BADEB"
+				item: "travelersbackpack:red_sleeping_bag"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			description: ["Useful for using with Mr Crayfish's Furniture items..."]
+			icon_scale: 1.2d
+			id: "1D78556F2B9066D1"
+			rewards: [
+				{
+					id: "3168C609F2849E3E"
+					item: "croptopia:popcorn"
+					type: "item"
+				}
+				{
+					id: "2EFA8BE37AF86AEB"
+					type: "xp"
+					xp: 100
+				}
+			]
+			shape: "gear"
+			tasks: [{
+				id: "700B69BFB46B6578"
+				item: "refurbished_furniture:wrench"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 2.0d
+		}
+		{
+			description: [
+				"Transmog allows you to change the appearance of items without modifying their behavior at all."
+				"It works on armor, weapons, tools and anything else you can imagine."
+				"{@pagebreak}"
+				"&d&lVoid Fragment&r&r"
+				"Required to craft the Transmogrification Table. Also allows you to make your items invisible."
+				"{@pagebreak}"
+				"&5&lTransmogrification Table&r&r"
+				"The main block added by this mod, used to transmogrify items."
+				"{@pagebreak}"
+				"&9&lHow Transmogrifying Works&r&r"
+				"Place the transmogrification table in the world and right-click it, the transmogrification UI will open..."
+				"&2The fuel slot&r. Every Amethyst Shard fills up the power of the Transmogrification Table, and each action will remove one third of it."
+				"&2The target slot&r. The item you place in here is the one that will be transmogrified."
+				"{@pagebreak}"
+				"&2The appearance slot&r. The item you place here will be the one that decides the appearance of the target item and will not be consumed in the process."
+			]
+			icon: "transmog:void_fragment"
+			icon_scale: 1.5d
+			id: "2F4F155C378C6344"
+			rewards: [
+				{
+					id: "3C68893846FE0D51"
+					item: "croptopia:buttered_toast"
+					type: "item"
+				}
+				{
+					id: "16C5E63E4325A84A"
+					type: "xp"
+					xp: 250
+				}
+			]
+			shape: "gear"
+			tasks: [
+				{
+					id: "17E5BCCA96A90E91"
+					item: "transmog:transmogrification_table"
+					type: "item"
+				}
+				{
+					id: "1F37881E42AB7229"
+					item: "transmog:void_fragment"
+					type: "item"
+				}
+			]
+			x: 4.0d
+			y: 0.0d
+		}
+	]
+	title: "[\"\",{\"text\":\"Intro\",\"color\":\"green\",\"bold\":true,\"underlined\":false}]"
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "abb",
+    "bcb",
+    "bbd"
+  ],
+  "key": {
+    "a": {
+      "item": "darkblades:dark_hammer"
+    },
+    "b": {
+      "item": "minecraft:netherite_scrap"
+    },
+	"c": {
+      "item": "minecraft:diamond_block"
+    },
+	"d": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "things:gleaming_powder"
+  }
+}

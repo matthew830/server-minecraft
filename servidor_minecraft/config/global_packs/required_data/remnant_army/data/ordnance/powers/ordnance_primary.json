@@ -1,0 +1,299 @@
+{
+	"type": "origins:active_self",
+	"cooldown": 2,
+	"hud_render": {
+		"should_render": false,
+		"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+		"bar_index": 7
+	},
+	"entity_action": {
+		"type": "origins:if_else_list",
+		"actions": [
+			{
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:sneaking",
+							"inverted": true
+						}
+					]
+				},
+				"action": {
+					"type": "origins:raycast",
+					"distance": 50,
+					"block": false,
+					"entity": true,
+					"shape_type": "visual",
+					"fluid_handling": "any",
+					"bientity_action": {
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "tag @s add ordtarget"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "power grant @s ordnance:invisible_ordnance ordnance"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "execute at @s run particle minecraft:scrape ~ ~2 ~ 0 0.15 0 0 10 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "execute at @s run particle minecraft:scrape ~ ~2 ~ 0.15 0 0 0 10 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "execute at @s run particle minecraft:scrape ~ ~2 ~ 0 0 0.15 0 10 normal @a"
+								},
+								{
+									"type": "origins:if_else_list",
+									"actions": [
+										{
+											"condition": {
+												"type": "origins:resource",
+												"comparison": "==",
+												"resource": "ordnance:weapons/weaponry_friendrone_freedom",
+												"compare_to": 0
+											},
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "tag @s remove ordtarget"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 3,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:execute_command",
+																	"command": "resource set @s ordnance:invisible_ordnance_targeted 0"
+																}
+															]
+														}
+													}
+												]
+											}
+										},
+										{
+											"condition": {
+												"type": "origins:resource",
+												"comparison": "==",
+												"resource": "ordnance:weapons/weaponry_friendrone_freedom",
+												"compare_to": 1
+											},
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "tag @s remove ordtarget"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 3,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:execute_command",
+																	"command": "resource set @s ordnance:invisible_ordnance_targeted 0"
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									]
+								},
+								{
+									"type": "origins:delay",
+									"ticks": 2,
+									"action": {
+										"type": "origins:execute_command",
+										"command": "resource set @s ordnance:invisible_ordnance_targeted 5"
+									}
+								}
+							]
+						}
+					},
+					"hit_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "title @s actionbar {\"text\": \"Target locked for 5 seconds!\", \"color\": \"green\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 0.5 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "resource set @s ordnance:ordnance_passives_locking 20"
+							}
+						]
+					},
+					"miss_action": {
+						"type": "origins:execute_command",
+						"command": "title @s actionbar {\"text\": \"No target found!\", \"color\": \"red\"}"
+					},
+					"command_step": 1,
+					"command_along_ray_only_on_hit": true
+				}
+			},
+			{
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:sneaking"
+						}
+					]
+				},
+				"action": {
+					"type": "origins:raycast",
+					"distance": 50,
+					"block": false,
+					"entity": true,
+					"shape_type": "visual",
+					"fluid_handling": "any",
+					"bientity_action": {
+						"type": "origins:target_action",
+						"action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:if_else_list",
+									"actions": [
+										{
+											"condition": {
+												"type": "origins:resource",
+												"comparison": "==",
+												"resource": "ordnance:weapons/weaponry_friendrone_freedom",
+												"compare_to": 0
+											},
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "resource set @s ordnance:weapons/weaponry_friendrone_freedom 1"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "tag @s remove ordtarget"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 3,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:execute_command",
+																	"command": "title @p[tag=ordnance,limit=1,sort=nearest,distance=..50] actionbar {\"text\": \"Drone deployed!\", \"color\": \"yellow\"}"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "resource set @s ordnance:invisible_ordnance_targeted 0"
+																}
+															]
+														}
+													}
+												]
+											}
+										},
+										{
+											"condition":{
+												"type": "origins:resource",
+												"comparison": "==",
+												"resource": "ordnance:weapons/weaponry_friendrone_freedom",
+												"compare_to": 1
+											},
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "resource set @s ordnance:weapons/weaponry_friendrone_freedom 0"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "tag @s remove ordtarget"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "tp @s @e[tag=ordnance,limit=1,sort=nearest,distance=..50]"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 3,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:execute_command",
+																	"command": "title @p[tag=ordnance,limit=1,sort=nearest,distance=..50] actionbar {\"text\": \"Drone recalled!\", \"color\": \"yellow\"}"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "resource set @s ordnance:invisible_ordnance_targeted 0"
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							]
+						}
+					},
+					"hit_action":{
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.allay.ambient_with_item master @a ~ ~ ~ 0.5 1"
+							}
+						]
+					},
+					"miss_action": {
+						"type": "origins:execute_command",
+						"command": "title @s actionbar {\"text\": \"No target found!\", \"color\": \"red\"}"
+					},
+					"command_step": 1,
+					"command_along_ray_only_on_hit": true
+				}
+			}
+		]
+	},
+	"condition":{
+		"type": "origins:resource",
+		"comparison": "==",
+		"resource": "ordnance:ordnance_passives_pseudocooldown",
+		"compare_to": 0
+	},
+	"name": "Lock On",
+	"description": "When you hold your Primary key while, you can lock onto any creature you see within 50 feet of you for 5 seconds.\n \nCreatures you lock on to glow for the duration of the lock-on, and you and other Ordnance can see them through walls. In addition, some of your armaments with the Lock-on Radius property can home in on entities you are locked onto, and a locked-on creature takes 20% more damage from projectiles, fireworks and fire.\n \n If you sneak while using this ability, you can switch the mode of your drones.",
+	"key": {
+		"key":"key.origins.primary_active",
+		"continuous": true
+	}
+}

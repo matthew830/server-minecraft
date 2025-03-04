@@ -1,0 +1,15 @@
+{
+	"powers": [
+		"ordnance:trerror/passives",
+		"ordnance:trerror/primary",
+		"ordnance:trerror/secondary",
+		"ordnance:trerror/right_click",
+		"ordnance:engineer/ammo_box"
+	],
+	"icon": "minecraft:minecart",
+	"unchoosable": false,
+	"order": 1,
+	"impact": 3,
+	"name": "Trerror",
+	"description": "Trerror is a large, treaded ground-based construct with a heavy frame and armed with both an artillery cannon and a machine gun. While fast on flat ground, it struggles moving around jagged terrain, but the power and spammability of its main weapons make it a force to be reckoned with. Just like Ordnance, Upkeep and Engineer, Trerror is a remnant of the technology of a war fought in ancient times come to life. Puppeteered by insects, spirits or similar other means, it has been reactivated in a time where fuel sources are abundant once again."
+}

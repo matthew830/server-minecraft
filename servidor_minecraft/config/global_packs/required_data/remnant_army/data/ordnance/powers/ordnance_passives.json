@@ -1,0 +1,3133 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "You can only eat items made entirely out of fuel items. Torches and scaffolding are exempt as food items, as are tools like fishing rods and bows.\nFuel does not restore food unless you are not at full hunger. Fuel is always restored if you are missing any.\nYou can not interact with the world while holding a food item unless you sneak.\n> Wooden items, paper, leaves, flowers, saplings, wool = Melon. Restores 1 fuel.\n> Coal, charcoal, blaze powder, gunpowder, campfires = Cooked chicken. Restores 10 fuel.\n> Coal block, blaze rod = Golden carrot. Restores 60 fuel."
+		}
+	],
+	"munitions":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 100,
+		"start_value": 100,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 2,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": "<",
+				"resource": "*:*_munitions",
+				"compare_to": 100
+			}
+		}
+	},
+	"locking":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 20,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 22,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_locking",
+				"compare_to": 0
+			}
+		}
+	},
+	"fuel":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 240,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 7,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_fuel",
+				"compare_to": 0
+			}
+		},
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "resource set @s ordnance:ordnance_passives_airbreak 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:motion @s"
+				}
+			]
+		}
+	},
+	"explosion_timer":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 61,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "title @s actionbar {\"text\": \"[System]: Ammunition Stabilized!\", \"color\": \"yellow\"}"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:model_height @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:model_width @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:poof ^ ^1 ^ 0.4 0.5 0.4 0 3 normal @a"
+				}
+			]
+		},
+		"max_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": ">",
+								"compare_to": 49
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": "<",
+								"compare_to": 75
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.firework_rocket.twinkle_far master @a ~ ~ ~ 4 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.lightning_bolt.impact master @a ~ ~ ~ 4 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "execute at @s run particle minecraft:flash ^ ^ ^ 0 0 0 0 1 normal @a"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "execute at @s run particle minecraft:explosion ^ ^ ^ 4 0 4 0 50 normal @a"
+							},
+							{
+								"type": "origins:area_of_effect",
+								"radius": 5,
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:add_velocity",
+												"z": 0.5
+											},
+											{
+												"type": "origins:add_velocity",
+												"y": 0.75
+											},
+											{
+												"type": "origins:if_else_list",
+												"actions": [
+													{
+														"condition": {
+															"type": "origins:enchantment",
+															"enchantment": "minecraft:protection",
+															"calculation": "sum",
+															"comparison": "<",
+															"compare_to": 8
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 20,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 8
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 12
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 22,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 12
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 16
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 24,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 16
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 20
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 28,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": true,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:or",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 20
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 39,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": true,
+																"unblockable": false
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								},
+								"bientity_condition": {
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:can_see"
+										},
+										{
+											"type": "origins:target_condition",
+											"condition": {
+												"type": "origins:and",
+												"conditions":
+												[
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_mine",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_missile",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_swarmissile",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_transport",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_bomb",
+														"inverted": true
+													}
+												]
+											}
+										},
+										{
+											"type": "origins:or",
+											"conditions":
+											[
+												{
+													"type": "origins:target_condition",
+													"condition": {
+														"type": "origins:entity_type",
+														"entity_type": "minecraft:item"
+													}
+												},
+												{
+													"type": "origins:both",
+													"condition": {
+														"type": "origins:or",
+														"conditions":
+														[
+															{
+																"type": "origins:and",
+																"conditions":
+																[
+																	{
+																		"type": "origins:living"
+																	},
+																	{
+																		"type": "origins:resource",
+																		"comparison": "==",
+																		"resource": "othersider:invisible_otherside_otherside",
+																		"compare_to": 1
+																	},
+																	{
+																		"type": "origins:power",
+																		"power": "othersider:invisible_otherside_otherside"
+																	}
+																]
+															},
+															{
+																"type": "origins:and",
+																"conditions":
+																[
+																	{
+																		"type": "origins:living"
+																	},
+																	{
+																		"type": "origins:or",
+																		"conditions":
+																		[
+																			{
+																				"type": "origins:resource",
+																				"comparison": "==",
+																				"resource": "othersider:invisible_otherside_otherside",
+																				"compare_to": 0
+																			},
+																			{
+																				"type": "origins:power",
+																				"power": "othersider:invisible_otherside_otherside",
+																				"inverted": true
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "damage @s 15 minecraft:explosion"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "scale reset pehkui:model_height @s"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "scale reset pehkui:model_width @s"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 1,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:ordnance_passives_munitions -25"
+								}
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 2,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "resource set @s ordnance:ordnance_passives_explosion_timer 0"
+								}
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": ">",
+								"compare_to": 74
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.firework_rocket.twinkle_far master @a ~ ~ ~ 4 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.lightning_bolt.impact master @a ~ ~ ~ 4 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "execute at @s run particle minecraft:flash ^ ^ ^ 0 0 0 0 1 normal @a"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "execute at @s run particle minecraft:explosion ^ ^ ^ 4 0 4 0 50 normal @a"
+							},
+							{
+								"type": "origins:area_of_effect",
+								"radius": 5,
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:add_velocity",
+												"z": 0.25
+											},
+											{
+												"type": "origins:add_velocity",
+												"y": 2
+											},
+											{
+												"type": "origins:if_else_list",
+												"actions": [
+													{
+														"condition": {
+															"type": "origins:enchantment",
+															"enchantment": "minecraft:protection",
+															"calculation": "sum",
+															"comparison": "<",
+															"compare_to": 8
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 41,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 8
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 12
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 45,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 12
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 16
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 49,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 16
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 20
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 53,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": true,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:or",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 20
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 70,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": true,
+																"unblockable": false
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								},
+								"bientity_condition": {
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:can_see"
+										},
+										{
+											"type": "origins:target_condition",
+											"condition": {
+												"type": "origins:and",
+												"conditions":
+												[
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_mine",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_missile",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_swarmissile",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_transport",
+														"inverted": true
+													},
+													{
+														"type": "origins:power",
+														"power": "ordnance:weapons/weaponry_bomb",
+														"inverted": true
+													}
+												]
+											}
+										},
+										{
+											"type": "origins:or",
+											"conditions":
+											[
+												{
+													"type": "origins:target_condition",
+													"condition": {
+														"type": "origins:entity_type",
+														"entity_type": "minecraft:item"
+													}
+												},
+												{
+													"type": "origins:both",
+													"condition": {
+														"type": "origins:or",
+														"conditions":
+														[
+															{
+																"type": "origins:and",
+																"conditions":
+																[
+																	{
+																		"type": "origins:living"
+																	},
+																	{
+																		"type": "origins:resource",
+																		"comparison": "==",
+																		"resource": "othersider:invisible_otherside_otherside",
+																		"compare_to": 1
+																	},
+																	{
+																		"type": "origins:power",
+																		"power": "othersider:invisible_otherside_otherside"
+																	}
+																]
+															},
+															{
+																"type": "origins:and",
+																"conditions":
+																[
+																	{
+																		"type": "origins:living"
+																	},
+																	{
+																		"type": "origins:or",
+																		"conditions":
+																		[
+																			{
+																				"type": "origins:resource",
+																				"comparison": "==",
+																				"resource": "othersider:invisible_otherside_otherside",
+																				"compare_to": 0
+																			},
+																			{
+																				"type": "origins:power",
+																				"power": "othersider:invisible_otherside_otherside",
+																				"inverted": true
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "damage @s 32 minecraft:explosion"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "scale reset pehkui:model_height @s"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "scale reset pehkui:model_width @s"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 1,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:ordnance_passives_munitions -25"
+								}
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 2,
+								"action": {
+									"type": "origins:execute_command",
+									"command": "resource set @s ordnance:ordnance_passives_explosion_timer 0"
+								}
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	"weapon_select":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 7,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 1
+		}
+	},
+	"barrier":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 0,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_barrier",
+				"compare_to": 0
+			}
+		}
+	},
+	"airbreak":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 15,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_airbreak",
+				"compare_to": 0
+			}
+		}
+	},
+	"pseudocooldown":
+	{
+		"type": "origins:cooldown",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false,
+			"bar_index": 3
+		}
+	},
+	"delete_transport":
+	{
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false,
+			"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+			"bar_index": 7
+		},
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "resource set @e[tag=ordtransport,distance=..3,sort=nearest,limit=1] ordnance:weapons/weaponry_transport_death 0"
+		},
+		"condition": {
+			"type": "origins:riding"
+		},
+		"hidden": true,
+		"key": {
+			"key":"key.sneak",
+			"continuous": false
+		}
+	},
+	"model":
+	{
+		"type": "origins:model_color",
+		"red": 0.3,
+		"green": 0.3,
+		"blue": 0.3,
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"comparison": "==",
+					"resource": "*:*_explosion_timer",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "*:*_explosion_timer",
+							"compare_to": 19
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_explosion_timer",
+							"compare_to": 40
+						}
+					]
+				}
+			]
+		}
+	},
+	"model_exploding":
+	{
+		"type": "origins:model_color",
+		"red": 0.7,
+		"green": 0.3,
+		"blue": 0.3,
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "*:*_explosion_timer",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_explosion_timer",
+							"compare_to": 20
+						}
+					]
+				},
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "*:*_explosion_timer",
+							"compare_to": 39
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_explosion_timer",
+							"compare_to": 62
+						}
+					]
+				}
+			]
+		}
+	},
+	"callback":
+	{
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add ordnance"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add engineer"
+				}
+			]
+		},
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add ordnance"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add engineer"
+				}
+			]
+		},
+		"entity_action_respawned": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add ordnance"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add engineer"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove other_side"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "resource set @s ordnance:ordnance_passives_airbreak 0"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:motion @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:model_height @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:model_width @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "resource set @s ordnance:ordnance_passives_explosion_timer 0"
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove ordnance"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove construct"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove other_side"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:motion @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:model_height @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale reset pehkui:model_width @s"
+				}
+			]
+		},
+		"execute_chosen_when_orb": true
+	},
+	"basehealth": 
+	{
+		"type": "origins:attribute",
+		"update_health": true,
+		"modifiers": {
+			"attribute": "minecraft:generic.max_health",
+			"operation": "multiply_total",
+			"value": -0.2
+		}
+	},
+	"melee":
+	{
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.75
+		}
+	},
+	"blast_shield": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -0.99999,
+			"operation":"multiply_total"
+		},
+		"condition":{
+			"type": "origins:resource",
+			"resource": "*:*_barrier",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	},
+	"blast_shield_trigger":
+	{
+		"type": "origins:action_when_hit",
+		"bientity_action": {
+			"type": "origins:invert",
+			"action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:damage",
+						"amount": 5,
+						"damage_type": "minecraft:fireworks"
+					},
+					{
+						"type": "origins:add_velocity",
+						"z": 1
+					},
+					{
+						"type": "origins:add_velocity",
+						"y": 0.1
+					}
+				]
+			}
+		},
+		"condition":{
+			"type": "origins:resource",
+			"resource": "*:*_barrier",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	},
+	"blast_shield_trigger2":
+	{
+		"type": "origins:action_when_damage_taken",
+		"cooldown": 12,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:extinguish"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.firework_rocket.twinkle master @a ~ ~ ~ 4 1"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run particle minecraft:flash ^ ^ ^ 0 0 0 0 1 normal @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "resource change @e[type=minecraft:allay,tag=ordrone,distance=..10,limit=1] ordnance:weapons/weaponry_friendrone_death -1"
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 5,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "resource change @s ordnance:ordnance_passives_barrier -1"
+					}
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:resource",
+			"resource": "*:*_barrier",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	},
+	"blast_shield_trigger3":
+	{
+		"type": "origins:action_when_damage_taken",
+		"cooldown": 12,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:extinguish"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale set pehkui:model_height 1.2 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale set pehkui:model_width 1.2 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.tnt.primed master @a ~ ~ ~ 4 0.3"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "title @s actionbar {\"text\": \"[WARNING]: Explosion imminent, seek cooling!\", \"color\": \"red\"}"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_explosion_timer",
+					"change": 1
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 4 2"
+				},
+				{
+					"type": "origins:delay",
+					"ticks": 2,
+					"action": {
+						"type": "origins:execute_command",
+						"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 4 1"
+					}
+				}
+			]
+		},
+		"damage_condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:name",
+					"name": "explosion"
+				},
+				{
+					"type": "origins:name",
+					"name": "fireworks"
+				},
+				{
+					"type": "origins:in_tag",
+					"tag": "minecraft:is_fire"
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_barrier",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_explosion_timer",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_munitions",
+					"comparison": ">",
+					"compare_to": 49
+				}
+			]
+		}
+	},
+	"immunities": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -0.5,
+			"operation":"multiply_total"
+		},
+		"damage_condition":{
+			"type":"origins:or",
+			"conditions":[
+				{
+					"type": "origins:name",
+					"name": "fall"
+				}
+			]
+		}
+	},
+	"resource_changer":
+	{
+		"type": "origins:action_over_time",
+		"interval": 5,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"comparison": ">",
+										"resource": "*:*_explosion_timer",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:fluid_height",
+										"fluid": "minecraft:water",
+										"comparison": "==",
+										"compare_to": 0
+									}
+								]
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_explosion_timer",
+										"change": 5
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 4 2"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "particle minecraft:smoke ^ ^1 ^ 0.4 0.5 0.4 0 3 normal @a"
+									},
+									{
+										"type": "origins:delay",
+										"ticks": 2,
+										"action": {
+											"type": "origins:execute_command",
+											"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 4 1"
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"comparison": ">",
+										"resource": "*:*_explosion_timer",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:or",
+										"conditions": [
+											{
+												"type": "origins:fluid_height",
+												"fluid": "minecraft:water",
+												"comparison": ">",
+												"compare_to": 0
+											},
+											{
+												"type": "origins:in_block",
+												"block_condition": {
+													"type": "origins:block",
+													"block": "minecraft:water_cauldron"
+												}
+											}
+										]
+									}
+								]
+							},
+							"action":{
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_explosion_timer",
+										"change": -5
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "playsound minecraft:block.fire.extinguish master @a ~ ~ ~ 0.75 0.3"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "*:*_locking",
+								"compare_to": 0
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_locking",
+								"change": -1
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:fall_flying"
+									},
+									{
+										"type": "origins:resource",
+										"comparison": ">",
+										"resource": "*:*_fuel",
+										"compare_to": 0
+									}
+								]
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": -1
+									},
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:resource",
+													"comparison": "==",
+													"resource": "*:*_airbreak",
+													"compare_to": 0
+												},
+												"action": {
+													"type": "origins:add_velocity",
+													"set": true,
+													"z": 0.8,
+													"space": "local"
+												}
+											},
+											{
+												"condition":{
+													"type": "origins:resource",
+													"comparison": "==",
+													"resource": "*:*_airbreak",
+													"compare_to": 1
+												},
+												"action": {
+													"type": "origins:and",
+													"actions": [
+														{
+															"type": "origins:add_velocity",
+															"set": true,
+															"z": 0.06,
+															"space": "local"
+														},
+														{
+															"type": "origins:chance",
+															"action":{
+																"type": "origins:execute_command",
+																"command": "playsound minecraft:block.fire.ambient master @a ~ ~ ~ 0.75 0.6"
+															},
+															"chance": 0.25
+														},
+														{
+															"type": "origins:execute_command",
+															"command": "execute at @s run particle minecraft:small_flame ^-0.2 ^0 ^-0.2 1 -1.5 0.5 0.05 0 normal @a"
+														},
+														{
+															"type": "origins:execute_command",
+															"command": "execute at @s run particle minecraft:small_flame ^-0.2 ^0 ^1.4 1 -1.5 -0.5 0.05 0 normal @a"
+														},
+														{
+															"type": "origins:execute_command",
+															"command": "execute at @s run particle minecraft:small_flame ^0.2 ^0 ^1.4 -1 -1.5 -0.5 0.05 0 normal @a"
+														},
+														{
+															"type": "origins:execute_command",
+															"command": "execute at @s run particle minecraft:small_flame ^0.2 ^0 ^-0.2 -1 -1.5 -0.5 0.05 0 normal @a"
+														}
+													]
+												}
+											}
+										]
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition":{
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:on_block"
+									},	
+									{
+										"type": "origins:resource",
+										"comparison": "<",
+										"resource": "*:*_munitions",
+										"compare_to": 200
+									}
+								]
+							},
+							"action": {
+								"type": "origins:change_resource",
+								"resource": "*:*_munitions",
+								"change": 1
+							}
+						}
+					]
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:on_block"
+						},	
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_munitions",
+							"compare_to": 200
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_locking",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_fuel",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_explosion_timer",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"jet_trail":
+	{
+		"type": "origins:action_over_time",
+		"interval": 0,
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "execute at @s run particle minecraft:campfire_cosy_smoke ^ ^ ^-0.5 0 0 0 0 1 normal @a"
+		},
+		"condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:fall_flying"
+				},
+				{
+					"type": "origins:resource",
+					"comparison": "==",
+					"resource": "*:*_airbreak",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"lockon_glow":
+	{
+		"type": "origins:entity_glow",
+		"entity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:living"
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "ordnance:invisible_ordnance_targeted",
+					"compare_to": 0
+				}
+			]
+		},
+		"use_teams": false,
+		"red": 0.4,
+		"green": 0.69,
+		"blue": 0.55
+	},
+	"drone_glow":
+	{
+		"type": "origins:entity_glow",
+		"entity_condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:living"
+				},
+				{
+					"type": "origins:power",
+					"power": "ordnance:weapons/weaponry_friendrone"
+				}
+			]
+		},
+		"use_teams": false,
+		"red": 0.2,
+		"green": 0.69,
+		"blue": 0.2
+	},
+	"speed_down1":
+	{
+		"type": "origins:conditioned_attribute",
+		"tick_rate": 20,
+		"modifier": {
+			"attribute": "minecraft:generic.movement_speed",
+			"operation": "multiply_total",
+			"value": -0.5
+		},
+		"condition": {
+			"type": "origins:resource",
+			"comparison": ">",
+			"resource": "*:*_railgun_charge",
+			"compare_to": 29
+		}
+	},
+	"speed_down2":
+	{
+		"type": "origins:conditioned_attribute",
+		"tick_rate": 20,
+		"modifier": {
+			"attribute": "minecraft:generic.movement_speed",
+			"operation": "multiply_total",
+			"value": -0.8
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_railgun_charge",
+					"compare_to": 55
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_explosion_timer",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"orange": {
+		"type": "origins:overlay",
+		"hidden": true,
+		"texture": "minecraft:textures/misc/nausea.png",
+		"red": 0.3,
+		"green": 0.3,
+		"blue": 0.2,
+		"strength": 0.7,
+		"draw_mode": "nausea",
+		"draw_phase": "above_hud",
+		"visible_in_third_person": true,
+		"hide_with_hud": true,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_railgun_charge",
+					"compare_to": 29
+				},
+				{
+					"type": "origins:resource",
+					"comparison": "<",
+					"resource": "*:*_railgun_charge",
+					"compare_to": 56
+				}
+			]
+		}
+	},
+	"red": {
+		"type": "apoli:overlay",
+		"hidden": true,
+		"texture": "minecraft:textures/misc/nausea.png",
+		"red": 0.4,
+		"green": 0.2,
+		"blue": 0.2,
+		"strength": 0.7,
+		"draw_mode": "nausea",
+		"draw_phase": "above_hud",
+		"visible_in_third_person": true,
+		"hide_with_hud": true,
+		"condition": {
+			"type": "origins:resource",
+			"comparison": ">",
+			"resource": "*:*_railgun_charge",
+			"compare_to": 55
+		}
+	},
+    "n": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 3,
+        "hud_render": {
+            "should_render": false
+        }
+    },
+    "railgun_charge": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 60,
+        "hud_render": {
+            "should_render": true,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_railgun_charge",
+				"compare_to": 0
+			}
+        }
+    },
+    "decay": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_n",
+					"change": -1
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_railgun_charge",
+					"change": -1
+				}
+			]
+		},
+        "condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "*:*_n",
+					"comparison": ">",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "*:*_railgun_charge",
+					"comparison": ">",
+					"compare_to": 0
+				}
+			]
+		}
+    },
+    "key": {
+        "type": "origins:active_self",
+        "hud_render": {
+            "should_render": false
+        },
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                    "type": "origins:if_else",
+                    "condition": {
+                        "type": "origins:resource",
+                        "resource": "*:*_n",
+                        "comparison": "==",
+                        "compare_to": 0
+                    },
+                    "if_action": {
+                        "type": "origins:execute_command",
+                        "command": "playsound minecraft:block.amethyst_block.resonate master @a ~ ~ ~ 0.5 1.5"
+                    }
+                },
+                {
+                    "type": "origins:change_resource",
+                    "resource": "*:*_n",
+                    "change": 2
+                }
+            ]
+        },
+		"condition": {
+			"type": "origins:resource",
+			"comparison": "==",
+			"resource": "*:*_weapon_select",
+			"compare_to": 7
+		},
+        "key": {
+            "key": "key.origins.secondary_active",
+            "continuous": true
+        }
+    },
+    "hold_or_release": {
+        "type": "origins:action_over_time",
+		"interval": 1,
+        "entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_railgun_charge",
+					"change": 2
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.bee.pollinate master @a ~ ~ ~ 0.5 1.5"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:enchanted_hit ^-0.2 ^1.2 ^1.5 0 0 0 2 0 normal @a"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:*_railgun_charge",
+										"comparison": ">",
+										"compare_to": 55
+									}
+								]
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "execute at @s run particle minecraft:electric_spark ^-0.2 ^1.4 ^2 0 0.15 0 0 3 normal @a"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "execute at @s run particle minecraft:electric_spark ^-0.2 ^1.4 ^2 0.15 0 0 0 3 normal @a"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "execute at @s run particle minecraft:electric_spark ^-0.2 ^1.4 ^2 0 0 0.15 0 3 normal @a"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"resource": "*:*_railgun_charge",
+										"comparison": ">",
+										"compare_to": 29
+									}
+								]
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:execute_command",
+										"command": "execute at @s run particle minecraft:electric_spark ^-0.2 ^1.4 ^2 0 0 0 0 1 normal @a"
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+        "falling_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:or",
+								"conditions":
+								[
+									{
+										"type": "origins:resource",
+										"comparison": "==",
+										"resource": "othersider:invisible_otherside_otherside",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:power",
+										"power": "othersider:invisible_otherside_otherside",
+										"inverted": true
+									}
+								]
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_railgun_charge",
+								"comparison": ">",
+								"compare_to": 55
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": ">",
+								"compare_to": 49
+							}
+						]
+					},
+					"action": {
+						"type": "origins:raycast",
+						"distance": 50,
+						"block": true,
+						"entity": false,
+						"shape_type": "visual",
+						"fluid_handling": "any",
+						"before_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "tag @s add ordrail"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "particle minecraft:smoke ^-0.2 ^1.2 ^0.5 0 0 0 2 0 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.lightning_bolt.impact master @a ~ ~ ~ 4 1.6"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.firework_rocket.twinkle_far master @a ~ ~ ~ 4 1"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.generic.burn master @a ~ ~ ~ 4 1"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:ordnance_passives_munitions -50"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource set @s ordnance:ordnance_passives_railgun_charge 0"
+								},
+								{
+									"type": "origins:if_else_list",
+									"actions": [
+										{
+											"condition": {
+												"type": "origins:sneaking",
+												"inverted": true
+											},
+											"action": {
+												"type": "origins:add_velocity",
+												"z": -3,
+												"space": "local"
+											}
+										}
+									]
+								},
+								{
+									"type": "origins:delay",
+									"ticks": 2,
+									"action": {
+										"type": "origins:execute_command",
+										"command": "tag @s remove ordrail"
+									}
+								}
+							]
+						},
+						"command_at_hit": "function ordnance:railgun_impact",
+						"command_along_ray": "function ordnance:railgun_max",
+						"command_step": 1,
+						"command_along_ray_only_on_hit": false
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:or",
+								"conditions":
+								[
+									{
+										"type": "origins:resource",
+										"comparison": "==",
+										"resource": "othersider:invisible_otherside_otherside",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:power",
+										"power": "othersider:invisible_otherside_otherside",
+										"inverted": true
+									}
+								]
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_railgun_charge",
+								"comparison": "<",
+								"compare_to": 56
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_railgun_charge",
+								"comparison": ">",
+								"compare_to": 29
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": ">",
+								"compare_to": 24
+							}
+						]
+					},
+					"action": {
+						"type": "origins:raycast",
+						"distance": 30,
+						"block": true,
+						"entity": false,
+						"shape_type": "visual",
+						"fluid_handling": "any",
+						"before_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "tag @s add ordrail"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "particle minecraft:smoke ^-0.2 ^1.2 ^0.5 0 0 0 2 0 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.lightning_bolt.impact master @a ~ ~ ~ 2 2"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.firework_rocket.twinkle master @a ~ ~ ~ 2 1"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.generic.burn master @a ~ ~ ~ 2 1.2"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:ordnance_passives_munitions -25"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource set @s ordnance:ordnance_passives_railgun_charge 0"
+								},
+								{
+									"type": "origins:if_else_list",
+									"actions": [
+										{
+											"condition": {
+												"type": "origins:sneaking",
+												"inverted": true
+											},
+											"action": {
+												"type": "origins:add_velocity",
+												"z": -1.5,
+												"space": "local"
+											}
+										}
+									]
+								},
+								{
+									"type": "origins:delay",
+									"ticks": 2,
+									"action": {
+										"type": "origins:execute_command",
+										"command": "tag @s remove ordrail"
+									}
+								}
+							]
+						},
+						"command_at_hit": "function ordnance:railgun_impactsmall",
+						"command_along_ray": "function ordnance:railgun_medium",
+						"command_step": 1,
+						"command_along_ray_only_on_hit": false
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "othersider:invisible_otherside_otherside",
+								"compare_to": 1
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_railgun_charge",
+								"comparison": ">",
+								"compare_to": 55
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": ">",
+								"compare_to": 49
+							}
+						]
+					},
+					"action": {
+						"type": "origins:raycast",
+						"distance": 50,
+						"block": true,
+						"entity": false,
+						"shape_type": "visual",
+						"fluid_handling": "any",
+						"before_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "tag @s add ordrail"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "particle minecraft:smoke ^-0.2 ^1.2 ^0.5 0 0 0 2 0 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.lightning_bolt.impact master @a ~ ~ ~ 4 1.6"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.firework_rocket.twinkle_far master @a ~ ~ ~ 4 1"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.generic.burn master @a ~ ~ ~ 4 1"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:ordnance_passives_munitions -50"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource set @s ordnance:ordnance_passives_railgun_charge 0"
+								},
+								{
+									"type": "origins:if_else_list",
+									"actions": [
+										{
+											"condition": {
+												"type": "origins:sneaking",
+												"inverted": true
+											},
+											"action": {
+												"type": "origins:add_velocity",
+												"z": -3,
+												"space": "local"
+											}
+										}
+									]
+								},
+								{
+									"type": "origins:delay",
+									"ticks": 2,
+									"action": {
+										"type": "origins:execute_command",
+										"command": "tag @s remove ordrail"
+									}
+								}
+							]
+						},
+						"command_at_hit": "function ordnance:railgun_impact_otherside",
+						"command_along_ray": "function ordnance:railgun_max_otherside",
+						"command_step": 1,
+						"command_along_ray_only_on_hit": false
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "othersider:invisible_otherside_otherside",
+								"compare_to": 1
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_railgun_charge",
+								"comparison": "<",
+								"compare_to": 56
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_railgun_charge",
+								"comparison": ">",
+								"compare_to": 29
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_munitions",
+								"comparison": ">",
+								"compare_to": 24
+							}
+						]
+					},
+					"action":{
+						"type": "origins:raycast",
+						"distance": 30,
+						"block": true,
+						"entity": false,
+						"shape_type": "visual",
+						"fluid_handling": "any",
+						"before_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "tag @s add ordrail"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "particle minecraft:smoke ^-0.2 ^1.2 ^0.5 0 0 0 2 0 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.lightning_bolt.impact master @a ~ ~ ~ 2 2"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.firework_rocket.twinkle master @a ~ ~ ~ 2 1"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:entity.generic.burn master @a ~ ~ ~ 2 1.2"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:ordnance_passives_munitions -25"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "resource set @s ordnance:ordnance_passives_railgun_charge 0"
+								},
+								{
+									"type": "origins:if_else_list",
+									"actions": [
+										{
+											"condition": {
+												"type": "origins:sneaking",
+												"inverted": true
+											},
+											"action": {
+												"type": "origins:add_velocity",
+												"z": -1.5,
+												"space": "local"
+											}
+										}
+									]
+								},
+								{
+									"type": "origins:delay",
+									"ticks": 2,
+									"action": {
+										"type": "origins:execute_command",
+										"command": "tag @s remove ordrail"
+									}
+								}
+							]
+						},
+						"command_at_hit": "function ordnance:railgun_impactsmall_otherside",
+						"command_along_ray": "function ordnance:railgun_medium_otherside",
+						"command_step": 1,
+						"command_along_ray_only_on_hit": false
+					}
+				}
+			]
+		},
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_n",
+            "comparison": ">",
+            "compare_to": 1
+        }
+    },
+	"fooder": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 30,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.player.burp player @a ~ ~ ~"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_bad_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 2,
+													"saturation": 0.3
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 1
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "mainhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_ok_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 0.6
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 10
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "mainhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_pog_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 1.2
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 60
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "mainhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "offhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_bad_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 2,
+													"saturation": 0.3
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 1
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "offhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "offhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_ok_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 0.6
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 10
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "offhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "offhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_pog_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 1.2
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 60
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "offhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fooder",
+					"operation": "set",
+					"change": 0
+				}
+			]
+		}
+	},
+	"set_to_0": {
+		"type": "origins:active_self",
+		"cooldown": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fooder",
+					"change": 0,
+					"operation": "set"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"inverted": true,
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_bad_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_ok_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_pog_food"
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "offhand",
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_bad_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_ok_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_pog_food"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"key": {
+			"key": "key.use"
+		}
+	},
+	"increase_food_resource": {
+		"type": "origins:active_self",
+		"cooldown": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fooder",
+					"change": 1
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:food_level",
+							"comparison": "<",
+							"compare_to": 20
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_fuel",
+							"compare_to": 240
+						}
+					]
+				},
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				}
+			]
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		}
+	},
+	"eat_particle": {
+		"type": "origins:active_self",
+		"cooldown": 4,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute positioned ~ ~0.2 ~ rotated as @s run particle minecraft:item minecraft:blaze_powder ^ ^1.4 ^0.2 0.1 0.1 0.1 0.055 4"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.generic.eat player @s ~ ~ ~"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:food_level",
+							"comparison": "<",
+							"compare_to": 20
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_fuel",
+							"compare_to": 240
+						}
+					]
+				},
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				}
+			]
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		}
+	},
+	"no_food":{
+		"type": "origins:prevent_item_use",
+		"item_condition": {
+			"type": "origins:food"
+		}
+	},
+	"no_place_standing":{
+		"type": "origins:prevent_block_selection",
+		"condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"airplane_mode":{
+		"type": "origins:elytra_flight",
+		"render_elytra": true
+	},
+	"stop_wings":{
+		"type": "origins:prevent_elytra_flight",
+		"condition":{
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"comparison": "==",
+					"resource": "*:*_fuel",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"air_breaking": {
+		"type": "origins:active_self",
+		"cooldown": 20,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:resource",
+						"comparison": "==",
+						"resource": "*:*_airbreak",
+						"compare_to": 0
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource set @s ordnance:ordnance_passives_airbreak 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "scale set pehkui:motion 0 @s"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.piston.extend master @a ~ ~ ~ 1 0.9"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.fire.extinguish master @a ~ ~ ~ 0.5 0.6"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.firework_rocket.launch master @a ~ ~ ~ 0.75 0.5"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "execute at @s run particle minecraft:campfire_cosy_smoke ^ ^0 ^1.4 0 0 0 0.1 5 normal @a"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:resource",
+						"comparison": "==",
+						"resource": "*:*_airbreak",
+						"compare_to": 1
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.piston.contract master @a ~ ~ ~ 1 0.9"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:item.lodestone_compass.lock master @a ~ ~ ~ 2 2"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "resource set @s ordnance:ordnance_passives_airbreak 0"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "scale reset pehkui:motion @s"
+							}
+						]
+					}
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:fall_flying"
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "==",
+							"resource": "*:*_airbreak",
+							"compare_to": 1
+						}
+					]
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_fuel",
+					"compare_to": 0
+				}
+			]
+		},
+		"key": {
+			"key": "key.sneak",
+			"continuous": false
+		}
+	},
+	"drink_stabilize":
+	{
+		"type": "origins:action_on_item_use",
+		"item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": {
+				"item": "minecraft:potion"
+			}
+		},
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "resource set @s ordnance:ordnance_passives_explosion_timer 0"
+		}
+	},
+	"slow_repairs":
+	{
+		"type": "origins:modify_healing",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.66
+		}
+	},
+	"railspeed":
+	{
+		"type": "origins:conditioned_attribute",
+		"modifier": {
+			"attribute": "minecraft:generic.movement_speed",
+			"operation": "multiply_total",
+			"value": 0.6
+		},
+		"tick_rate": 20,
+		"condition":{
+			"type": "origins:and",
+			"conditions":[
+				{
+					"type": "origins:sprinting"
+				},
+				{
+					"type": "origins:in_block_anywhere",
+					"block_condition": {
+						"type": "origins:in_tag",
+						"tag": "minecraft:rails"
+					}
+				}
+			]
+		}
+	},
+	"name": "Manufacture Munitions",
+	"description": "While grounded, you produce 4 munitions per second. Munitions are used by your active abilities.\n§f§nObsolete Armaments§r\nYour melee damage dealt is reduced by 75%.\n§f§nOld Jet Engine§r\nYour maximum health is reduced by 20%. In addition, you are equipped with self-propelled wings, which produce their own thrust as long as you have fuel. You will plummet down if you run out of fuel mid-flight.\n§f§nFuel Conversion§r\nYou can not eat normal food. Instead, you must consume items you can burn and gain fuel from. The amount of food/saturation and fuel you get depends on the item consumed. Sneaking prevents you from eating.\n§f§nCredit Where It’s Due§r\nEnemies killed with your special armaments do not drop experience.\n§f§nDevastation of War§r\nYour special armaments can destroy items, making it harder for you to loot anything.\n§f§nSlow Repairs§r\nYou regain health 66% more slowly.\n§f§nLanding Strip§r\nYou gain a speed bonus when sprinting on rails.\n§f§nPowder Keg§r\nIf you take explosive or fire damage while your munitions are over halfway full, you will explode, dealing damage to yourself and other creatures around you. You can prevent this explosion if you get in water until your ammunition stabilizes or by drinking any potion or bottle of water."
+}
+//Thank you, Eggohito, for the charge-up power!

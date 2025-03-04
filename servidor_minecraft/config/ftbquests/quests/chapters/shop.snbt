@@ -1,0 +1,789 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "shop"
+	group: "60505EDC54C4319F"
+	icon: "clutter:golden_coin_stack"
+	id: "1F5F2E663FE276DA"
+	images: [{
+		height: 1.0d
+		image: "minecraft:item/shopping"
+		rotation: 0.0d
+		width: 5.9113924050632916d
+		x: -1.0d
+		y: -5.0d
+	}]
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			can_repeat: true
+			dependencies: ["1F616AFE22B393CF"]
+			icon: "soulsweapons:withered_demon_heart"
+			id: "2DB72C0DE805C6DC"
+			optional: true
+			rewards: [{
+				id: "078922C3D408ED7E"
+				item: "soulsweapons:withered_demon_heart"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [{
+				consume_items: true
+				count: 2L
+				id: "7E489A936B60A8A6"
+				item: { Count: 2, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Withered Deamon Heart"
+			x: -3.5d
+			y: -3.5d
+		}
+		{
+			can_repeat: true
+			dependencies: ["1F616AFE22B393CF"]
+			icon: "soulsweapons:essence_of_eventide"
+			id: "1EBE361CF38807E6"
+			optional: true
+			rewards: [{
+				id: "0DB011470EDB9CA0"
+				item: "soulsweapons:essence_of_eventide"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [{
+				consume_items: true
+				id: "2102F0D3BFD395CE"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			title: "Essence Of Eventide"
+			x: -3.5d
+			y: -1.5d
+		}
+		{
+			icon: "soulsweapons:lord_soul_red"
+			id: "1F616AFE22B393CF"
+			rewards: [{
+				id: "78C6CE654F59F7CD"
+				item: "minecraft:cookie"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [
+				{
+					id: "2A1E8678AF29D604"
+					title: "Items To Respawn Bosses"
+					type: "checkmark"
+				}
+				{
+					consume_items: true
+					count: 5L
+					id: "7044147A3551FF01"
+					item: { Count: 5, id: "clutter:silver_coin" }
+					type: "item"
+				}
+			]
+			x: -2.0d
+			y: -2.5d
+		}
+		{
+			can_repeat: true
+			dependencies: ["1F616AFE22B393CF"]
+			icon: "bosses_of_mass_destruction:brimstone_nectar"
+			id: "426031EA29D48787"
+			optional: true
+			rewards: [{
+				id: "7F8FA54441CF735C"
+				item: "bosses_of_mass_destruction:brimstone_nectar"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [{
+				consume_items: true
+				id: "18B8EC83A73795BB"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			title: "Brimstone Nectar"
+			x: -3.5d
+			y: -2.5d
+		}
+		{
+			icon: "farmersdelight:stuffed_pumpkin"
+			id: "5BEF9760D9094877"
+			rewards: [{
+				id: "65007D87E2B26A8B"
+				item: "farmersdelight:honey_cookie"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [{
+				id: "31A81A5E7EEFE6B8"
+				title: "Food"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: -2.5d
+		}
+		{
+			can_repeat: true
+			dependencies: ["5BEF9760D9094877"]
+			icon: "minecraft:apple"
+			id: "6A7EDF1F8C14AD98"
+			optional: true
+			rewards: [{
+				count: 10
+				id: "2DB606C99EA7EEEE"
+				item: "minecraft:apple"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					count: 5L
+					id: "445EEF064C127393"
+					item: { Count: 5, id: "minecraft:diamond" }
+					type: "item"
+				}
+				{
+					consume_items: true
+					id: "3CB809ED4536A666"
+					item: "clutter:copper_coin"
+					type: "item"
+				}
+			]
+			title: "Apple"
+			x: 1.5d
+			y: -3.5d
+		}
+		{
+			can_repeat: true
+			dependencies: ["5BEF9760D9094877"]
+			icon: "minecraft:cooked_beef"
+			id: "68D06733F4F3411D"
+			optional: true
+			rewards: [{
+				count: 10
+				id: "7781B74DB91D4B5F"
+				item: "minecraft:cooked_beef"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					count: 5L
+					id: "448F6012A9B185E9"
+					item: { Count: 5, id: "minecraft:diamond" }
+					type: "item"
+				}
+				{
+					consume_items: true
+					id: "6E9263ADAD12C134"
+					item: "clutter:copper_coin"
+					type: "item"
+				}
+			]
+			title: "Steak"
+			x: 1.5d
+			y: -2.5d
+		}
+		{
+			can_repeat: true
+			description: [
+				"This will protect you from rain and the sun if your origin gets harmed from it"
+				"it is dyable"
+				""
+				"craftable with 3 leather in an arrow shape at the top and two sticks going down the middle"
+			]
+			icon: {
+				Count: 1
+				id: "originsumbrellas:umbrella"
+				tag: {
+					Damage: 0
+				}
+			}
+			id: "4EC1E4F1F5FC0D82"
+			optional: true
+			rewards: [{
+				id: "02C33787AC42A03F"
+				item: {
+					Count: 1
+					id: "originsumbrellas:umbrella"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [{
+				consume_items: true
+				id: "68891A0273DF9D3B"
+				item: "origins:orb_of_origin"
+				type: "item"
+			}]
+			title: "Umbrella"
+			x: -2.0d
+			y: -4.0d
+		}
+		{
+			can_repeat: true
+			icon: "simplyswords:runic_tablet"
+			id: "493B5B1E7EF014AA"
+			optional: true
+			rewards: [{
+				id: "4C14491A081A2FBF"
+				item: "simplyswords:runic_tablet"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					count: 5L
+					id: "5297BCBC8BD8895A"
+					item: "minecraft:diamond_block"
+					type: "item"
+				}
+				{
+					consume_items: true
+					id: "195448AB64685A74"
+					item: "clutter:golden_coin"
+					type: "item"
+				}
+			]
+			title: "Runic Tablet"
+			x: -1.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:dragon_spawn_egg"
+			id: "09D8A319DBD8FE2D"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:dragon"
+				elevate_perms: true
+				id: "2EF88EFAE3E9A614"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 10L
+				id: "797A4AA792EE72D2"
+				item: { Count: 5, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Dragon"
+			x: -2.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:courierbird_spawn_egg"
+			id: "55A4187C1656DFB8"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:courierbird"
+				elevate_perms: true
+				id: "247FEAF23749256B"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 10L
+				id: "3AC23641C1AB0E6B"
+				item: { Count: 5, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Courier Bird"
+			x: 0.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:netherbat_spawn_egg"
+			id: "23EDAE081C386A76"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:netherbat"
+				elevate_perms: true
+				id: "60C8D1A580DB2ADF"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 10L
+				id: "20608B65B0DF7E83"
+				item: { Count: 5, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Nether Bat"
+			x: -3.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:geckotoalizard_spawn_egg"
+			id: "6F5E0B800DC75B89"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:geckotoalizard"
+				elevate_perms: true
+				id: "6E2F7E1C768BCF9A"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 10L
+				id: "16429FE9922BFB40"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			title: "Geckotoa"
+			x: 1.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["6F5E0B800DC75B89"]
+			icon: "mythicmounts:geckotoalizard_spawn_egg"
+			id: "43871741B9452CE1"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:geckotoalizard"
+				elevate_perms: true
+				id: "474BFC1641940AC1"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 15L
+				id: "23F6DCBCD9C5C978"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			title: "Geckotoa"
+			x: 1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["55A4187C1656DFB8"]
+			icon: "mythicmounts:courierbird_spawn_egg"
+			id: "5D1496715927573F"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:courierbird"
+				elevate_perms: true
+				id: "771BB4EED36495BF"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 15L
+				id: "22C8FB38FCFCCF74"
+				item: { Count: 5, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Courier Bird"
+			x: 0.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["09D8A319DBD8FE2D"]
+			icon: "mythicmounts:dragon_spawn_egg"
+			id: "73E44E022BD846E2"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:dragon"
+				elevate_perms: true
+				id: "7A7473E6FE257222"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 15L
+				id: "61B35C1F7631E1E8"
+				item: { Count: 5, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Dragon"
+			x: -2.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["23EDAE081C386A76"]
+			icon: "mythicmounts:netherbat_spawn_egg"
+			id: "43A297BF817DC0A9"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:netherbat"
+				elevate_perms: true
+				id: "504C7BCFA648F35A"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 15L
+				id: "3914E9F68BC240CC"
+				item: { Count: 5, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Nether Bat"
+			x: -3.5d
+			y: 3.5d
+		}
+		{
+			description: [
+				"You cant redeem these more than once, they are there so players can have mounts if they arent spawning"
+				""
+				"you can use a summoning staff on your mount to bound it"
+				"this will let you teleport your mount when you use the staff, or use it to tell your mount what to do (sit, follow or wander)"
+			]
+			icon: "minecraft:saddle"
+			id: "495E1DA7D26E3C31"
+			rewards: [{
+				id: "7D1EFA432A64F45C"
+				item: "farmersdelight:sweet_berry_cookie"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [
+				{
+					id: "4EC848A54679FAA6"
+					title: "Mythic Mounts"
+					type: "checkmark"
+				}
+				{
+					consume_items: true
+					count: 5L
+					id: "45F0E9FEF8C8D309"
+					item: { Count: 5, id: "clutter:silver_coin" }
+					type: "item"
+				}
+			]
+			x: -1.0d
+			y: 1.0d
+		}
+		{
+			can_repeat: true
+			dependencies: ["5BEF9760D9094877"]
+			icon: "doggytalents:uncooked_rice"
+			id: "0754466B2A1BBF8D"
+			optional: true
+			rewards: [{
+				count: 5
+				id: "2653F1675D043C7B"
+				item: "doggytalents:uncooked_rice"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					id: "50BCDC42B3FEC9B6"
+					item: "minecraft:emerald_block"
+					type: "item"
+				}
+				{
+					consume_items: true
+					id: "23AA0A5E1A6819D2"
+					item: "clutter:copper_coin"
+					type: "item"
+				}
+			]
+			title: "Uncooked Rice"
+			x: 1.5d
+			y: -1.5d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:acencia_spawn_egg"
+			id: "63B06B48EE6C0D08"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:acencia"
+				elevate_perms: true
+				id: "42D7D960EEA250D8"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 12L
+				id: "0BBD3C44A21104CB"
+				item: "minecraft:netherite_ingot"
+				optional_task: true
+				type: "item"
+			}]
+			title: "Acencia"
+			x: 1.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:archelon_spawn_egg"
+			id: "4B6F3DD848B48B47"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:archelon"
+				elevate_perms: true
+				id: "76A719ECC7F06153"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 12L
+				id: "16B49EAA068D7E67"
+				item: { Count: 12, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Archelon"
+			x: -3.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:nightmare_spawn_egg"
+			id: "1E06EDAAADACAA79"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:nightmare"
+				elevate_perms: true
+				id: "36C638F7EC6E071D"
+				type: "command"
+			}]
+			tasks: [
+				{
+					consume_items: true
+					count: 2L
+					id: "643087DC8A758299"
+					item: { Count: 2, id: "minecraft:netherite_block" }
+					type: "item"
+				}
+				{
+					consume_items: true
+					count: 9L
+					id: "79D8106DCA0FB9F8"
+					item: { Count: 9, id: "clutter:silver_coin" }
+					type: "item"
+				}
+			]
+			title: "Nightmare"
+			x: -1.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:nudibranch_spawn_egg"
+			id: "6A444AA420E086DA"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:nudibranch"
+				elevate_perms: true
+				id: "0C80814E0D6C5A05"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 12L
+				id: "333C881472F9E638"
+				item: { Count: 12, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Nudibranch"
+			x: 2.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["495E1DA7D26E3C31"]
+			icon: "mythicmounts:griffon_spawn_egg"
+			id: "14D5C2C92FF289A4"
+			optional: true
+			rewards: [{
+				auto: "enabled"
+				command: "/summon mythicmounts:griffon"
+				elevate_perms: true
+				id: "4881A8334E3BB9EB"
+				type: "command"
+			}]
+			tasks: [{
+				consume_items: true
+				count: 12L
+				id: "6B6977221C6E7DDB"
+				item: { Count: 12, id: "minecraft:netherite_ingot" }
+				type: "item"
+			}]
+			title: "Griffon"
+			x: -4.5d
+			y: 2.0d
+		}
+		{
+			can_repeat: true
+			icon: "simplymore:netherfused_carver"
+			id: "5F1DF7228230DE27"
+			optional: true
+			rewards: [{
+				id: "4A462366C1C4C473"
+				item: "simplymore:netherfused_carver"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					count: 5L
+					id: "32C17C6006177E71"
+					item: "minecraft:diamond_block"
+					type: "item"
+				}
+				{
+					consume_items: true
+					id: "57F8984F3E29ED60"
+					item: "minecraft:netherite_ingot"
+					type: "item"
+				}
+				{
+					consume_items: true
+					id: "3D29853674780778"
+					item: "clutter:golden_coin"
+					type: "item"
+				}
+			]
+			title: "Netherfused Carver"
+			x: 0.0d
+			y: -0.5d
+		}
+		{
+			can_repeat: true
+			icon: "simplymore:runefused_carver"
+			id: "1550A082EE7F42BE"
+			optional: true
+			rewards: [{
+				id: "2EDFC24BC8630B1C"
+				item: "simplymore:runefused_carver"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					count: 5L
+					id: "0F09D4AE91AC710D"
+					item: "minecraft:diamond_block"
+					type: "item"
+				}
+				{
+					consume_items: true
+					count: 2L
+					id: "5DFB77F5B0EB57F3"
+					item: { Count: 2, id: "clutter:golden_coin" }
+					type: "item"
+				}
+			]
+			title: "Runefused Carver"
+			x: -2.0d
+			y: -0.5d
+		}
+		{
+			can_repeat: true
+			icon: "clutter:copper_coin_stack"
+			id: "4F4642013DE779DE"
+			optional: true
+			rewards: [{
+				id: "3CC186BE125FDC9A"
+				item: "clutter:copper_coin_stack"
+				type: "item"
+			}]
+			shape: "diamond"
+			tasks: [
+				{
+					consume_items: true
+					count: 5L
+					id: "057630544585258D"
+					item: { Count: 5, id: "minecraft:diamond" }
+					type: "item"
+				}
+				{
+					consume_items: true
+					count: 3L
+					id: "17D52A6C566F71F5"
+					item: { Count: 3, id: "minecraft:emerald" }
+					type: "item"
+				}
+			]
+			title: "Copper Stack"
+			x: -1.0d
+			y: -3.5d
+		}
+		{
+			can_repeat: true
+			description: [""]
+			icon: "snowyspirit:wreath"
+			id: "4308F2341F29EE43"
+			optional: true
+			rewards: [
+				{
+					id: "3FA0C952612D9602"
+					item: "snowyspirit:sled_dark_oak"
+					type: "item"
+				}
+				{
+					count: 5
+					id: "0540B2967242BB65"
+					item: "snowyspirit:gingerbread_cookie"
+					type: "item"
+				}
+				{
+					count: 12
+					id: "097086CBBDD2D92B"
+					item: "snowyspirit:candy_cane"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "58AA98FA67F12B55"
+					item: "snowyspirit:eggnog"
+					type: "item"
+				}
+				{
+					count: 15
+					id: "4D14EC46DB9D32C5"
+					item: "minecraft:snowball"
+					type: "item"
+				}
+				{
+					id: "391E26A04E8DD77C"
+					item: "plushies:snow_golem_plushie"
+					type: "item"
+				}
+			]
+			shape: "diamond"
+			size: 1.0d
+			tasks: [{
+				consume_items: true
+				count: 8L
+				id: "6B3229E9151F61F7"
+				item: { Count: 8, id: "clutter:golden_coin" }
+				type: "item"
+			}]
+			title: "Winter Fun"
+			x: 0.0d
+			y: -4.0d
+		}
+	]
+	title: "Shop"
+}

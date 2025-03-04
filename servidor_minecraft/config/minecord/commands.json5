@@ -1,0 +1,104 @@
+{
+	// Feedback provided to the user who triggered the command
+	"messages": {
+		// The error message used when the Minecraft server is unavailable
+		"unavailable": "The server is not yet ready - please wait :warning:",
+		/* The error message used when any command unexpectedly fails
+		   Usages: ${reason}
+		*/
+		"failed": "**Oh no** - something went wrong! :warning:\n_${reason}_",
+		/* The error message used when a user must wait before executing a command
+		   Usages: ${cooldown} and ${remaining}
+		*/
+		"cooldown": "Please wait another ${remaining} before doing that! :alarm_clock:",
+		// The default message used when a command does not provide any feedback of its own, e.g. '/say'
+		"feedback": "Consider it done! :thumbsup:"
+	},
+	// Built-in Discord commands
+	"builtin": {
+		// Displays for how long the Minecraft server has been online
+		"uptime": {
+			/* A message template that is formatted and sent for the server's uptime
+			   Usages: ${uptime [format]}
+			*/
+			"message": "The server has been online for ${uptime} :hourglass_flowing_sand:",
+			// True if the command should be available for use
+			"enabled": true,
+			// Trigger name for the command
+			"name": "uptime",
+			// A brief description of what the command does
+			"description": "Shows for how long the server has been online",
+			// True if the command feedback is only visible to the executor
+			"ephemeral": false,
+			// True if anyone can use the command by default
+			"allowByDefault": true,
+			// The number of seconds a user must wait before using the command again
+			"cooldown": 0,
+			/* To whom the cooldown applies
+			   Allowed values: USER, CHANNEL, USER_CHANNEL, GUILD, USER_GUILD, SHARD, USER_SHARD and GLOBAL
+			*/
+			"cooldownScope": "USER"
+		},
+		// Displays the Minecraft server's current ticks-per-second
+		"tps": {
+			// True if the command should be available for use
+			"enabled": true,
+			// Trigger name for the command
+			"name": "tps",
+			// A brief description of what the command does
+			"description": "Shows the server's current ticks-per-second",
+			// True if the command feedback is only visible to the executor
+			"ephemeral": false,
+			// True if anyone can use the command by default
+			"allowByDefault": true,
+			// The number of seconds a user must wait before using the command again
+			"cooldown": 0,
+			/* To whom the cooldown applies
+			   Allowed values: USER, CHANNEL, USER_CHANNEL, GUILD, USER_GUILD, SHARD, USER_SHARD and GLOBAL
+			*/
+			"cooldownScope": "USER"
+		}
+	},
+	// Custom Discord commands
+	"custom": [
+		{
+			/* A Minecraft command to execute
+			   Usages: ${<name>} for "<name>" option value
+			*/
+			"command": "/whitelist ${args:-}",
+			// A list of command options
+			"options": [
+				{
+					/* The type of option
+					   Allowed values: ATTACHMENT, BOOLEAN, CHANNEL, INTEGER, MENTIONABLE, NUMBER, ROLE, STRING and USER
+					*/
+					"type": "STRING",
+					// The option name
+					"name": "args",
+					// A brief description of what the option does
+					"description": "Any additional command arguments",
+					// True if the option is required
+					"required": false,
+					// If non-empty, restricts the value to one of the allowed choices
+					"choices": []
+				}
+			],
+			// True if the command should be available for use
+			"enabled": false,
+			// Trigger name for the command
+			"name": "whitelist",
+			// A brief description of what the command does
+			"description": "Manages the whitelist for the server",
+			// True if the command feedback is only visible to the executor
+			"ephemeral": false,
+			// True if anyone can use the command by default
+			"allowByDefault": false,
+			// The number of seconds a user must wait before using the command again
+			"cooldown": 0,
+			/* To whom the cooldown applies
+			   Allowed values: USER, CHANNEL, USER_CHANNEL, GUILD, USER_GUILD, SHARD, USER_SHARD and GLOBAL
+			*/
+			"cooldownScope": "USER"
+		}
+	]
+}

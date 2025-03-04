@@ -1,0 +1,1103 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "backpacks"
+	group: "50B8F4219D9C0508"
+	icon: {
+		Count: 1
+		id: "travelersbackpack:magma_cube"
+		tag: { }
+	}
+	id: "310F3936A474471A"
+	images: [{
+		height: 1.0d
+		image: "minecraft:item/backpacks"
+		rotation: 0.0d
+		width: 6.8125d
+		x: 5.5d
+		y: -1.0d
+	}]
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			id: "5A0C91B49F99672C"
+			tasks: [{
+				id: "5D6AC649E8D9F88F"
+				item: "minecraft:chest"
+				type: "item"
+			}]
+			title: "start with the storage"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			id: "2621298771394DB4"
+			tasks: [{
+				id: "3DAA996DA18D5674"
+				item: "travelersbackpack:white_sleeping_bag"
+				type: "item"
+			}]
+			title: "A place to sleep"
+			x: -1.5d
+			y: 0.0d
+		}
+		{
+			id: "5AF55984D85DEF04"
+			tasks: [{
+				count: 2L
+				id: "64C3C4FDF263BD33"
+				item: { Count: 2, id: "travelersbackpack:backpack_tank" }
+				type: "item"
+			}]
+			title: "fluid storage"
+			x: 1.5d
+			y: 0.0d
+		}
+		{
+			id: "7235F52B87EE9E92"
+			tasks: [{
+				count: 4L
+				id: "70C15C38882F532D"
+				item: { Count: 4, id: "minecraft:leather" }
+				type: "item"
+			}]
+			title: "Leather"
+			x: -1.0d
+			y: -1.0d
+		}
+		{
+			id: "5CB4AE8F885FA977"
+			tasks: [{
+				id: "6439D06289F92868"
+				item: "minecraft:gold_ingot"
+				type: "item"
+			}]
+			title: "GOLD"
+			x: 1.0d
+			y: -1.0d
+		}
+		{
+			dependencies: [
+				"5CB4AE8F885FA977"
+				"5AF55984D85DEF04"
+				"5A0C91B49F99672C"
+				"7235F52B87EE9E92"
+				"2621298771394DB4"
+			]
+			description: [
+				"starts with small storage but can be upgraded"
+				""
+				"open by &4right clicking&r in hand and &4click the icon in the bottom&r to place on back"
+				"when on your back open with &4B&r, can take off with the same button you used to put on"
+				""
+				"some backpacks can give you differant buffs, some will just look nice"
+				""
+				"can be placed on the ground by &4Shift + Right click&r"
+			]
+			id: "5EC7DD106169A1CD"
+			rewards: [{
+				id: "4C8261E245DE1415"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "7BAB2FB0CE85A801"
+				item: {
+					Count: 1
+					id: "travelersbackpack:standard"
+					tag: { }
+				}
+				type: "item"
+			}]
+			title: "BACKPACKS"
+			x: 0.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: [
+				"Upgrades must go in a specific order, you can not skip to the best upgrade"
+				""
+				"&6leather&r > &7iron&r > &egold&r > &bdiamond&r > &8netherite&r"
+				" "
+				""
+				"you upgrade in a smithing table."
+				"leather  backpack  upgrade"
+			]
+			hide_dependency_lines: true
+			id: "2590256E05A9EE77"
+			tasks: [{
+				id: "6BD1E7E7DBCF4505"
+				item: "travelersbackpack:blank_upgrade"
+				type: "item"
+			}]
+			title: "building upgrades"
+			x: -3.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["2590256E05A9EE77"]
+			description: ["Adds a crafting table to the backpack"]
+			id: "51F02EBB204690B2"
+			optional: true
+			tasks: [{
+				id: "6617C9FB51A3B95B"
+				item: "travelersbackpack:crafting_upgrade"
+				type: "item"
+			}]
+			title: "Crafting on the go"
+			x: -3.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["2590256E05A9EE77"]
+			id: "10CCA0BBDAC3E5AB"
+			rewards: [{
+				count: 5
+				id: "0E7B288F97B63D4B"
+				item: "minecraft:iron_ingot"
+				type: "item"
+			}]
+			tasks: [{
+				id: "478B974123165E3E"
+				item: "travelersbackpack:iron_tier_upgrade"
+				type: "item"
+			}]
+			x: -1.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["10CCA0BBDAC3E5AB"]
+			id: "782EC2C372B4C161"
+			rewards: [{
+				count: 5
+				id: "493DDF69ACCF4CA8"
+				item: "minecraft:gold_ingot"
+				type: "item"
+			}]
+			tasks: [{
+				id: "45077D586461C453"
+				item: "travelersbackpack:gold_tier_upgrade"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["782EC2C372B4C161"]
+			id: "02A08D9C0D2F48ED"
+			rewards: [{
+				count: 5
+				id: "46FB67E63B5BCB0F"
+				item: "minecraft:diamond"
+				type: "item"
+			}]
+			tasks: [{
+				id: "171713B8E23DC704"
+				item: "travelersbackpack:diamond_tier_upgrade"
+				type: "item"
+			}]
+			x: 1.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["02A08D9C0D2F48ED"]
+			description: [""]
+			id: "612D4462F21B6F14"
+			rewards: [{
+				id: "62D89E691FC3F936"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			tasks: [{
+				id: "5112D51DA61D3312"
+				item: "travelersbackpack:netherite_tier_upgrade"
+				type: "item"
+			}]
+			x: 3.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["+2 armor"]
+			id: "2AAF6DD5BA72F9F8"
+			rewards: [{
+				id: "17DDBAE2F7B81BD4"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "76385C8EEB45A34A"
+				item: {
+					Count: 1
+					id: "travelersbackpack:iron"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["+2 armor"]
+			id: "4D5C96B6EF862A18"
+			rewards: [{
+				id: "6C1C287C9F2C762A"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "2136AD1B85D1198A"
+				item: {
+					Count: 1
+					id: "travelersbackpack:gold"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["+3 armor"]
+			id: "6BB62852215E0869"
+			rewards: [{
+				id: "205FD173DC309E0D"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "09BD882671A64C2B"
+				item: {
+					Count: 1
+					id: "travelersbackpack:diamond"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -2.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["+4 armor"]
+			id: "1E1AC78F100BE5BF"
+			rewards: [{
+				id: "691E4853DA226B1F"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "252B788C847D8F6A"
+				item: {
+					Count: 1
+					id: "travelersbackpack:netherite"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -0.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: [
+				"cool particals"
+				""
+				"thats it"
+			]
+			id: "216A4BCE6A7CCCC6"
+			rewards: [{
+				id: "0BBF16AB80DC7387"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "388CE60817FEED13"
+				item: {
+					Count: 1
+					id: "travelersbackpack:emerald"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -1.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["Recive more XP"]
+			id: "0B1A37F60BBC41A9"
+			rewards: [{
+				id: "7A61EE66D3FCDE88"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "5E72B1E4DCFF180D"
+				item: {
+					Count: 1
+					id: "travelersbackpack:lapis"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -1.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["acts like a redstone block when placed down"]
+			id: "385B7DC4812520F4"
+			rewards: [{
+				id: "74C132DB0A073F16"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "16BD2E2B9AEE814D"
+				item: {
+					Count: 1
+					id: "travelersbackpack:redstone"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -0.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "59A98303B7AE95EA"
+			rewards: [{
+				id: "5477C08CCBAE4235"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "2295E1A90FC4C5EB"
+				item: {
+					Count: 1
+					id: "travelersbackpack:coal"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -2.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "658C8891E59A82B3"
+			rewards: [{
+				id: "7C9F2A9BB68C3937"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "1959F135A34AD979"
+				item: {
+					Count: 1
+					id: "travelersbackpack:quartz"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 0.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["acts like a book shelf when placed next to an enchanting table"]
+			id: "247F875B4D661288"
+			rewards: [{
+				id: "7DD4D15A928C4C7D"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "6A08470E8287074A"
+				item: {
+					Count: 1
+					id: "travelersbackpack:bookshelf"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 0.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "09FCB19CBB2ABA2E"
+			rewards: [{
+				id: "192A24630958F8F6"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "72E4DB2FB20602BC"
+				item: {
+					Count: 1
+					id: "travelersbackpack:end"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "573324C0AD33EB0D"
+			rewards: [{
+				id: "5BAEAFED157E520D"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "7C87813536907EE5"
+				item: {
+					Count: 1
+					id: "travelersbackpack:nether"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "1B6FF9E5EEDFFB6A"
+			rewards: [{
+				id: "1DA96FEA549A47E2"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "42803330BB7FF34A"
+				item: {
+					Count: 1
+					id: "travelersbackpack:sandstone"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -2.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["acts like sponge and collects water into the backpack tanks (need to have empty tanks for it to work)"]
+			id: "55F49FEAC6CE1758"
+			rewards: [{
+				id: "0C9DDADF3F6C95D5"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "51D64FAFA9260166"
+				item: {
+					Count: 1
+					id: "travelersbackpack:sponge"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["fills backpack tanks with water"]
+			id: "4F30AB375DB637B3"
+			rewards: [{
+				id: "13620EB16BCF9C81"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "5403BD742FA3CB8C"
+				item: {
+					Count: 1
+					id: "travelersbackpack:cactus"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 0.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["slowly feeds you cake"]
+			id: "6888AEC387D11E0F"
+			rewards: [{
+				id: "1D8041FDFA920C9B"
+				type: "xp"
+				xp: 10
+			}]
+			subtitle: "the cake is a lie"
+			tasks: [{
+				id: "15CCC61F08D8A1E7"
+				item: {
+					Count: 1
+					id: "travelersbackpack:cake"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -0.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "678D8AA82F5EE839"
+			rewards: [{
+				id: "292296A7F0F7E813"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "2D9B388F99712979"
+				item: {
+					Count: 1
+					id: "travelersbackpack:hay"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["drops 3 melon slices when harvested"]
+			id: "7B32D0C52B21BD4C"
+			rewards: [{
+				id: "2EF55EB6379DB41E"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "2D9665F42E1C2DAE"
+				item: {
+					Count: 1
+					id: "travelersbackpack:melon"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["can have a stearing contest with an enderman and not be attacked"]
+			id: "03BABFB217BF2EDC"
+			rewards: [{
+				id: "2AC968F505860D21"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "200C5218D83227A7"
+				item: {
+					Count: 1
+					id: "travelersbackpack:pumpkin"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -2.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: [
+				"like a totem of undying but with a cooldown"
+				""
+				"leaves a creeper explosion when about to die"
+				"gives fire resistance, regen and absorbtion"
+			]
+			id: "3F5910EFF08D4AB0"
+			rewards: [{
+				id: "35B1BDA383898557"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "3A5363B6B844F55B"
+				item: {
+					Count: 1
+					id: "travelersbackpack:creeper"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -1.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["a lot of buffs (im getting lazy just old shift and hover over the backpack)"]
+			id: "17F5609B399C99E8"
+			rewards: [{
+				id: "1FCCDD930C656CD5"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "5D47B50B18E65FC9"
+				item: {
+					Count: 1
+					id: "travelersbackpack:dragon"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -0.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["range extended by one block"]
+			id: "354E77D2EBC37D11"
+			rewards: [{
+				id: "4C9A25FA1B0A8C4D"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "3A198EFDB67E05B2"
+				item: {
+					Count: 1
+					id: "travelersbackpack:enderman"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 0.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["immune to fall dammage and blaze small fireballs"]
+			id: "0A28C2D73AAD10D2"
+			rewards: [{
+				id: "56CF4A13CE1EEC95"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "2E0E551E1DFA88F7"
+				item: {
+					Count: 1
+					id: "travelersbackpack:blaze"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["ghasts are neutral "]
+			id: "5D03950204CF0A3F"
+			rewards: [{
+				id: "6B551D740D9D6F32"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "791D83F24CE0175C"
+				item: {
+					Count: 1
+					id: "travelersbackpack:ghast"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["fire immunity"]
+			id: "022C492C4019D0DF"
+			rewards: [{
+				id: "4CD580D31EC6A22D"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "5BB6235E18235F05"
+				item: {
+					Count: 1
+					id: "travelersbackpack:magma_cube"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 4.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "1FE19982BB8D0E0D"
+			rewards: [{
+				id: "73316A0EF3FC5BF7"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "23B7B1EA8101D034"
+				item: {
+					Count: 1
+					id: "travelersbackpack:skeleton"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 5.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["you can climb walls"]
+			id: "53CAE65755B983ED"
+			rewards: [{
+				id: "3B3B9585E5A65F1C"
+				type: "xp"
+				xp: 10
+			}]
+			subtitle: "SPIDERMAN!!"
+			tasks: [{
+				id: "64B154851CB60DF2"
+				item: {
+					Count: 1
+					id: "travelersbackpack:spider"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["immune to wither"]
+			id: "794A604140057F9F"
+			rewards: [{
+				id: "024D83A71B08CC1B"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "3362BD2C9690FB46"
+				item: {
+					Count: 1
+					id: "travelersbackpack:wither"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 5.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "6BB10837A0033F71"
+			rewards: [{
+				id: "1D08503D5370538F"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "42C1118D0DACD9ED"
+				item: {
+					Count: 1
+					id: "travelersbackpack:bee"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 4.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "0B9F925C68BCEAAE"
+			rewards: [{
+				id: "7B35C882596F3A32"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "3FFD8064C05FA426"
+				item: {
+					Count: 1
+					id: "travelersbackpack:wolf"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -4.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "4C082F3A6F245651"
+			rewards: [{
+				id: "3CA0FBA99ECAA4ED"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "551E48A7B9C7528F"
+				item: {
+					Count: 1
+					id: "travelersbackpack:fox"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -5.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["If near a hostile mob grants speed"]
+			id: "6F928846C829728B"
+			rewards: [{
+				id: "1D21FB3C436D59CD"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "524404255D1E4077"
+				item: {
+					Count: 1
+					id: "travelersbackpack:ocelot"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -6.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "513693C39935ADB7"
+			rewards: [{
+				id: "399F0119D2E3AF8C"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "63021CCC24DC5FE2"
+				item: {
+					Count: 1
+					id: "travelersbackpack:horse"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -4.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["Clears all negitive effects"]
+			id: "3DC4AD73C4A9B5BF"
+			rewards: [{
+				id: "4A791FEBD9712D39"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "79A147FC6D92CE45"
+				item: {
+					Count: 1
+					id: "travelersbackpack:cow"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -5.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "70619D5876A18AD6"
+			rewards: [{
+				id: "3119AF7C93CCD969"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "07DAD8D8352B6DA5"
+				item: {
+					Count: 1
+					id: "travelersbackpack:pig"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -5.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "0318EC1B2BFEBD5A"
+			rewards: [{
+				id: "50416E72780EF3E6"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "27873148CA731CC8"
+				item: {
+					Count: 1
+					id: "travelersbackpack:sheep"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -6.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["you lay eggs"]
+			id: "0027DC69B16F02D8"
+			rewards: [{
+				id: "4AC75B3E2185EDC7"
+				type: "xp"
+				xp: 10
+			}]
+			subtitle: "Want to be a chicken?"
+			tasks: [{
+				id: "08A25729A78A4C9D"
+				item: {
+					Count: 1
+					id: "travelersbackpack:chicken"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 5.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["when in water get water breathing and nitght vission effects"]
+			id: "69A229A187945ACB"
+			rewards: [{
+				id: "1261FE7262DBB849"
+				type: "xp"
+				xp: 10
+			}]
+			tasks: [{
+				id: "5B3BDC835CA7448E"
+				item: {
+					Count: 1
+					id: "travelersbackpack:squid"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 6.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "727DDA072732A549"
+			rewards: [{
+				id: "010AA35F5B1C6CBF"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "388D701B4891F9DE"
+				item: {
+					Count: 1
+					id: "travelersbackpack:villager"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: -1.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			description: ["Night Vison"]
+			id: "0249E903F8C4AE21"
+			rewards: [{
+				id: "5D841E38A7EB09D0"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "6B4D408899613A67"
+				item: {
+					Count: 1
+					id: "travelersbackpack:bat"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 0.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "5BE12B01F6793937"
+			rewards: [{
+				id: "39B6B0A4D255AE7B"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "6F31F88DEFDC91B3"
+				item: {
+					Count: 1
+					id: "travelersbackpack:iron_golem"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["5EC7DD106169A1CD"]
+			id: "2D3D5682293441E3"
+			tasks: [{
+				id: "5E0957F52CC989C1"
+				item: "travelersbackpack:hose_nozzle"
+				type: "item"
+			}]
+			x: -0.5d
+			y: -4.5d
+		}
+		{
+			dependencies: ["2D3D5682293441E3"]
+			id: "4B1761DD8F7F3C12"
+			tasks: [{
+				id: "2CF1230077784C0F"
+				item: "travelersbackpack:hose"
+				type: "item"
+			}]
+			x: 0.5d
+			y: -4.5d
+		}
+	]
+	title: "Backpacks"
+}

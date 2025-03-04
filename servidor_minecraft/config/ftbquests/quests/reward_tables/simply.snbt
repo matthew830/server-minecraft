@@ -1,0 +1,53 @@
+{
+	id: "57A71390E7EBCCE8"
+	loot_size: 1
+	order_index: 0
+	rewards: [
+		{
+			item: {
+				Count: 1
+				id: "simplyswords:watching_warglaive"
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				Count: 1
+				id: "simplyswords:enigma"
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				Count: 1
+				id: "simplyswords:stars_edge"
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				Count: 1
+				id: "simplyswords:magiblade"
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+		{
+			item: {
+				Count: 1
+				id: "simplyswords:ribboncleaver"
+				tag: {
+					Damage: 0
+				}
+			}
+		}
+	]
+	title: "Simply"
+}

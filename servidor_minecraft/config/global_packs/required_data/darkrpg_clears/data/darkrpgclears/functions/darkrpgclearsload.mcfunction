@@ -1,0 +1,1 @@
+schedule function darkrpgclears:darkrpgclears 1s

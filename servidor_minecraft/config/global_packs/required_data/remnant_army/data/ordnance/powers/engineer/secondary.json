@@ -1,0 +1,364 @@
+{
+	"type": "origins:active_self",
+	"cooldown": 2,
+	"hud_render": {
+		"should_render": false,
+		"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+		"bar_index": 7
+	},
+	"entity_action":{
+		"type": "origins:if_else_list",
+		"actions": [
+			{
+				"condition":{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "ordnance:engineer/passives_fuel",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "ordnance:engineer/ammo_box",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "ordnance:engineer/passives_steam",
+							"compare_to": 0
+						}
+					]
+				},
+				"action": {
+					"type": "origins:raycast",
+					"distance": 6,
+					"block": false,
+					"entity": true,
+					"shape_type": "visual",
+					"fluid_handling": "any",
+					"bientity_action": {
+						"type": "origins:target_action",
+						"action":{
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "particle happy_villager ~ ~0.5 ~ 0.3 0.3 0.3 0.009 4 normal @a"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "tp @s @e[tag=othersider,limit=1,sort=nearest,distance=..32]"
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:upkeep/passives_fuel",
+									"change": 1
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:trerror/passives_fuel",
+									"change": 1
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:upkeep/passives_munitions",
+									"change": 1
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:engineer/ammo_box",
+									"change": 1
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:engineer/passives_fuel",
+									"change": 1
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:ordnance_passives_fuel",
+									"change": 1
+								},
+								{
+									"type": "origins:change_resource",
+									"resource": "ordnance:ordnance_passives_munitions",
+									"change": 1
+								}
+							]
+						}
+					},
+					"bientity_condition": {
+						"type": "origins:and",
+						"conditions":
+						[
+							{
+								"type": "origins:can_see"
+							},
+							{
+								"type": "origins:target_condition",
+								"condition":{
+									"type": "origins:or",
+									"conditions":[
+										{
+											"type": "origins:and",
+											"conditions":[
+												{
+													"type": "origins:power",
+													"power": "ordnance:ordnance_passives"
+												},
+												{
+													"type": "origins:or",
+													"conditions":[
+														{
+															"type": "origins:resource",
+															"comparison": "<",
+															"resource": "ordnance:ordnance_passives_munitions",
+															"compare_to": 100
+														},
+														{
+															"type": "origins:resource",
+															"comparison": "<",
+															"resource": "ordnance:ordnance_passives_fuel",
+															"compare_to": 240
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "origins:and",
+											"conditions":[
+												{
+													"type": "origins:power",
+													"power": "ordnance:upkeep/passives"
+												},
+												{
+													"type": "origins:or",
+													"conditions":[
+														{
+															"type": "origins:resource",
+															"comparison": "<",
+															"resource": "ordnance:upkeep/passives_munitions",
+															"compare_to": 300
+														},
+														{
+															"type": "origins:resource",
+															"comparison": "<",
+															"resource": "ordnance:upkeep/passives_fuel",
+															"compare_to": 500
+														}
+													]
+												}
+											]
+										},
+										{
+											"type": "origins:and",
+											"conditions":[
+												{
+													"type": "origins:power",
+													"power": "ordnance:engineer/ammo_box"
+												},
+												{
+													"type": "origins:resource",
+													"comparison": "<",
+													"resource": "ordnance:engineer/ammo_box",
+													"compare_to": 400
+												}
+											]
+										},
+										{
+											"type": "origins:and",
+											"conditions":[
+												{
+													"type": "origins:power",
+													"power": "ordnance:engineer/passives"
+												},
+												{
+													"type": "origins:power",
+													"power": "ordnance:engineer/ammo_box"
+												},
+												{
+													"type": "origins:or",
+													"conditions":[
+														{
+															"type": "origins:resource",
+															"comparison": "<",
+															"resource": "ordnance:engineer/passives_fuel",
+															"compare_to": 100
+														},
+														{
+															"type": "origins:resource",
+															"comparison": "<",
+															"resource": "ordnance:engineer/ammo_box",
+															"compare_to": 400
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:or",
+								"conditions":
+								[
+									{
+										"type": "origins:target_condition",
+										"condition":{
+											"type": "origins:entity_type",
+											"entity_type": "minecraft:item"
+										}
+									},
+									{
+										"type": "origins:both",
+										"condition": {
+											"type": "origins:or",
+											"conditions":
+											[
+												{
+													"type": "origins:and",
+													"conditions":
+													[
+														{
+															"type": "origins:living"
+														},
+														{
+															"type": "origins:resource",
+															"comparison": "==",
+															"resource": "othersider:invisible_otherside_otherside",
+															"compare_to": 1
+														},
+														{
+															"type": "origins:power",
+															"power": "othersider:invisible_otherside_otherside"
+														}
+													]
+												},
+												{
+													"type": "origins:and",
+													"conditions":
+													[
+														{
+															"type": "origins:living"
+														},
+														{
+															"type": "origins:or",
+															"conditions":
+															[
+																{
+																	"type": "origins:resource",
+																	"comparison": "==",
+																	"resource": "othersider:invisible_otherside_otherside",
+																	"compare_to": 0
+																},
+																{
+																	"type": "origins:power",
+																	"power": "othersider:invisible_otherside_otherside",
+																	"inverted": true
+																}
+															]
+														}
+													]
+												}
+											]
+										}
+									}
+								]
+							}
+						]
+					},
+					"hit_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.dispenser.launch ambient @a ~ ~ ~ 1 2"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.respawn_anchor.charge ambient @a ~ ~ ~ 0.1 2"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "ordnance:engineer/passives_fuel",
+								"change": -1
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "ordnance:engineer/ammo_box",
+								"change": -1
+							}
+						]
+					},
+					"miss_action":{
+						"type": "origins:if_else_list",
+						"actions":[
+							{
+								"condition":{
+									"type": "origins:resource",
+									"comparison": ">",
+									"resource": "ordnance:engineer/passives_steam",
+									"compare_to": 0
+								},
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "playsound minecraft:block.lava.extinguish ambient @a ~ ~ ~ 0.01 0.5"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "execute at @s run particle minecraft:poof ^-0.2 ^0.6 ^-0.5 0 0 0 0 1 normal @a"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "execute at @s run particle minecraft:poof ^0.2 ^0.6 ^-0.5 0 0 0 0 1 normal @a"
+										},
+										{
+											"type": "origins:add_velocity",
+											"z": 0.16,
+											"space": "local"
+										},
+										{
+											"type": "origins:add_velocity",
+											"y": 0.073,
+											"space": "local"
+										},
+										{
+											"type": "origins:chance",
+											"action":{
+												"type": "origins:change_resource",
+												"resource": "ordnance:engineer/passives_steam",
+												"change": -1
+											},
+											"chance": 0.2
+										},
+										{
+											"type": "origins:set_fall_distance",
+											"fall_distance": 0
+										}
+									]
+								}
+							}
+						]
+					},
+					"command_along_ray": "particle minecraft:poof",
+					"command_step": 1,
+					"command_along_ray_only_on_hit": true
+				}
+			}
+		]
+	},
+	"name": "Steam Release",
+	"description": "(Consumes 5 steam per second)\n \nBy holding your secondary ability, you can eject steam to propel yourself forward, extending the duration and speed of your jumps.\n \nIf you are grounded or riding a creature when you use this ability, you will propel ammunition and fuel packets in the direction you are facing instead, which causes constructs it collides with to regain 1 fuel and 1 ammunition per hit.",
+	"key": {
+		"key":"key.origins.secondary_active",
+		"continuous": true
+	}
+}

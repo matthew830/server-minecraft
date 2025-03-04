@@ -1,0 +1,9 @@
+{
+	chapter_groups: [
+		{ id: "50B8F4219D9C0508", title: "[\"\",{\"text\":\"Adventure\",\"color\":\"blue\",\"bold\":true,\"underlined\":false}]" }
+		{ id: "6B966F513D464DB8", title: "&l&6MC Dungeons&r" }
+		{ id: "5139D6A0DBFE2A59", title: "[\"\",{\"text\":\"Magica\",\"color\":\"light_purple\",\"bold\":true,\"underlined\":false}]" }
+		{ id: "28BEF520D2FB5498", title: "[\"\",{\"text\":\"Collecter\",\"color\":\"red\",\"bold\":true,\"underlined\":false}]" }
+		{ id: "60505EDC54C4319F", title: "[\"\",{\"text\":\"Trades\",\"color\":\"dark_green\",\"bold\":true,\"underlined\":false}]" }
+	]
+}

@@ -1,0 +1,14 @@
+{
+	// Name of the command to open the auction house GUI
+	"auctionHouseCommandName": "auc",
+	// Name of the sub-command to put something up for auction
+	"auctionCommandName": "auc",
+	// Use the base diamond economy command
+	"useBaseCommand": false,
+	// Maximum items a player can have up for auction (expired included)
+	"maxPlayerItems": 5,
+	// Maximum number of pages the auction house can have
+	"maxPages": 8,
+	// Seconds the item is put on the auction for
+	"auctionSeconds": 259200
+}

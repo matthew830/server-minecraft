@@ -1,0 +1,19 @@
+{
+	// Token used to authenticate against your Discord bot
+	"token": "",
+	// Bot statuses relayed during the lifecycle of the server
+	"status": {
+		// Status while the server is starting
+		"starting": "IDLE",
+		// Status after the server has started
+		"started": "ONLINE",
+		// Status while the server is stopping
+		"stopping": "DO_NOT_DISTURB",
+		// Status after the server has stopped
+		"stopped": "OFFLINE"
+	},
+	/* True if all guild members should be cached, in turn allowing @mentions
+	   NB: This requires the Privileged Gateway Intent 'Server Members' to be enabled on your Discord bot!
+	*/
+	"cacheMembers": false
+}

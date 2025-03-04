@@ -1,0 +1,8 @@
+{
+	// True if player avatars are included with embeds
+	"enableAvatars": true,
+	/* The URL used for retrieving Minecraft player avatars
+	   Usages: ${uuid}, ${skin_id} and ${size} (height in pixels)
+	*/
+	"avatarUrl": "https://api.tydiumcraft.net/v1/players/skin?uuid=${skin_id}&type=avatar&size=${size}"
+}

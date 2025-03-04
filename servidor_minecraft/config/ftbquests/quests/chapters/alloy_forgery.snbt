@@ -1,0 +1,1557 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "alloy_forgery"
+	group: "50B8F4219D9C0508"
+	icon: "mythicmetals:unobtainium"
+	id: "1F5F886C4973992F"
+	images: [{
+		height: 1.0d
+		image: "minecraft:item/mythic-metals"
+		rotation: 0.0d
+		width: 9.468354430379748d
+		x: 1.5d
+		y: -8.0d
+	}]
+	order_index: 3
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"Alloy Forgery allows you to gain more matireal out of your ores."
+				""
+				"the forge comes in 3 tiers and is a made as a multiblock smelter. how you make it can be shown on the next page"
+				""
+				"{@pagebreak}"
+				"bottom going up, X = block, 0 = air, 1 = forge"
+				""
+				"xxx   0x0   0x0"
+				"xxx   x0x   x0x"
+				"xxx   010   0x0"
+				""
+				"the air spaces can be blocks as long as the middle is empty"
+			]
+			icon: "alloy_forgery:bricks_forge_controller"
+			id: "60B4411303D13FBC"
+			rewards: [{
+				id: "395EBDDEC54C9B1B"
+				type: "xp"
+				xp: 100
+			}]
+			tasks: [{
+				id: "2508E0CE073741EC"
+				type: "checkmark"
+			}]
+			title: "Alloy Forgery"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7B0759B6C3D2D433"]
+			description: [
+				"Another tier 2 forge is prismerine"
+				""
+				"Smelts 2 at a time and gives 4 ingots"
+			]
+			id: "508F270269978AE1"
+			rewards: [{
+				id: "7AE0B21B1D00871F"
+				type: "xp"
+				xp: 100
+			}]
+			subtitle: "Tier 2"
+			tasks: [{
+				id: "4ABB459D938393CC"
+				item: "alloy_forgery:polished_blackstone_forge_controller"
+				type: "item"
+			}]
+			title: "Double or Nothing."
+			x: 0.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["508F270269978AE1"]
+			description: [
+				"Another tier 3 forge is adamantite"
+				""
+				"Smelts 2 at a time and gives 4 ingots, is faster and can hold more fuel"
+			]
+			id: "01A1437A6F8DBAA9"
+			rewards: [{
+				id: "0AB85EBB00CD3109"
+				type: "xp"
+				xp: 500
+			}]
+			subtitle: "Tier 3"
+			tasks: [{
+				id: "640FE4333F850623"
+				item: "alloy_forgery:end_stone_bricks_forge_controller"
+				type: "item"
+			}]
+			title: "Forgery, Not that kind!"
+			x: 0.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["60B4411303D13FBC"]
+			id: "7B0759B6C3D2D433"
+			tasks: [{
+				id: "79439538CA335EAF"
+				item: "alloy_forgery:stone_bricks_forge_controller"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -2.0d
+		}
+		{
+			description: [
+				"Gives Miner's Shield"
+				""
+				"Miner's Shield applies Mining Fatigue to aenemy for 1.5 seconds"
+			]
+			id: "45B7DDA8A478ED0F"
+			rewards: [{
+				id: "64822067F85CF0F0"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "54D8A00DDB2EFBFF"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ruby_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "5506247B25BA3B1D"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ruby_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "594BEC1DD40CED8D"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ruby_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "49A4EEEC674B2B78"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ruby_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 2.5d
+			y: -1.0d
+		}
+		{
+			description: ["Ruby tools have a higher mining speed and give hast when held"]
+			id: "67E02BCEC60B29FB"
+			rewards: [{
+				id: "7FD649F9776D4209"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "41DE2B4B3CB4DB87"
+				item: {
+					Count: 1
+					id: "mythicupgrades:ruby_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 2.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"Gives Fire Resistance and Item Mastery 5"
+				""
+				"Item Mastery gives a 50% (levle*10%) chance that the item your useing wont lose durability"
+				""
+				""
+				"Armor has tripled durability and +1 protection per piece"
+			]
+			id: "5EBCF39784B6B702"
+			rewards: [{
+				id: "579C0DC5C24DDC38"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "191F1619023C3F78"
+					item: {
+						Count: 1
+						id: "mythicupgrades:topaz_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "072CEDDD6033321E"
+					item: {
+						Count: 1
+						id: "mythicupgrades:topaz_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "27F73631C196A86D"
+					item: {
+						Count: 1
+						id: "mythicupgrades:topaz_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "12EAEF802D6EEA96"
+					item: {
+						Count: 1
+						id: "mythicupgrades:topaz_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 3.5d
+			y: -1.0d
+		}
+		{
+			description: ["Topaz tools have Tripled durability, slightly higher mining speed and attack dammage"]
+			id: "0AAFF544FEDCA279"
+			rewards: [{
+				id: "066EB75BD0216316"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "3E61B72A15F3FFB4"
+				item: {
+					Count: 1
+					id: "mythicupgrades:topaz_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 3.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"Provides Poisonus Thorns"
+				""
+				"Poisonous Thorns applies thorns and poison to enemy for 5 seconds"
+			]
+			id: "2DE7FF157A99178A"
+			rewards: [{
+				id: "5CD4743D2516BAA3"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "18AA457280FEFF67"
+					item: {
+						Count: 1
+						id: "mythicupgrades:peridot_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "11B4507C31C61DA8"
+					item: {
+						Count: 1
+						id: "mythicupgrades:peridot_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "48AF01CC4664E90F"
+					item: {
+						Count: 1
+						id: "mythicupgrades:peridot_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "0252F91236AD6AF2"
+					item: {
+						Count: 1
+						id: "mythicupgrades:peridot_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 4.5d
+			y: -1.0d
+		}
+		{
+			description: ["Gives Speed 3 and Jump Boost 3"]
+			id: "557040E1BEC8704F"
+			rewards: [{
+				id: "0690BCC7C84195DF"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "5F2808380F9CA51B"
+					item: {
+						Count: 1
+						id: "mythicupgrades:jade_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "1FD30DFDEC9B186E"
+					item: {
+						Count: 1
+						id: "mythicupgrades:jade_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "2E0FC7BA8A57E497"
+					item: {
+						Count: 1
+						id: "mythicupgrades:jade_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "61B05CF36EA61B97"
+					item: {
+						Count: 1
+						id: "mythicupgrades:jade_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 5.5d
+			y: -1.0d
+		}
+		{
+			description: [
+				"Gives Ice Shield 3"
+				""
+				"Ice Shield applies slowness 3 to enemy for 1 second"
+			]
+			id: "7719BC79EC7B937F"
+			rewards: [{
+				id: "5D264DB05F7493C0"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "2517374D5A6AECD7"
+					item: {
+						Count: 1
+						id: "mythicupgrades:aquamarine_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "489B77D92063E07A"
+					item: {
+						Count: 1
+						id: "mythicupgrades:aquamarine_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "4D340EA7E9C80F60"
+					item: {
+						Count: 1
+						id: "mythicupgrades:aquamarine_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "0225713E7E0401B9"
+					item: {
+						Count: 1
+						id: "mythicupgrades:aquamarine_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 6.5d
+			y: -1.0d
+		}
+		{
+			description: [
+				"Gives Dammage Deflection 3"
+				""
+				"Dammage Deflection  deflects 30% of total dammage back to enemy"
+			]
+			id: "0F72686C8C5258A1"
+			rewards: [{
+				id: "5EACB0CAC1BAFD6C"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "0850EB6C065CA59A"
+					item: {
+						Count: 1
+						id: "mythicupgrades:sapphire_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "1C300EFC0872BBF2"
+					item: {
+						Count: 1
+						id: "mythicupgrades:sapphire_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "449FEB7C7A1B4A70"
+					item: {
+						Count: 1
+						id: "mythicupgrades:sapphire_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "40FE97AFD8C3B2DF"
+					item: {
+						Count: 1
+						id: "mythicupgrades:sapphire_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 7.5d
+			y: -1.0d
+		}
+		{
+			description: [
+				"Gives Arcane Aura 5"
+				""
+				"Arcane Aura applies Levitation 3 to enemy for 0.75 seconds"
+			]
+			id: "30358A88AED0FE19"
+			rewards: [{
+				id: "190F5B93CF2E7D6A"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [
+				{
+					id: "0498D9D8FD50C482"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ametrine_helmet"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "305E5DCE125E3DBE"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ametrine_chestplate"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "62C7E68980D95EAD"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ametrine_leggings"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "73A6F792EF2E58C3"
+					item: {
+						Count: 1
+						id: "mythicupgrades:ametrine_boots"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 8.5d
+			y: -1.0d
+		}
+		{
+			description: ["Peridot tools applies poison 3 for 1.5 seconds"]
+			id: "32454EF3EBF0CD82"
+			rewards: [{
+				id: "77CB9C1A2B5026ED"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "7E67BD55ACDD1525"
+				item: {
+					Count: 1
+					id: "mythicupgrades:peridot_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 4.5d
+			y: 0.0d
+		}
+		{
+			description: ["Apply Freeze to enemy for 0.5 seconds"]
+			id: "4392AAD5570CAA23"
+			rewards: [{
+				id: "2BE7A62BDF9463C8"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "6107F6791F0FCEBE"
+				item: {
+					Count: 1
+					id: "mythicupgrades:aquamarine_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 6.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"Provides Bouncer 5 when in hand"
+				""
+				"Bouncer provides Jump boost 5 for 2 seconds"
+			]
+			id: "080F333A4DEB694A"
+			rewards: [{
+				id: "4A9DD8CB85DFED25"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "5FFDD9CB09B35CF9"
+				item: {
+					Count: 1
+					id: "mythicupgrades:jade_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 5.5d
+			y: 0.0d
+		}
+		{
+			description: ["Sapphire tools have higher attack dammade and they deal +3% of enemy's maximum health"]
+			id: "261840F62D1C1418"
+			rewards: [{
+				id: "04B55F09A56C088D"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "4BC5993C8A3426E1"
+				item: {
+					Count: 1
+					id: "mythicupgrades:sapphire_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 7.5d
+			y: 0.0d
+		}
+		{
+			description: ["Ametrine tools apply Levitation 5 for 0.75 seconds"]
+			id: "6509BF84221F09F4"
+			rewards: [{
+				id: "68818F79BB29F53F"
+				type: "xp"
+				xp: 500
+			}]
+			tasks: [{
+				id: "450A74972692230F"
+				item: {
+					Count: 1
+					id: "mythicupgrades:ametrine_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: 8.5d
+			y: 0.0d
+		}
+		{
+			id: "1671F86441F7B195"
+			tasks: [{
+				id: "7A6E5DF66E5DDEC7"
+				item: "mythicupgrades:ruby_potion"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -2.0d
+		}
+		{
+			id: "52D6F147D1DCA39C"
+			tasks: [{
+				id: "44A33DFE68FE261B"
+				item: "mythicupgrades:topaz_potion"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -2.0d
+		}
+		{
+			id: "6437752BBCDB8769"
+			tasks: [{
+				id: "03F5BBE03A54A812"
+				item: "mythicupgrades:peridot_potion"
+				type: "item"
+			}]
+			x: 4.5d
+			y: -2.0d
+		}
+		{
+			id: "494C0E7650F83740"
+			tasks: [{
+				id: "50A8E9B7A1431F95"
+				item: "mythicupgrades:jade_potion"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -2.0d
+		}
+		{
+			id: "2EA460ECB519290F"
+			tasks: [{
+				id: "22553E3707724F74"
+				item: "mythicupgrades:aquamarine_potion"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -2.0d
+		}
+		{
+			id: "225996DBB35EE362"
+			tasks: [{
+				id: "78F079127F3A5C6F"
+				item: "mythicupgrades:sapphire_potion"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -2.0d
+		}
+		{
+			id: "50C451067747284B"
+			tasks: [{
+				id: "6B9B26EF510B1010"
+				item: "mythicupgrades:ametrine_potion"
+				type: "item"
+			}]
+			x: 8.5d
+			y: -2.0d
+		}
+		{
+			description: ["Generates in Crimson Forests between Y=0 and Y=32 (mostly in Y=16)"]
+			id: "4797BD50D9071863"
+			tasks: [{
+				id: "57F29F6C2AD6A3A2"
+				item: "mythicupgrades:ruby"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -3.0d
+		}
+		{
+			description: ["Generates under Deserts between Y=-64 and Y=32 (mostly Y=-16)"]
+			id: "4883EE3FD3FEB319"
+			tasks: [{
+				id: "383A46C1B3F567BC"
+				item: "mythicupgrades:topaz"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -3.0d
+		}
+		{
+			description: [
+				"Can generate in Bastion Remnants with a 10% chance"
+				"50% chance in treasure chests"
+			]
+			id: "47AF63F1BC035A9A"
+			tasks: [{
+				id: "78AA3BA6BA9ED237"
+				item: "mythicupgrades:ruby_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -4.0d
+		}
+		{
+			description: ["Generates in Desert Temples with a 10% chance"]
+			id: "0882B66D54DAF27C"
+			tasks: [{
+				id: "48F7657F861EE711"
+				item: "mythicupgrades:topaz_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 3.5d
+			y: -4.0d
+		}
+		{
+			description: ["Generates under jungle bioms between Y=-64 and Y=32 (mostly in Y-16)"]
+			id: "73CCD79126D239FD"
+			tasks: [{
+				id: "6A42F8077A9ECF70"
+				item: "mythicupgrades:peridot"
+				type: "item"
+			}]
+			x: 4.5d
+			y: -3.0d
+		}
+		{
+			description: ["Generates in jungle temples with a 10% chance"]
+			id: "72E28244375D2527"
+			tasks: [{
+				id: "4C26298FF261F1BA"
+				item: "mythicupgrades:peridot_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 4.5d
+			y: -4.0d
+		}
+		{
+			description: ["Generates in The End between Y=0 and Y=32 (mostly Y=16)"]
+			id: "49133CFAF5DC3CDE"
+			tasks: [{
+				id: "05C9A8CC0E4C365D"
+				item: "mythicupgrades:jade"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -3.0d
+		}
+		{
+			description: ["Generates in End Citys with a 10% chance"]
+			id: "103406DA2FB0D017"
+			tasks: [{
+				id: "679F5149DCBEC54E"
+				item: "mythicupgrades:jade_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -4.0d
+		}
+		{
+			description: ["Generates under Icy bioms between Y=-64 and Y=32 (mostly Y=-16)"]
+			id: "6B813CB8C2E8083A"
+			tasks: [{
+				id: "5EA4DE9733CBEDA2"
+				item: "mythicupgrades:aquamarine"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -3.0d
+		}
+		{
+			description: ["Generates in igloos with a 10% chance"]
+			id: "073BD6D5D021CB3C"
+			tasks: [{
+				id: "5FF408EA67153095"
+				item: "mythicupgrades:aquamarine_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 6.5d
+			y: -4.0d
+		}
+		{
+			description: ["Generates in Soul Sand Valleys between Y=0 and Y= 32 (mostly in Y=16)"]
+			id: "5D31A587418D7A31"
+			tasks: [{
+				id: "3134819CA80E2A9A"
+				item: "mythicupgrades:sapphire"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -3.0d
+		}
+		{
+			description: ["Generates in Nether Fortresses with a 10% chance"]
+			id: "6BA11DC961F93191"
+			tasks: [{
+				id: "0BC2160842A3A697"
+				item: "mythicupgrades:sapphire_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -4.0d
+		}
+		{
+			description: ["Generates in The End between Y=0 and Y=32 (mostly in Y=16)"]
+			id: "4D3D0F8DE0546B64"
+			tasks: [{
+				id: "11851BA04B950BD9"
+				item: "mythicupgrades:ametrine"
+				type: "item"
+			}]
+			x: 8.5d
+			y: -3.0d
+		}
+		{
+			description: ["Generates in End Citys with a 10% chance"]
+			id: "6C7D975372A668F7"
+			tasks: [{
+				id: "28FC6CBCB80D65C3"
+				item: "mythicupgrades:ametrine_upgrade_smithing_template"
+				type: "item"
+			}]
+			x: 8.5d
+			y: -4.0d
+		}
+		{
+			description: [
+				"Generates in The End between Y=0 and Y=32 (mostly Y=16)"
+				""
+				"used to craft Mythic ingots"
+			]
+			id: "2C75494E30257EE1"
+			tasks: [{
+				id: "0F2C0264ABC342E6"
+				item: "mythicupgrades:necoium_ingot"
+				type: "item"
+			}]
+			x: 5.5d
+			y: -5.5d
+		}
+		{
+			id: "228775913499E075"
+			tasks: [{
+				id: "4530BAEDFA37C700"
+				item: "mythicmetals:durasteel_engine"
+				type: "item"
+			}]
+			x: -2.5d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"228775913499E075"
+				"17558F327BAFAA34"
+			]
+			description: [
+				"Fule with morkite and right click to have a fast multi-tool"
+				""
+				"you can upgrade the drill with rare materials such as, carmot stone (extra fortune) and prometheum bouquet (passive mending)"
+			]
+			id: "3CB834647CE59C74"
+			rewards: [{
+				id: "090B71120061305A"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				id: "4984F37B41A0C2F0"
+				item: {
+					Count: 1
+					id: "mythicmetals:mythril_drill"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -4.0d
+			y: -1.5d
+		}
+		{
+			id: "17558F327BAFAA34"
+			tasks: [{
+				id: "59321BB077BD6ACC"
+				item: "mythicmetals:mythril_drill_smithing_template"
+				type: "item"
+			}]
+			x: -5.5d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"27BF3116272AC54C"
+				"6DFF68F599F1043A"
+			]
+			description: ["Keep upgrading the Midas sword with midas gold for it to grow in power (this will take a LOT of midas gold and time)"]
+			id: "7057BEF95530BB17"
+			tasks: [{
+				id: "769B53AE3B71420D"
+				item: {
+					Count: 1
+					id: "mythicmetals:midas_gold_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -4.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["7057BEF95530BB17"]
+			id: "26DF88D4780934AD"
+			rewards: [{
+				id: "30A4E2A856C218B5"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				id: "1077679B81272C83"
+				item: {
+					Count: 1
+					id: "mythicmetals:gilded_midas_gold_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -4.0d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"0BD268A0E8BD5376"
+				"544108F0DC986104"
+				"26DF88D4780934AD"
+			]
+			id: "0370280051F00721"
+			rewards: [{
+				id: "14CF13311C4FF5C5"
+				type: "xp_levels"
+				xp_levels: 20
+			}]
+			tasks: [{
+				id: "1A082850FCAC6688"
+				item: {
+					Count: 1
+					id: "mythicmetals:royal_midas_gold_sword"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -4.0d
+			y: -3.0d
+		}
+		{
+			description: ["trade midas gold with piglins for a chance of them giveint you the enchanted midas gold block"]
+			id: "544108F0DC986104"
+			rewards: [{
+				id: "4533464FF6F094BA"
+				type: "xp_levels"
+				xp_levels: 5
+			}]
+			tasks: [{
+				id: "66931E1A48E0BA78"
+				item: "mythicmetals:enchanted_midas_gold_block"
+				type: "item"
+			}]
+			x: -5.5d
+			y: -3.0d
+		}
+		{
+			id: "27BF3116272AC54C"
+			tasks: [{
+				id: "5C6C23B90A301960"
+				item: "mythicmetals:midas_folding_template"
+				type: "item"
+			}]
+			x: -5.5d
+			y: -6.0d
+		}
+		{
+			id: "0BD268A0E8BD5376"
+			tasks: [{
+				id: "48E02DAF43408AF5"
+				item: "mythicmetals:royal_midas_smithing_template"
+				type: "item"
+			}]
+			x: -2.5d
+			y: -3.0d
+		}
+		{
+			id: "6DFF68F599F1043A"
+			tasks: [{
+				id: "11913E42D585573A"
+				item: "mythicmetals:midas_gold_ingot"
+				type: "item"
+			}]
+			x: -2.5d
+			y: -6.0d
+		}
+		{
+			description: ["Mines in a 3x2 area"]
+			id: "2E4CCFE615C88D0A"
+			rewards: [{
+				id: "736E301923D8993D"
+				type: "xp_levels"
+				xp_levels: 2
+			}]
+			tasks: [{
+				id: "14FDE0F71C3045D0"
+				item: {
+					Count: 1
+					id: "mythicmetals:orichalcum_hammer"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -5.5d
+			y: 0.0d
+		}
+		{
+			id: "184C712A4DDFA5B2"
+			tasks: [{
+				id: "706A215E22FB3E3F"
+				item: "mythicmetals:carmot_staff_smithing_template"
+				type: "item"
+			}]
+			x: -4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["184C712A4DDFA5B2"]
+			description: ["right click a block onto the staff to give it differant effects"]
+			id: "76CDC537ECCD3EF4"
+			rewards: [{
+				id: "7C105777EF9EFE3D"
+				type: "xp"
+				xp: 350
+			}]
+			tasks: [{
+				id: "7F73AAA1883E6A4B"
+				item: {
+					Count: 1
+					id: "mythicmetals:carmot_staff"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -2.5d
+			y: 0.0d
+		}
+		{
+			id: "60D043F009D83800"
+			tasks: [{
+				id: "3FA5DD13DBBF0282"
+				item: {
+					Count: 1
+					id: "mythicmetals:bronze_helmet"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: -6.0d
+		}
+		{
+			id: "4305A49B0EC35CAC"
+			tasks: [{
+				id: "706D6613B57D30BA"
+				item: {
+					Count: 1
+					id: "mythicmetals:midas_gold_helmet"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: -5.0d
+		}
+		{
+			id: "5AE52BFCEFAD1DA8"
+			tasks: [{
+				id: "08A2DDF6D1E5A709"
+				item: {
+					Count: 1
+					id: "mythicmetals:silver_helmet"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: -4.0d
+		}
+		{
+			id: "7659813EF9D4BEB8"
+			tasks: [{
+				id: "2B93B0B2DCE82335"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:adamantite_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: -3.0d
+		}
+		{
+			id: "183F2EA5D1EB0EB9"
+			tasks: [{
+				id: "2E43C97001945EDF"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:aquarium_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: -2.0d
+		}
+		{
+			id: "7BAE83EED7248706"
+			tasks: [{
+				id: "3C7C24D7BA51AFAF"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:banglum_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: -1.0d
+		}
+		{
+			id: "2A4B84F189B87284"
+			tasks: [{
+				id: "19FC739D8C2E279A"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:carmot_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -8.5d
+			y: 0.0d
+		}
+		{
+			id: "470A3CCCB611B203"
+			tasks: [{
+				id: "6BBAB7F77BC9607E"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:celestium_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: -6.0d
+		}
+		{
+			id: "58028E640C4323A9"
+			tasks: [{
+				id: "0C4E4D1D8D5CF732"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:durasteel_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: -5.0d
+		}
+		{
+			id: "4AF31DA0DB2DED62"
+			tasks: [{
+				id: "3F06BAFED65445C2"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:hydrargym_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: -4.0d
+		}
+		{
+			id: "04D4CE8259537A25"
+			tasks: [{
+				id: "24A1F7E1795379E6"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:hallowed_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: -3.0d
+		}
+		{
+			id: "4CC7FBDF1FFC3B03"
+			tasks: [{
+				id: "3839E748C509720D"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:kyber_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: -2.0d
+		}
+		{
+			id: "0FFECE2DADEF60F7"
+			tasks: [{
+				id: "122A77F059C9F76E"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:manganese_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: -1.0d
+		}
+		{
+			id: "6A02CC643F7BBD32"
+			tasks: [{
+				id: "4F224E38564309E4"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:metallurgium_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -9.5d
+			y: 0.0d
+		}
+		{
+			id: "5D9F0CF07F784074"
+			tasks: [{
+				id: "2B2CC43D1F425D45"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:mythril_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: -6.0d
+		}
+		{
+			id: "4518E2EDA00E91B7"
+			tasks: [{
+				id: "740E924F31608A32"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:orichalcum_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: -5.0d
+		}
+		{
+			id: "11C7ADAA0632ED87"
+			tasks: [{
+				id: "0680BF0774884FB6"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:osmium_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: -4.0d
+		}
+		{
+			id: "219927775DD4E3E7"
+			tasks: [{
+				id: "7535C151CC6D822D"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:palladium_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: -3.0d
+		}
+		{
+			id: "779CBFBDECB47006"
+			tasks: [{
+				id: "732FDC9F069AF4A1"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:platinum_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: -2.0d
+		}
+		{
+			id: "517EC3D4D19BA77E"
+			tasks: [{
+				id: "2B4603BCB67835FF"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:runite_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: -1.0d
+		}
+		{
+			id: "42457F303ECA6385"
+			tasks: [{
+				id: "634D94ECF377BBFF"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:star_platinum_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -10.5d
+			y: 0.0d
+		}
+		{
+			id: "2A0FE02A8EFF202D"
+			tasks: [{
+				id: "0554677EF168FAE5"
+				item: {
+					Count: 1
+					id: "mythicmetals_decorations:steel_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -7.5d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"04D4CE8259537A25"
+				"7BAE83EED7248706"
+				"5D9F0CF07F784074"
+				"2A4B84F189B87284"
+				"4CC7FBDF1FFC3B03"
+				"183F2EA5D1EB0EB9"
+				"7659813EF9D4BEB8"
+				"0FFECE2DADEF60F7"
+				"58028E640C4323A9"
+				"4518E2EDA00E91B7"
+				"6A02CC643F7BBD32"
+				"517EC3D4D19BA77E"
+				"4305A49B0EC35CAC"
+				"779CBFBDECB47006"
+				"470A3CCCB611B203"
+				"2A0FE02A8EFF202D"
+				"60D043F009D83800"
+				"11C7ADAA0632ED87"
+				"42457F303ECA6385"
+				"5AE52BFCEFAD1DA8"
+				"4AF31DA0DB2DED62"
+				"219927775DD4E3E7"
+			]
+			icon: "clutter:crown"
+			id: "717E49018EC8F510"
+			rewards: [
+				{
+					id: "76281A0AB8FC0FF0"
+					type: "xp_levels"
+					xp_levels: 15
+				}
+				{
+					id: "6A6F14D5991F81E7"
+					item: {
+						Count: 1
+						id: "icarus:black_mechanical_feathered_wings"
+						tag: { }
+					}
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "6D749AC74D4485E2"
+				title: "King of Crowns"
+				type: "checkmark"
+			}]
+			x: -12.5d
+			y: -3.0d
+		}
+	]
+	title: "Mythic Metals"
+}

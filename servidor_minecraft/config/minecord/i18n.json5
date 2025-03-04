@@ -1,0 +1,10 @@
+{
+	// The name of the Minecraft server in system messages
+	"serverName": "Server",
+	// A mapping of Minecraft dimension IDs to their respective names
+	"worlds": {
+		"minecraft:overworld": "Overworld",
+		"minecraft:the_nether": "The Nether",
+		"minecraft:the_end": "The End"
+	}
+}

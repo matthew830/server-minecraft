@@ -1,0 +1,438 @@
+{
+	"type": "origins:multiple",
+	"callback":
+	{
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tp @s ^ ^ ^ facing entity @e[tag=tretarget,limit=1,sort=nearest,distance=..20] feet"
+				}
+			]
+		}
+	},
+	"model":
+	{
+		"type": "origins:model_color",
+		"red": 0,
+		"green": 0,
+		"blue": 0
+	},
+	"basehealth": 
+	{
+		"type": "origins:attribute",
+		"update_health": true,
+		"modifiers": {
+			"attribute": "minecraft:generic.max_health",
+			"operation": "multiply_total",
+			"value": -0.9
+		}
+	},
+	"immunities": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -1,
+			"operation":"multiply_total"
+		},
+		"damage_condition":	{
+			"type": "origins:name",
+			"name": "explosion"
+		}
+	},
+	"no_collision": 
+	{
+		"type": "origins:prevent_entity_collision"
+	},
+	"motion":
+	{
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 0.1 1"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions":[
+						{
+							"condition":{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "*:*_death",
+								"compare_to": 21
+							},
+							"action":{
+								"type": "origins:and",
+								"actions":[
+									{
+										"type": "origins:execute_command",
+										"command": "execute at @e[tag=tretarget,limit=1,sort=nearest,distance=..48] run tp @s ^ ^15 ^ facing entity @e[tag=tretarget,limit=1,sort=nearest,distance=..48]"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "resource change @s ordnance:weapons/weaponry_trerror_artillery_death -1"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run particle minecraft:campfire_cosy_smoke ^ ^ ^ 0 0 0 0 1 normal @a"
+				}
+			]
+		}
+	},
+	"untimely_detonation":
+	{
+		"type": "origins:action_over_time",
+		"interval": 2,
+		"entity_action":{
+			"type": "origins:area_of_effect",
+			"radius": 1.5,
+			"bientity_action": {
+				"type": "origins:actor_action",
+				"action": {
+					"type": "origins:execute_command",
+					"command": "resource set @s ordnance:weapons/weaponry_trerror_artillery_death 0"
+				}
+			},
+			"bientity_condition":{
+				"type": "origins:target_condition",
+				"condition":{
+					"type": "origins:or",
+					"inverted": true,
+					"conditions": [
+						{
+							"type": "origins:nbt",
+							"nbt": "{Tags: ['trerror']}"
+						},
+						{
+							"type": "origins:entity_type",
+							"entity_type": "minecraft:item"
+						}
+					]
+				}
+			}
+		}
+	},
+	"antigrav":
+	{
+		"type": "origins:modify_falling",
+		"velocity": 0.1,
+		"take_fall_damage": false
+	},
+	"death": 
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 21,
+		"start_value": 21,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action":{
+			"type": "origins:if_else_list",
+			"actions":[
+				{
+					"condition":{
+						"type": "origins:health",
+						"comparison": ">",
+						"compare_to": 0
+					},
+					"action":{
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.generic.explode master @a ~ ~ ~ 4 0.6"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "execute at @s run particle minecraft:explosion ^ ^ ^ 0.3 0 0.3 0 20 normal @a"
+							},
+							{
+								"type": "origins:area_of_effect",
+								"radius": 4,
+								"bientity_action":{
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:add_velocity",
+												"z": 0.5
+											},
+											{
+												"type": "origins:add_velocity",
+												"y": 0.75
+											},
+											{
+												"type": "origins:if_else_list",
+												"actions": [
+													{
+														"condition": {
+															"type": "origins:enchantment",
+															"enchantment": "minecraft:protection",
+															"calculation": "sum",
+															"comparison": "<",
+															"compare_to": 8
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 20,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 8
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 12
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 22,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 12
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 16
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 24,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": false,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:and",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 16
+																},
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": "<",
+																	"compare_to": 20
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 28,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": true,
+																"unblockable": false
+															}
+														}
+													},
+													{
+														"condition": {
+															"type": "origins:or",
+															"conditions": [
+																{
+																	"type": "origins:enchantment",
+																	"enchantment": "minecraft:protection",
+																	"calculation": "sum",
+																	"comparison": ">=",
+																	"compare_to": 20
+																}
+															]
+														},
+														"action": {
+															"type": "origins:damage",
+															"amount": 39,
+															"source": {
+																"name": "explosion",
+																"bypasses_armor": true,
+																"unblockable": false
+															}
+														}
+													}
+												]
+											}
+										]
+									}
+								},
+								"bientity_condition": {
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:can_see"
+										},
+										{
+											"type": "origins:or",
+											"conditions":
+											[
+												{
+													"type": "origins:target_condition",
+													"condition": {
+														"type": "origins:entity_type",
+														"entity_type": "minecraft:item"
+													}
+												},
+												{
+													"type": "origins:both",
+													"condition": {
+														"type": "origins:or",
+														"conditions":
+														[
+															{
+																"type": "origins:and",
+																"conditions":
+																[
+																	{
+																		"type": "origins:living"
+																	},
+																	{
+																		"type": "origins:resource",
+																		"comparison": "==",
+																		"resource": "othersider:invisible_otherside_otherside",
+																		"compare_to": 1
+																	},
+																	{
+																		"type": "origins:power",
+																		"power": "othersider:invisible_otherside_otherside"
+																	}
+																]
+															},
+															{
+																"type": "origins:and",
+																"conditions":
+																[
+																	{
+																		"type": "origins:living"
+																	},
+																	{
+																		"type": "origins:or",
+																		"conditions":
+																		[
+																			{
+																				"type": "origins:resource",
+																				"comparison": "==",
+																				"resource": "othersider:invisible_otherside_otherside",
+																				"compare_to": 0
+																			},
+																			{
+																				"type": "origins:power",
+																				"power": "othersider:invisible_otherside_otherside",
+																				"inverted": true
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												}
+											]
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "kill @e[tag=tretarget,limit=1,sort=nearest,distance=..10]"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "tp @s ~ ~-300 ~"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "kill @s"
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	"timer": 
+	{
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition":{
+						"type": "origins:resource",
+						"comparison": "<",
+						"resource": "*:*_death",
+						"compare_to": 21
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:weapons/weaponry_trerror_artillery_death -7"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

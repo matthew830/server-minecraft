@@ -1,0 +1,225 @@
+{
+	"type": "origins:multiple",
+	"targeted": 
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 5,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 16,
+			"condition": {
+				"type": "origins:resource",
+				"resource": "*:*_targeted",
+				"comparison": ">",
+				"compare_to": 0
+			}
+		}
+	},
+	"timer": 
+	{
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:resource",
+						"resource": "*:*_targeted",
+						"comparison": "==",
+						"compare_to": 5
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.note_block.bit master @a ~ ~ ~ 1 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "title @s actionbar {\"text\": \"You are being targeted!\", \"color\": \"red\"}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:invisible_ordnance_targeted -1"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "*:*_targeted",
+								"compare_to": 1
+							},
+							{
+								"type": "origins:resource",
+								"resource": "*:*_targeted",
+								"comparison": "<",
+								"compare_to": 5
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:invisible_ordnance_targeted -1"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "*:*_targeted",
+								"compare_to": 1
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:invisible_ordnance_targeted -1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "tag @s remove ordtarget"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "title @s actionbar {\"text\": \"You are no longer being targeted!\", \"color\": \"green\"}"
+							}							
+						]
+					}
+				}
+			]
+		}
+	},
+	"lockon_vulnerable": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": 0.2,
+			"operation":"multiply_total"
+		},
+		"damage_condition":{
+			"type":"origins:or",
+			"conditions":[
+				{
+					"type": "origins:name",
+					"name": "arrow"
+				},
+				{
+					"type": "origins:name",
+					"name": "arrow.item"
+				},
+				{
+					"type": "origins:name",
+					"name": "fireworks"
+				},
+				{
+					"type": "origins:name",
+					"name": "fireworks.player"
+				},
+				{
+					"type": "origins:name",
+					"name": "fireworks.item"
+				},
+				{
+					"type": "origins:name",
+					"name": "onFire"
+				},
+				{
+					"type": "origins:name",
+					"name": "inFire"
+				},
+				{
+					"type": "origins:name",
+					"name": "trident"
+				},
+				{
+					"type": "origins:name",
+					"name": "trident.item"
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:resource",
+			"resource": "*:*_targeted",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	},
+	"safe_transport":
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -1,
+			"operation":"multiply_total"
+		},
+		"damage_condition":{
+			"type": "origins:attacker",
+			"entity_condition": {
+				"type": "origins:and",
+				"conditions": [
+					{
+						"type": "origins:entity_type",
+						"entity_type": "minecraft:silverfish"
+					},
+					{
+						"type": "origins:power",
+						"power": "ordnance:weapons/weaponry_transport"
+					}
+				]
+			}
+		}
+	},
+	"kick_rider_out":{
+		"type": "origins:active_self",
+		"cooldown": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action":{
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:passenger_action",
+					"action": {
+						"type": "origins:dismount"
+					}
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking"
+				},
+				{
+					"type": "origins:passenger"
+				}
+			]
+		},
+		"key": {
+		  "key": "key.jump"
+		}
+	}
+}

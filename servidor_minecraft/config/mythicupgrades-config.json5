@@ -1,0 +1,62 @@
+{
+	"aquamarineConfig": {
+		"ocean_shield_amplifier": 2,
+		"ocean_shield_duration": 3.0
+	},
+	"citrineConfig": {
+		"hindering_duration": 5.0,
+		"hindering_amplifier": 0,
+		"sword_weakness_amplifier": 0,
+		"sword_slowness_amplifier": 0,
+		"sword_hunger_amplifier": 0,
+		"axe_weakness_amplifier": 0,
+		"axe_slowness_amplifier": 0,
+		"axe_hunger_amplifier": 0,
+		"sword_weakness_duration": 5.0,
+		"sword_slowness_duration": 5.0,
+		"sword_hunger_duration": 5.0,
+		"axe_weakness_duration": 5.0,
+		"axe_slowness_duration": 5.0,
+		"axe_hunger_duration": 5.0
+	},
+	"peridotConfig": {
+		"axe_poison_duration": 1.5,
+		"axe_poison_amplifier": 2,
+		"sword_poison_duration": 1.5,
+		"sword_poison_amplifier": 2,
+		"poisonous_thorns_poison_duration": 5.0,
+		"poisonous_thorns_amplifier": 0
+	},
+	"zirconConfig": {
+		"axe_freeze_duration": 0.5,
+		"sword_freeze_duration": 0.5,
+		"ice_shield_duration": 1.0,
+		"ice_shield_amplifier": 2
+	},
+	"rubyConfig": {
+		"haste_pickaxe_amplifier": 0,
+		"haste_axe_amplifier": 0,
+		"haste_shovel_amplifier": 0,
+		"haste_hoe_amplifier": 0
+	},
+	"sapphireConfig": {
+		"axe_percentage_damage_percent": 5,
+		"sword_percentage_damage_percent": 5,
+		"damage_deflection_amplifier": 2
+	},
+	"topazConfig": {
+		"topaz_item_mastery_amplifier": 4
+	},
+	"ametrineConfig": {
+		"axe_levitation_duration": 0.75,
+		"axe_levitation_amplifier": 4,
+		"sword_levitation_duration": 0.75,
+		"sword_levitation_amplifier": 4,
+		"arcane_aura_duration": 0.75,
+		"arcane_aura_amplifier": 2
+	},
+	"jadeConfig": {
+		"speed_amplifier": 2,
+		"jump_boost_amplifier": 2
+	}
+}

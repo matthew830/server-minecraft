@@ -1,0 +1,125 @@
+{
+	"type": "origins:multiple",
+	"callback":
+	{
+		"type": "origins:action_on_callback",
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run particle minecraft:scrape ~ ~2 ~ 0 0.15 0 0 10 normal @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run particle minecraft:scrape ~ ~2 ~ 0.15 0 0 0 10 normal @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run particle minecraft:scrape ~ ~2 ~ 0 0 0.15 0 10 normal @a"
+				}
+			]
+		}
+	},
+	"model":
+	{
+		"type": "origins:invisibility",
+		"render_outline": true
+	},
+	"glow":
+	{
+		"type": "origins:self_glow",
+		"use_teams": false,
+		"red": 1.0,
+		"green": 0.5,
+		"blue": 1.0
+	},
+	"basehealth": 
+	{
+		"type": "origins:attribute",
+		"update_health": true,
+		"modifiers": {
+			"attribute": "minecraft:generic.max_health",
+			"operation": "multiply_total",
+			"value": -0.9
+		}
+	},
+	"immunities": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -1,
+			"operation":"multiply_total"
+		},
+		"damage_condition":	{
+			"type": "origins:name",
+			"name": "outOfWorld",
+			"inverted": true
+		}
+	},
+	"no_collision": 
+	{
+		"type": "origins:prevent_entity_collision"
+	},
+	"antigrav":
+	{
+		"type": "origins:modify_falling",
+		"velocity": 0.01,
+		"take_fall_damage": false
+	},
+	"death": 
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 2,
+		"start_value": 2,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action":{
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tp @s ~ ~-300 ~"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "kill @s"
+				}
+			]
+		}
+	},
+	"timer": 
+	{
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "*:*_death",
+								"compare_to": 0
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:weapons/cube_marker_death -1"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+}

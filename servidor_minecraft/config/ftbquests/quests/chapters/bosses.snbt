@@ -1,0 +1,753 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "bosses"
+	group: "50B8F4219D9C0508"
+	icon: "soulsweapons:lord_soul_white"
+	id: "14B9E61A4CD7725C"
+	images: [{
+		height: 1.0d
+		image: "minecraft:item/bosses"
+		rotation: 0.0d
+		width: 3.782051282051282d
+		x: 0.0d
+		y: -3.5d
+	}]
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: ["This will contain all the bosses you can fight, and how to find them"]
+			icon: "bosses_of_mass_destruction:monolith_block"
+			id: "3A3D370304849AA3"
+			rewards: [{
+				id: "4A98E2DDB258DAEA"
+				item: "farmersdelight:sweet_berry_cookie"
+				type: "item"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "42825A044DE37F73"
+				title: "The Collection Of Bosses"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			id: "1FD20367A4324729"
+			rewards: [{
+				id: "0B629834D2261F42"
+				item: "minecraft:dragon_egg"
+				type: "item"
+			}]
+			tasks: [{
+				entity: "minecraft:ender_dragon"
+				icon: "minecraft:dragon_head"
+				id: "13253A58024FF2E0"
+				title: "Freeing The End"
+				type: "kill"
+				value: 1L
+			}]
+			x: -1.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			id: "22AF869B67F2C234"
+			rewards: [{
+				id: "070F3AAA5F40E704"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "minecraft:wither"
+				icon: "minecraft:wither_rose"
+				id: "7951D9D8F4B756E9"
+				title: "The Begining"
+				type: "kill"
+				value: 1L
+			}]
+			x: 1.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			id: "63AE36DDCDAE032E"
+			rewards: [{
+				id: "1AC2276AFB486EF1"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "minecraft:warden"
+				icon: "wardentools:warden_soul"
+				id: "6934FD9F030FA084"
+				title: "Warden Hunter"
+				type: "kill"
+				value: 1L
+			}]
+			x: 0.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Night Lich, found in rare towers in cold biomes."
+				""
+				"Locate the towers by following soul stars"
+			]
+			id: "479FC2A3090E7AE1"
+			rewards: [{
+				id: "3C57CA8B6E563F25"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "bosses_of_mass_destruction:lich"
+				icon: "bosses_of_mass_destruction:ancient_anima"
+				id: "5DA8ADC1173D5C9F"
+				title: "Kill The Lich"
+				type: "kill"
+				value: 1L
+			}]
+			x: 5.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Void blossom, appears in rare caves at the bottom of the world."
+				""
+				"void lilies will point the way"
+			]
+			icon: "bosses_of_mass_destruction:void_thorn"
+			id: "6DDF1794128E6316"
+			rewards: [{
+				id: "29DE419CEA9076B8"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "bosses_of_mass_destruction:void_blossom"
+				id: "239285760B71AB90"
+				title: "Void Blossom"
+				type: "kill"
+				value: 1L
+			}]
+			x: 5.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: ["Nether Gauntlet, wich appears in rare structures in the nether"]
+			id: "5B03627D937DF64D"
+			rewards: [{
+				id: "7A2761BC2E302B30"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "bosses_of_mass_destruction:gauntlet"
+				icon: "bosses_of_mass_destruction:blazing_eye"
+				id: "5231527655E8D056"
+				title: "The Gauntlet"
+				type: "kill"
+				value: 1L
+			}]
+			x: 6.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Obsidilith, witch appears in rare structures in the end islands"
+				""
+				"Make sure you have an eye of ender to awaken the beast"
+			]
+			id: "1F88BA306156F574"
+			rewards: [{
+				id: "04CAB711C48828BD"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "bosses_of_mass_destruction:obsidilith"
+				icon: "bosses_of_mass_destruction:obsidian_heart"
+				id: "32479B44BCE052A9"
+				title: "The Obsidilith"
+				type: "kill"
+				value: 1L
+			}]
+			x: 4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Magus is summoned by using a prismatic pearl."
+				""
+				"enter the Glass Ocean by using a Hexblade to summon a portal"
+			]
+			id: "1C0B7BD0D6D80CEA"
+			rewards: [{
+				id: "730A4C7B805272FE"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "spellbladenext:magus"
+				icon: "spellbladenext:prismatic"
+				id: "47C5E6A7FB2F04DF"
+				title: "Spell Master"
+				type: "kill"
+				value: 1L
+			}]
+			x: 4.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Collect 3 bone staff fragments from the ruins structures"
+				""
+				"obtain a bone dagger"
+				"hold a glass bottle in offhand and kill villeders with bone dagger to get a vial of blood (make sure its full)"
+				""
+				"find lich prison and wait till night"
+				"place bone staff pieces on dark corrupted deepslate blocks infront of the altar"
+				"pour vial of blood into the altar to summon corrupted champion"
+			]
+			id: "5EC81F5BD5365626"
+			rewards: [{
+				id: "4FF9B6350786D5CF"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "graveyard:lich"
+				icon: "graveyard:black_bone_staff"
+				id: "4C59E00FC95885FF"
+				title: "Beating the dead"
+				type: "kill"
+				value: 1L
+			}]
+			x: -2.5d
+			y: 1.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"The Returning Knight is a slow but hard hitting boss with a few attacks up his sleeve"
+				""
+				"He can be summoned by useing a lost Soul on the Old Moon Altar"
+			]
+			id: "34719FFD374B2E38"
+			rewards: [{
+				id: "304096553ABA5DD5"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "soulsweapons:returning_knight"
+				icon: "soulsweapons:altar_block"
+				id: "0E616BE56AA091FD"
+				title: "Kill The Knight"
+				type: "kill"
+				value: 1L
+			}]
+			x: 0.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"A boss spawning in the old champions graves, this skeleton figure has been possessed by annother being"
+				""
+				"killing him will spawn the frenzied shade"
+				""
+				"you can also summon him by using the Draugr sword on a Old Moon Altar"
+			]
+			id: "772D02A118EA6D15"
+			rewards: [{
+				id: "731DD70B6A674DA1"
+				item: {
+					Count: 1
+					id: "soulsweapons:draugr"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			tasks: [{
+				entity: "soulsweapons:draugr_boss"
+				icon: {
+					Count: 1
+					id: "soulsweapons:draugr"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "4D473DBB6130270A"
+				title: "The Old Champion"
+				type: "kill"
+				value: 1L
+			}]
+			x: -1.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["772D02A118EA6D15"]
+			description: [
+				"Can Fly Through any block and at half health it duplicates itself, dummoning 4 other frenzied shades in a wakened state (quarter the HP and only 35% dammage)"
+				""
+				"this shade doesnt take kindly to its vessal being destroyed"
+			]
+			id: "0B72E8614FE349BE"
+			rewards: [{
+				id: "578C7D784885E3AB"
+				item: "soulsweapons:essence_of_eventide"
+				type: "item"
+			}]
+			tasks: [{
+				entity: "soulsweapons:night_shade"
+				icon: "soulsweapons:essence_of_eventide"
+				id: "399E3331D026C755"
+				title: "The Shade"
+				type: "kill"
+				value: 1L
+			}]
+			x: 1.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"The Decaying King spawns in the remnants of the Decaying Kingdome in the nether"
+				""
+				"This cursed monstrosity wields the Darken Blade, and has many deadly attacks to look out for"
+				""
+				"can be summoned by useing the withered heart on a Blackstone Pedistal"
+			]
+			id: "232B35501163299F"
+			rewards: [{
+				id: "1B8DA6DB46843D65"
+				item: "soulsweapons:withered_demon_heart"
+				type: "item"
+			}]
+			tasks: [{
+				entity: "soulsweapons:accursed_lord_boss"
+				icon: "soulsweapons:withered_demon_heart"
+				id: "0384189A33A69E3F"
+				title: "The KING"
+				type: "kill"
+				value: 1L
+			}]
+			x: -1.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"The Monarch Of Chaos is a powerful mage"
+				"it wears both the Cape of Chaos and Crown of Chaos and wilds the Withered Wabbajake"
+				""
+				"challange the Monarch by usieng the shard of uncertanty (wither drop) on a blackstone pedistal"
+			]
+			id: "247BF1F0E8528CE0"
+			rewards: [{
+				id: "404F0D17B5C4B000"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "soulsweapons:chaos_monarch"
+				icon: {
+					Count: 1
+					id: "soulsweapons:chaos_crown"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "62E2508B5C96F380"
+				title: "The Monarch"
+				type: "kill"
+				value: 1L
+			}]
+			x: 0.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["0B72E8614FE349BE"]
+			description: [
+				"Using the essence of evertide on the Old Moon Alter you will return the true heir back to its original body"
+				""
+				"this will result in the summoning of the fallen icon, a fierce empowered version of the Returning Knight with a fast and dangerous second Phase"
+			]
+			id: "5BC82B48593F445C"
+			rewards: [{
+				id: "010D82F5624E4866"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "soulsweapons:moonknight"
+				icon: {
+					Count: 1
+					id: "soulsweapons:pure_moonlight_greatsword"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "659AE69F9CC0EA36"
+				title: "Fallen Icon"
+				type: "kill"
+				value: 1L
+			}]
+			x: 1.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Summoned by throwing the Chaos Orb into the sky you will summon goddess empowered by the night, The Night Prowler"
+				""
+				"compered to her sister this goddess is less tanky, but it faster adn deadlier witht he love of teleporting when sertain conditions are met"
+				""
+				"Enraged when Day Stalker is defeated"
+			]
+			id: "7926ACE37E795A76"
+			rewards: [{
+				id: "16E781EA9AC9AD59"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "soulsweapons:night_prowler"
+				icon: {
+					Count: 1
+					id: "soulsweapons:soul_reaper"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "63CB408284647CC1"
+				title: "God Of The Night"
+				type: "kill"
+				value: 1L
+			}]
+			x: -0.5d
+			y: 5.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Summoned by trowing the Chaos Orb into the sky you will summon the goddess empowered by the day, The Day Stalker"
+				""
+				"During the day she is slower but more tankyer than her sister"
+				""
+				"enraged when Night Prowler is defeated"
+			]
+			id: "3FB59D21C4E56C61"
+			rewards: [{
+				id: "1A7EBF200D295BFF"
+				type: "xp_levels"
+				xp_levels: 10
+			}]
+			tasks: [{
+				entity: "soulsweapons:day_stalker"
+				icon: {
+					Count: 1
+					id: "soulsweapons:dawnbreaker"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "7D299C4685249C64"
+				title: "God Of The Day"
+				type: "kill"
+				value: 1L
+			}]
+			x: 0.5d
+			y: 5.0d
+		}
+		{
+			description: [
+				"Use to reset a Dungeon so you can fight the boss again"
+				""
+				"&4Only works on Bosses Of Mass Destruction dungeons&r"
+			]
+			id: "115F968869AA339D"
+			tasks: [{
+				id: "038F96C4D251102C"
+				item: "bosses_of_mass_destruction:brimstone_nectar"
+				type: "item"
+			}]
+			x: 5.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"make and place a sardomyx crystal, mining the crystal will spawn the elemental"
+				"crystals naturaly spawn in a witch house (not the hut in the swamp), they spawn near villeges"
+				""
+				"This Elemental is strong, make sure you are ready before faceing the golem"
+				""
+				"Drops the book of tales"
+			]
+			icon: "amethyst_imbuement:sardonyx"
+			id: "63563372C76AF468"
+			rewards: [{
+				count: 5
+				id: "4CD974763BBA12ED"
+				item: "amethyst_imbuement:sardonyx"
+				type: "item"
+			}]
+			tasks: [{
+				entity: "amethyst_imbuement:sardonyx_elemental"
+				icon: "amethyst_imbuement:sardonyx_crystal"
+				id: "23CDB4E839992630"
+				title: "Elemental Golem"
+				type: "kill"
+				value: 1L
+			}]
+			x: 3.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["63563372C76AF468"]
+			id: "4EB2819DB16A7277"
+			tasks: [
+				{
+					id: "02EDCE2268B0949E"
+					item: {
+						Count: 1
+						id: "amethyst_imbuement:soulwoven_helmet"
+						tag: {
+							Damage: 0
+							ac_item.amethyst_imbuement.soulwoven_helmet: 1b
+							modifiers: [{
+								modifier_id: "amethyst_imbuement:ensouled_cooldown"
+							}]
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "3724FE4B05C5456F"
+					item: {
+						Count: 1
+						id: "amethyst_imbuement:soulwoven_chestplate"
+						tag: {
+							Damage: 0
+							ac_item.amethyst_imbuement.soulwoven_chestplate: 1b
+							modifiers: [{
+								modifier_id: "amethyst_imbuement:ensouled_level"
+							}]
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "2B7626F62A26C407"
+					item: {
+						Count: 1
+						id: "amethyst_imbuement:soulwoven_leggings"
+						tag: {
+							Damage: 0
+							ac_item.amethyst_imbuement.soulwoven_leggings: 1b
+							modifiers: [{
+								modifier_id: "amethyst_imbuement:ensouled_spell_xp"
+							}]
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "3221DC1808F3B461"
+					item: {
+						Count: 1
+						id: "amethyst_imbuement:soulwoven_boots"
+						tag: {
+							Damage: 0
+							ac_item.amethyst_imbuement.soulwoven_boots: 1b
+							modifiers: [{
+								modifier_id: "amethyst_imbuement:ensouled_cooldown"
+							}]
+						}
+					}
+					type: "item"
+				}
+			]
+			x: 4.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["63563372C76AF468"]
+			id: "5283D3F5F8C3CF75"
+			tasks: [{
+				id: "2FE707EB01B4C7A8"
+				item: {
+					Count: 1
+					id: "amethyst_imbuement:talisman_of_lost_memories"
+					tag: {
+						ac_item.amethyst_imbuement.talisman_of_lost_memories: 1b
+						modifiers: [{
+							modifier_id: "amethyst_imbuement:ensouled_cooldown"
+						}]
+					}
+				}
+				type: "item"
+			}]
+			x: 3.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: ["Use a Shell horn in a ice maze biome"]
+			icon: {
+				Count: 1
+				id: "aquamirae:coral_lance"
+				tag: {
+					Damage: 0
+					Enchantments: [{
+						id: "minecraft:unbreaking"
+						lvl: 4s
+					}]
+				}
+			}
+			id: "3BBBD4B258A97DB9"
+			tasks: [{
+				entity: "aquamirae:captain_cornelia"
+				id: "5EFB046784857A69"
+				title: "Kill The Captain"
+				type: "kill"
+				value: 1L
+			}]
+			title: "Ghost Of Captain Cornelia"
+			x: -2.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: ["The Handbook will tell you all you need to know about &6AdventureZ,&r and will help with summoning and fighting the bosses"]
+			id: "4D0ACF8AD26A26AE"
+			tasks: [{
+				id: "6268116F70E3C6A5"
+				item: "adventurez:handbook"
+				type: "item"
+			}]
+			x: -2.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["4D0ACF8AD26A26AE"]
+			description: [
+				"Use the hand book to see how to Build &6The Eye Shrine&r. &4MUST BE IN THE END&r"
+				""
+				"It will drop the &6Prime Eye&r that is a infinate ender pearl that does reduced dammage when teleporting (refill the &6Prime Eye&r with ender perls in a Smithing Table)"
+			]
+			id: "5BB40B6A2404F261"
+			rewards: [{
+				count: 32
+				id: "12F067373FF08CB0"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
+			tasks: [{
+				entity: "adventurez:the_eye"
+				icon: {
+					Count: 1
+					id: "adventurez:prime_eye"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "3F38E5584FD1BAB7"
+				title: "The Eye"
+				type: "kill"
+				value: 1L
+			}]
+			x: -2.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["4D0ACF8AD26A26AE"]
+			description: [
+				"Use the Handbook to see how to build the Blackstone altar. &4MUST BE IN THE NETHER&r"
+				""
+				"After Killing the golem it will drop its heart, you can replace your heart with the golems by &6Shift right clicking the item&r. This will give you the &0Blackstoned&r effect for an hour"
+			]
+			id: "060A1D615B79A029"
+			rewards: [{
+				id: "5A18E1263D58DBDA"
+				item: "adventurez:blackstone_golem_heart"
+				type: "item"
+			}]
+			tasks: [{
+				entity: "adventurez:blackstone_golem"
+				icon: "adventurez:blackstone_golem_heart"
+				id: "653BCA79FF7FB07F"
+				type: "kill"
+				value: 1L
+			}]
+			x: -4.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["3A3D370304849AA3"]
+			description: [
+				"Dungeons sometimes spawn under swamps, and you can find a incompleat golem"
+				"Make the broken gear animated useing a will' o' wisp and place a carved pumpkin on top"
+				""
+				"same way you make an iron golem but with oxidised copper, and a broken animated cog on the middle block"
+				""
+				"you can also make frendly golems the same way, but with normal copper and a normal animated cog"
+			]
+			id: "7F48C5FF8DA5D296"
+			tasks: [{
+				entity: "wetlands:elder_gear_golem"
+				icon: "wetlands:animated_broken_copper_gear"
+				id: "0AE96B2F8AD48E41"
+				type: "kill"
+				value: 1L
+			}]
+			x: -2.5d
+			y: -1.0d
+		}
+		{
+			description: [
+				"Certain bosses from the Souls bosses mod may crash your game on older versions of Java. Update your Java to at least 17.0.11 to avoid any particle crashes when fighting bosses."
+				"[\"\",{\"text\":\"Click Here for more info..\",\"color\":\"blue\",\"bold\":true,\"underlined\":false,\"clickEvent\":{\"action\":\"open_url\",\"value\":\"https://www.gamerpotion.net/2024/12/how-to-resolve-packet-overload.html\"}}]"
+			]
+			icon: {
+				Count: 1
+				id: "simplyswords:toxic_longsword"
+				tag: {
+					Damage: 0
+				}
+			}
+			id: "1A4CF5B251A01DB5"
+			rewards: [{
+				count: 2
+				id: "31CF3013E9F1D1BB"
+				item: "farmersdelight:chocolate_pie_slice"
+				type: "item"
+			}]
+			shape: "square"
+			size: 2.0d
+			subtitle: "IMPORTANT!!!"
+			tasks: [{
+				id: "756892C792E18313"
+				title: "JAVA Version"
+				type: "checkmark"
+			}]
+			x: -4.0d
+			y: 0.0d
+		}
+	]
+	title: "Bosses"
+}

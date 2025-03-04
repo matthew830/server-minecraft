@@ -1,0 +1,1245 @@
+{
+	"type": "origins:multiple",
+	"fire_weapon":{
+		"type": "origins:active_self",
+		"cooldown": 2,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action":		{
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 49
+							},
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_locking",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -50"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 2 0.3"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon bee ^1 ^1 ^ {CustomName:'[{\"text\":\"Queen Beessile\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"ordmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_missile\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 10,
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 2 0.3"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "summon bee ^-1 ^1 ^ {CustomName:'[{\"text\":\"Queen Beessile\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"ordmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_missile\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 19
+							},
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_locking",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 1
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -20"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^ ^ ^12 {Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:[\"ordtarget\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/marker_brief\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon bee ^1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 3,
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "summon bee ^-1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 3,
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "summon bee ^1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 3,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:execute_command",
+																	"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "summon bee ^-1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 19
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_locking",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 1
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -20"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^ ^ ^9 {NoGravity:1b,Silent:1b,Tags:[\"ordtarget\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/marker_brief\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon bee ^1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile_wild\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 3,
+								"action": {
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+										},
+										{
+											"type": "origins:execute_command",
+											"command": "summon bee ^-1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile_wild\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+										},
+										{
+											"type": "origins:delay",
+											"ticks": 3,
+											"action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "summon bee ^1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile_wild\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+													},
+													{
+														"type": "origins:delay",
+														"ticks": 3,
+														"action": {
+															"type": "origins:and",
+															"actions": [
+																{
+																	"type": "origins:execute_command",
+																	"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.5 0.3"
+																},
+																{
+																	"type": "origins:execute_command",
+																	"command": "summon bee ^-1 ^1 ^ {CustomName:'[{\"text\":\"Swarm Rocket\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"swarmissile\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_swarmissile_wild\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 4
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 2
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -5"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "resource set @s ordnance:ordnance_passives_pseudocooldown 10"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "tag @s add ordscorcher"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^3 ^1 ^5 {CustomName:'[{\"text\":\"Flamethrower\",\"color\":\"dark_red\",\"bold\":true}]',Tags:[\"ordflame\"],Invisible:1b,Invulnerable:1b,NoAI:1,Silent:1,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/kys_stand\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^-3 ^1 ^5 {CustomName:'[{\"text\":\"Flamethrower\",\"color\":\"dark_red\",\"bold\":true}]',Tags:[\"ordflame\"],Invisible:1b,Invulnerable:1b,NoAI:1,Silent:1,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/kys_stand\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^ ^1 ^6 {CustomName:'[{\"text\":\"Flamethrower\",\"color\":\"dark_red\",\"bold\":true}]',Tags:[\"ordflame\"],Invisible:1b,Invulnerable:1b,NoAI:1,Silent:1,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/kys_stand\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^1 ^1 ^3 {CustomName:'[{\"text\":\"Flamethrower\",\"color\":\"dark_red\",\"bold\":true}]',Tags:[\"ordflame\"],Invisible:1b,Invulnerable:1b,NoAI:1,Silent:1,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/kys_stand\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^ ^1 ^2 {CustomName:'[{\"text\":\"Flamethrower\",\"color\":\"dark_red\",\"bold\":true}]',Tags:[\"ordflame\"],Invisible:1b,Invulnerable:1b,NoAI:1,Silent:1,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/kys_stand\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon armor_stand ^-1 ^1 ^3 {CustomName:'[{\"text\":\"Flamethrower\",\"color\":\"dark_red\",\"bold\":true}]',Tags:[\"ordflame\"],Invisible:1b,Invulnerable:1b,NoAI:1,Silent:1,cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/kys_stand\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							},
+							{
+								"type": "origins:area_of_effect",
+								"radius": 12,
+								"bientity_action": {
+									"type": "origins:target_action",
+									"action": {
+										"type": "origins:execute_command",
+										"command": "power grant @s[tag=ordflame] ordnance:weapons/weaponry_flamethrower ordweapon"
+									}
+								},
+								"bientity_condition": {
+									"type": "origins:can_see"
+								}
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.fire.ambient master @s ~ ~ ~ 2 2"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 2,
+								"action":{
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "tag @s remove ordscorcher"
+										}
+									]
+								}
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 61,
+								"action":{
+									"type": "origins:and",
+									"actions": [
+										{
+											"type": "origins:execute_command",
+											"command": "stopsound @s master minecraft:block.fire.ambient"
+										}
+									]
+								}
+							}
+						]
+					}
+				},
+				{
+					"condition":{
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 3
+							}
+						]
+					},
+					"action":{
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.tripwire.attach master @s ~ ~ ~ 0.75 1.5"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.ancient_debris.hit master @s ~ ~ ~ 0.5 2"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 3
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else_list",
+								"actions": [
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:fall_flying",
+													"inverted": true
+												},
+												{
+													"type": "origins:resource",
+													"comparison": "==",
+													"resource": "ordnance:ordnance_passives_airbreak",
+													"compare_to": 0
+												}
+											]
+										},
+										"action": {
+											"type": "origins:raycast",
+											"distance": 20,
+											"block": true,
+											"entity": true,
+											"shape_type": "visual",
+											"fluid_handling": "none",
+											"bientity_action": {
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:if_else_list",
+													"actions": [
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 8
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 2,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 8
+																	},
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 12
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 4,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 12
+																	},
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 16
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 7,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 16
+																	},
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 20
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 14,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:or",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 20
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 20,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														}
+													]
+												}
+											},
+											"before_action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "resource change @s ordnance:ordnance_passives_munitions -1"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "playsound minecraft:entity.firework_rocket.blast master @s ~ ~ ~ 0.5 2"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "particle minecraft:smoke ^0.2 ^1.2 ^0.5 0 0 0 2 0 normal @a"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "particle minecraft:enchanted_hit ^0.15 ^1.4 ^2 0 0 0 2 0 normal @a"
+													},
+													{
+														"type": "origins:if_else_list",
+														"actions": [
+															{
+																"condition": {
+																	"type": "origins:sneaking",
+																	"inverted": true
+																},
+																"action": {
+																	"type": "origins:add_velocity",
+																	"z": -0.15,
+																	"space": "local"
+																}
+															}
+														]
+													},
+													{
+														"type": "origins:set_fall_distance",
+														"fall_distance": 0
+													}
+												]
+											},
+											"command_at_hit": "particle minecraft:scrape ~ ~ ~ 0 0 0 0 1 normal @a",
+											"command_step": 1,
+											"command_along_ray_only_on_hit": false
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:fall_flying"
+												}
+											]
+										},
+										"action": {
+											"type": "origins:raycast",
+											"distance": 50,
+											"block": true,
+											"entity": true,
+											"shape_type": "visual",
+											"fluid_handling": "none",
+											"bientity_action": {
+												"type": "origins:target_action",
+												"action": {
+													"type": "origins:if_else_list",
+													"actions": [
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 8
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 4,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 8
+																	},
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 12
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 8,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 12
+																	},
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 16
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 14,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:and",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 16
+																	},
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": "<",
+																		"compare_to": 20
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 28,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														},
+														{
+															"condition": {
+																"type": "origins:or",
+																"conditions": [
+																	{
+																		"type": "origins:enchantment",
+																		"enchantment": "minecraft:protection",
+																		"calculation": "sum",
+																		"comparison": ">=",
+																		"compare_to": 20
+																	}
+																]
+															},
+															"action": {
+																"type": "origins:damage",
+																"amount": 39,
+																"source": {
+																	"name": "fireworks",
+																	"bypasses_armor": true
+																}
+															}
+														}
+													]
+												}
+											},
+											"before_action": {
+												"type": "origins:and",
+												"actions": [
+													{
+														"type": "origins:execute_command",
+														"command": "resource change @s ordnance:ordnance_passives_munitions -2"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "playsound minecraft:entity.firework_rocket.blast_far master @s ~ ~ ~ 0.5 1.5"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "particle minecraft:smoke ^0.2 ^ ^2 0 0 0 2 0 normal @a"
+													},
+													{
+														"type": "origins:execute_command",
+														"command": "particle minecraft:enchanted_hit ^0.15 ^ ^4 0 0 0 2 0 normal @a"
+													},
+													{
+														"type": "origins:set_fall_distance",
+														"fall_distance": 0
+													}
+												]
+											},
+											"command_at_hit": "particle minecraft:scrape ~ ~ ~ 0 0 0 0 1 normal @a",
+											"command_step": 1,
+											"command_along_ray_only_on_hit": false
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 4
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:if_else_list",
+								"actions": [
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:resource",
+													"comparison": ">",
+													"resource": "ordnance:ordnance_passives_munitions",
+													"compare_to": 29
+												},
+												{
+													"type": "origins:riding",
+													"inverted": true
+												}
+											]
+										},
+										"action": {
+											"type": "origins:and",
+											"actions": [
+												{
+													"type": "origins:trigger_cooldown",
+													"power": "ordnance:ordnance_passives_pseudocooldown"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "resource change @s ordnance:ordnance_passives_munitions -30"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 2 0.3"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "summon armor_stand ^ ^ ^12 {Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:[\"ordtarget\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/marker_brief\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "summon silverfish ^ ^1.45 ^1 {CustomName:'[{\"text\":\"Transport Rocket\",\"color\":\"dark_red\",\"bold\":true}]',Invulnerable:1b,NoGravity:1b,Silent:1b,Tags:[\"ordtransport\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_transport\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+												},
+												{
+													"type": "origins:execute_command",
+													"command": "particle minecraft:enchanted_hit ^0.15 ^ ^4 0 0 0 2 0 normal @a"
+												}
+											]
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:riding"
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "summon armor_stand ^ ^ ^12 {NoGravity:1b,Silent:1b,Tags:[\"ordtarget\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/marker_brief\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+										}
+									}
+								]
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 24
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 5
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:on_block"
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -25"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 2 0.3"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon turtle ^ ^ ^ {CustomName:'[{\"text\":\"Mine Turtle\",\"color\":\"dark_red\",\"bold\":true}]',NoGravity:1b,Silent:1b,Tags:[\"ordmine\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_mine\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 24
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 5
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:on_block",
+								"inverted": true
+							},
+							{
+								"type": "origins:fall_flying"
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -24"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 2 0.3"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon turtle ^ ^ ^ {CustomName:'[{\"text\":\"Turtle Bomb\",\"color\":\"dark_red\",\"bold\":true}]',Silent:1b,Tags:[\"ordbomb\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_bomb\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							}
+						]
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:resource",
+								"comparison": ">",
+								"resource": "ordnance:ordnance_passives_munitions",
+								"compare_to": 49
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_weapon_select",
+								"compare_to": 6
+							},
+							{
+								"type": "origins:resource",
+								"comparison": "==",
+								"resource": "ordnance:ordnance_passives_pseudocooldown",
+								"compare_to": 0
+							},
+							{
+								"type": "origins:sneaking",
+								"inverted": true
+							}
+						]
+					},
+					"action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "resource change @s ordnance:ordnance_passives_munitions -50"
+							},
+							{
+								"type": "origins:trigger_cooldown",
+								"power": "ordnance:ordnance_passives_pseudocooldown"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 1 1.5"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "summon allay ^ ^ ^ {CustomName:'[{\"text\":\"Odnance Drone\",\"color\":\"dark_red\",\"bold\":true}]',Silent:1b,Tags:[\"ordrone\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_friendrone\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}"
+							}
+						]
+					}
+				}
+			]
+		},
+		"key": {
+			"key":"key.origins.secondary_active",
+			"continuous": true
+		}
+	},
+    "gun_illegal":
+	{
+		"type": "origins:active_self",
+		"cooldown": 200,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action":{
+			"type": "origins:area_of_effect",
+			"radius": 25,
+			"bientity_action":{
+				"type": "origins:and",
+				"actions":[
+					{
+						"type": "origins:damage",
+						"amount": 0,
+						"damage_type": "minecraft:magic"
+					},
+					{
+						"type": "origins:target_action",
+						"action":{
+							"type": "origins:execute_command",
+							"command": "particle minecraft:angry_villager ^ ^2 ^ 0.5 0 0.5 2 3 force @a"
+						}
+					}
+				]
+			},
+			"bientity_condition": {
+				"type": "origins:and",
+				"conditions":
+				[
+					{
+						"type": "origins:can_see"
+					},
+					{
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:or",
+							"conditions":
+							[
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:zombified_piglin"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:enderman"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:warden"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:wolf"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:bee"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:spider"
+								}
+							]
+						}
+					},
+					{
+						"type": "origins:both",
+						"condition": {
+							"type": "origins:or",
+							"conditions":
+							[
+								{
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:living"
+										},
+										{
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "othersider:invisible_otherside_otherside",
+											"compare_to": 1
+										},
+										{
+											"type": "origins:power",
+											"power": "othersider:invisible_otherside_otherside"
+										}
+									]
+								},
+								{
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:living"
+										},
+										{
+											"type": "origins:or",
+											"conditions":
+											[
+												{
+													"type": "origins:resource",
+													"comparison": "==",
+													"resource": "othersider:invisible_otherside_otherside",
+													"compare_to": 0
+												},
+												{
+													"type": "origins:power",
+													"power": "othersider:invisible_otherside_otherside",
+													"inverted": true
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"key": {
+			"key":"key.origins.secondary_active",
+			"continuous": true
+		}
+	},
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "Active ability, use with %s"
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "Firing weapons will anger the following mobs if they can see you: Zombified Piglin, Warden, Enderman, Bee, Wolf, Spider."
+		}
+	],
+	"name": "Fire Armaments",
+	"description": "Fire the currently selected armament, each will cost a certain amount of ammunition.\n \n- Queen Beessiles:\nAmmunition Cost: 50\nDamage: 20\nExplosion Radius: 4\nLock-on distance: 50\n \nFires two large homing missiles that seek locked on targets and explode on impact, or after 5 seconds of flight. You can not fire these missiles if you are not locked onto anything.\n \n- Swarm Barrage:\nAmmunition Cost: 20\nDamage: 5\nExplosion Radius: 2\nLock-on distance: 20 (locked-on) or 10\n \nFires four tiny homing rockets which seek locked on targets and explode on impact or after 3 seconds of flight. You can fire these rockets even if you aren't locked onto anything.\n \n- Flamethrower:\nAmmunition Cost: 5\nDamage: 2\nArea: 10-block cone\n \nCreates a 10 block long cone area of fire, which lights creatures ablaze for 10 seconds and deals 2 fire damage.\n \n- Stinger Machine Gun:\nAmmunition Cost: 1 or 2 (airborne)\nDamage: 2 or 4 (airborne)\nRange: 20 or 50 (airborne)\n \nFires a high velocity armor-piercing projectile in a 20 block long line, which deals 2 projectile damage. If you are flying, the range of the projectile becomes 50 blocks, and its damage is doubled.\n \n- Transport Rocket:\nAmmunition Cost: 30\nDamage: 10\nExplosion Radius: 4\nLock-on distance: 15\n \nFires one slow, massive, rideable, controllable rocket that seeks locked on targets and explodes twice on impact, after 60 seconds of flight or after dismounting, dealing 10 damage to entities other than yourself and other Ordnance. While riding it, you can press Secondary again to change the rocket's direction, and hold Secondary to slow down. You can fire this rocket even if you are not locked onto anything.\n \n- Mine Turtle:\nAmmunition Cost: 25\nDamage: 25 or 41 (airborne)\nExplosion Radius: 5 or 10 (airborne)\n \nWhile you are on the floor, it places a semi transparent turtle at your feet, which will blink and make a sound every 5 seconds. When the turtle is stepped on, it sends a message to nearby players saying “Hello!” and then explodes, dealing 25 damage and propelling the targets upwards. When used while airborne, the turtle explodes three seconds after it touches the floor or a liquid, doubling its explosive radius and changing its damage to 41.\n \n- Drone:\nAmmunition Cost: 60 \nDamage: 6\nLock-on distance: 10\n \n- Summons a friendly, but fragile drone that follows you around. While the drone is alive, it will shield you from harm every 3 seconds. You can sneak+primary on to your drone to stop it from following you. In this state, it will attack anything within 10 blocks of itself that you are locked onto, dealing 6 damage every 3 seconds, and extending the duration of the lock-on. The drone dies when it is killed, after it shields you or deals damage five times (killing blows do not count towards this treshold).\n \nRailgun:\nAmmunition Cost: 50 or 30 (1/3rd charge)\nDamage: 22 or 11 (1/3rd charge)\nRange: 50 or 30 (1/3rd charge)\n \nHolding the ability key charges the railgun’s power, indicated by a resource bar, a buzzing sound and a reduction in movement speed. Releasing the key when one particle appears (1/3rd charge) will fire a piercing projectile with a range of 30 blocks and that deals 11 damage, consuming 25 munitions. Releasing the key when many particles appear (full charge) will fire a piercing projectile with a range of 50 blocks that deals 22 damage, consuming 50 munitions. Regardless of the magnitude fired, the recoil can be prevented by sneaking."
+}

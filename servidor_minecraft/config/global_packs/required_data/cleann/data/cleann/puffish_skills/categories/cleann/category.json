@@ -1,0 +1,12 @@
+{
+	"unlocked_by_default": true,
+	"exclusive_root": true,
+	"title": "Aspirant's Tree",
+	"icon": {
+		"type": "item",
+		"data": {
+			"item": "golden_helmet"
+		}
+	},
+	"background": "textures/gui/advancements/backgrounds/adventure.png"
+}

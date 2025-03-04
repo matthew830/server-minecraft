@@ -1,0 +1,10 @@
+{
+	"powers": [
+		"ordnance:invisible_ordnance"
+	],
+	"icon": "minecraft:tnt",
+	"order": 1,
+	"impact": 3,
+	"name": "Ordnance Hidden",
+	"description": "Accessory origin to the Ordnance origin that improves its interactions with other players. Do not touch unless you know what you are doing."
+}

@@ -1,0 +1,133 @@
+{
+  "weapons": {},
+  "armor_sets": {
+    "trickster": {
+      "armor_toughness": 0.0,
+      "knockback_resistance": 0.0,
+      "head": {
+        "armor": 1,
+        "attributes": [
+          {
+            "id": "extraspellattributes:spellsuppression",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          },
+          {
+            "id": "extraspellattributes:glancingblow",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          }
+        ]
+      },
+      "chest": {
+        "armor": 5,
+        "attributes": [
+          {
+            "id": "extraspellattributes:spellsuppression",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          },
+          {
+            "id": "extraspellattributes:glancingblow",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          }
+        ]
+      },
+      "legs": {
+        "armor": 3,
+        "attributes": [
+          {
+            "id": "extraspellattributes:spellsuppression",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          },
+          {
+            "id": "extraspellattributes:glancingblow",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          }
+        ]
+      },
+      "feet": {
+        "armor": 1,
+        "attributes": [
+          {
+            "id": "extraspellattributes:spellsuppression",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          },
+          {
+            "id": "extraspellattributes:glancingblow",
+            "value": 0.1,
+            "operation": "MULTIPLY_BASE"
+          }
+        ]
+      }
+    },
+    "juggernaut": {
+      "armor_toughness": 0.0,
+      "knockback_resistance": 0.0,
+      "head": {
+        "armor": 2,
+        "attributes": [
+          {
+            "id": "extraspellattributes:defiance",
+            "value": 0.5,
+            "operation": "ADDITION"
+          },
+          {
+            "id": "minecraft:generic.armor_toughness",
+            "value": 2.0,
+            "operation": "ADDITION"
+          }
+        ]
+      },
+      "chest": {
+        "armor": 6,
+        "attributes": [
+          {
+            "id": "extraspellattributes:defiance",
+            "value": 0.5,
+            "operation": "ADDITION"
+          },
+          {
+            "id": "minecraft:generic.armor_toughness",
+            "value": 2.0,
+            "operation": "ADDITION"
+          }
+        ]
+      },
+      "legs": {
+        "armor": 5,
+        "attributes": [
+          {
+            "id": "extraspellattributes:defiance",
+            "value": 0.5,
+            "operation": "ADDITION"
+          },
+          {
+            "id": "minecraft:generic.armor_toughness",
+            "value": 2.0,
+            "operation": "ADDITION"
+          }
+        ]
+      },
+      "feet": {
+        "armor": 2,
+        "attributes": [
+          {
+            "id": "extraspellattributes:defiance",
+            "value": 0.5,
+            "operation": "ADDITION"
+          },
+          {
+            "id": "minecraft:generic.armor_toughness",
+            "value": 2.0,
+            "operation": "ADDITION"
+          }
+        ]
+      }
+    }
+  }
+}

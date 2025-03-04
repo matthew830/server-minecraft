@@ -1,0 +1,9 @@
+{
+	"replace": false,
+	"origins": [
+		"ordnance:ordnance",
+		"ordnance:upkeep",
+		"ordnance:engineer",
+		"ordnance:trerror"
+	]
+}

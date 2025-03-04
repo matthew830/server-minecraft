@@ -1,0 +1,182 @@
+{
+
+    "type": "origins:multiple",
+	"pickup_seat":
+	{
+		"type": "origins:action_on_entity_use",
+		"bientity_action":{
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:invert",
+					"action": {
+						"type": "origins:mount"
+					}
+				},
+				{
+					"type": "origins:actor_action",
+					"action": 
+					{
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "tellraw @s [{\"text\":\"Other players can right-click the seat's particles or the top of your head to ride on you and use your Piercing Stinger Cannon!\",\"color\":\"yellow\"}]"
+							}
+						]
+					}
+				}
+			]
+		},
+		"bientity_condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:living"
+							},
+							{
+								"type": "origins:power",
+								"power": "ordnance:upkeep/invincible_seats"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:distance",
+					"comparison": "<=",
+					"compare_to": 4
+				}
+			]
+		},
+		"item_condition": {
+			"type": "origins:empty"
+		},
+		"hands": [
+			"main_hand"
+		],
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking"
+				}
+			]
+		}
+	},
+	"create_seats":
+	{
+		"type": "origins:active_self",
+		"cooldown": 60,
+		"entity_action":{
+			"type": "origins:and",
+			"actions":[
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				},
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "offhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.anvil.use master @a ~ ~ ~ 0.8 0.5"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "summon camel ^ ^ ^ {SaddleItem:{id:\"minecraft:saddle\",Count:1b},CustomName:'[{\"text\":\"Upkeep Seats\",\"color\":\"dark_purple\",\"bold\":true}]',Silent:1b,Tags:[\"upkeeptool\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:upkeep/invincible_seats\",Data:1b,Sources:[\"minecraft:upkeeptool\"]}]}}}"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tellraw @s [{\"selector\":\"@e[type=minecraft:camel,distance=0.2..,sort=nearest,limit=1]\",\"color\":\"light_purple\"},{\"text\":\" created! Sneak + right click the particles to pick it up, sneak + jump to kick it off.\",\"color\":\"yellow\"}]"
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:iron_block"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:saddle"
+								}
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:saddle"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:iron_block"
+								}
+							}
+						}
+					]
+				}
+			]
+		},
+		"key": {
+			"key":"key.use",
+			"continuous": false
+		}
+	},
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "Active ability, use with %s."
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "You can pick up the seats you create with sneak + %s, and you can drop them with sneak + jump."
+		}
+	],
+	"name": "Create Seats",
+	"description": "You can right click the air while holding an iron block and a saddle at the same time to create seats that you can pick up. While you are carrying the seats, up to 2 other players can ride you by right-clicking the top of your head. The seats have 32 HP and take half damage from all sources. Players in the seats are immune to fall damage."
+}

@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description":"Fix for Azure Paxels not dropping expected cluster loot"
+  }
+}

@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values":
+	[
+		"#minecraft:coals",
+		"minecraft:campfire",
+		"minecraft:soul_campfire",
+		"minecraft:blaze_powder",
+		"minecraft:gunpowder"
+	]
+}

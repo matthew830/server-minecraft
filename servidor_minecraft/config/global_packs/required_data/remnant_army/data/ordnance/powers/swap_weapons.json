@@ -1,0 +1,1001 @@
+{
+	"type": "origins:active_self",
+	"cooldown": 10,
+	"hud_render": {
+		"should_render": false,
+		"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+		"bar_index": 7
+	},
+	"entity_action": {
+		"type": "origins:if_else_list",
+		"actions": [
+			{
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "ordnance:ordnance_passives_weapon_select",
+							"compare_to": 7
+						},
+						{
+							"type": "origins:sneaking",
+							"inverted": true
+						},
+						{
+							"type": "origins:or",
+							"inverted": true,
+							"conditions": [
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:gunpowder"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:honeycomb"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint_and_steel"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:saddle"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:scute"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:heart_of_the_sea"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:crossbow"
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				"action": {
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:execute_command",
+							"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 1 1.5"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "resource change @s ordnance:ordnance_passives_weapon_select 1"
+						},
+						{
+							"type": "origins:delay",
+							"ticks": 1,
+							"action": {
+								"type": "origins:if_else_list",
+								"actions": [
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 0
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Queen Beesiles-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 1
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Swarm Barrage-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 2
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Flamethrower-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 3
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Stinger Machine Gun-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 4
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Transport Rocket-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 5
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Mine Turtle-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 6
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Drone-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 7
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Railgun-\", \"color\": \"green\"}"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": "==",
+							"resource": "ordnance:ordnance_passives_weapon_select",
+							"compare_to": 7
+						},
+						{
+							"type": "origins:sneaking",
+							"inverted": true
+						},
+						{
+							"type": "origins:or",
+							"inverted": true,
+							"conditions": [
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:gunpowder"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:honeycomb"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint_and_steel"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:saddle"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:scute"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:heart_of_the_sea"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:crossbow"
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				"action": {
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:execute_command",
+							"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 1 1.5"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "resource set @s ordnance:ordnance_passives_weapon_select 0"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "title @s actionbar {\"text\": \"-Weapon: Queen Beessiles-\", \"color\": \"green\"}"
+						}
+					]
+				}
+			},
+			{
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": ">",
+							"resource": "ordnance:ordnance_passives_weapon_select",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:sneaking"
+						},
+						{
+							"type": "origins:or",
+							"inverted": true,
+							"conditions": [
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:gunpowder"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:honeycomb"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint_and_steel"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:saddle"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:scute"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:heart_of_the_sea"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:crossbow"
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				"action": {
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:execute_command",
+							"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 1 1.5"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "resource change @s ordnance:ordnance_passives_weapon_select -1"
+						},
+						{
+							"type": "origins:delay",
+							"ticks": 1,
+							"action": {
+								"type": "origins:if_else_list",
+								"actions": [
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 0
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Queen Beessiles-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 1
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Swarm Barrage-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 2
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Flamethrower-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 3
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Stinger Machine Gun-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 4
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Transport Rocket-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 5
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Mine Turtle-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 6
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Drone-\", \"color\": \"green\"}"
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "ordnance:ordnance_passives_weapon_select",
+											"compare_to": 7
+										},
+										"action": {
+											"type": "origins:execute_command",
+											"command": "title @s actionbar {\"text\": \"-Weapon: Railgun-\", \"color\": \"green\"}"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"condition": {
+					"type": "origins:and",
+					"conditions": [
+						{
+							"type": "origins:resource",
+							"comparison": "==",
+							"resource": "ordnance:ordnance_passives_weapon_select",
+							"compare_to": 0
+						},
+						{
+							"type": "origins:sneaking"
+						},
+						{
+							"type": "origins:or",
+							"inverted": true,
+							"conditions": [
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:gunpowder"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:honeycomb"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint_and_steel"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:flint"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:saddle"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:scute"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:heart_of_the_sea"
+										}
+									}
+								},
+								{
+									"type": "origins:equipped_item",
+									"equipment_slot": "mainhand",
+									"item_condition": {
+										"type": "origins:ingredient",
+										"ingredient": {
+											"item": "minecraft:crossbow"
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				"action": {
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:execute_command",
+							"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 1 1.5"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "resource set @s ordnance:ordnance_passives_weapon_select 7"
+						},
+						{
+							"type": "origins:execute_command",
+							"command": "title @s actionbar {\"text\": \"-Weapon: Railgun-\", \"color\": \"green\"}"
+						}
+					]
+				}
+			},
+			{
+				"condition": {
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:gunpowder"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:honeycomb"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:flint_and_steel"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:flint"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:saddle"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:scute"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:heart_of_the_sea"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:crossbow"
+								}
+							}
+						}
+					]
+				},
+				"action": {
+					"type": "origins:and",
+					"actions": [
+						{
+							"type": "origins:execute_command",
+							"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 1 1.5"
+						},
+						{
+							"type": "origins:if_else_list",
+							"actions": [
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:gunpowder"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 0"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Queen Beessiles-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:honeycomb"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 1"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Swarm Barrage-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:flint_and_steel"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 2"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Flamethrower-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:flint"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 3"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Stinger Machine Gun-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:saddle"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 4"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Transport Rocket-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:scute"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 5"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Mine Turtle-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:heart_of_the_sea"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 6"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Drone-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								},
+								{
+									"condition": {
+										"type": "origins:equipped_item",
+										"equipment_slot": "mainhand",
+										"item_condition": {
+											"type": "origins:ingredient",
+											"ingredient": {
+												"item": "minecraft:crossbow"
+											}
+										}
+									},
+									"action": {
+										"type": "origins:and",
+										"actions": [
+											{
+												"type": "origins:execute_command",
+												"command": "resource set @s ordnance:ordnance_passives_weapon_select 7"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "title @s actionbar {\"text\": \"-Weapon: Railgun-\", \"color\": \"green\"}"
+											}
+										]
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		]
+	},
+	"name": "Swap Armaments",
+	"description": "Cycle through available armaments. Sneak to cycle backwards.\n \n[Same Key + Item Held]: Quickswap.\n \nWhen you hold certain items, you switch your currently selected armament into a different one without having to cycle.\n \n- Gunpowder: Queen Beessiles\n \n- Honeycomb: Swarm Barrage\n \n- Flint and Steel: Flamethrower\n \n- Flint: Stinger Machine Gun\n \n- Saddle: Transport Rocket\n \n- Scute: Mine Turtle\n \n- Heart of the Sea: Drone\n \n- Crossbow: Railgun",
+	"key": {
+		"key":"key.saveToolbarActivator",
+		"continuous": false
+	}
+}

@@ -1,0 +1,137 @@
+{
+	// A collection of presence categories used to group presences together
+	"categories": {
+		"starting": {
+			// The number of seconds between presence updates (at least 15s)
+			"interval": 60,
+			// True if presences should be chosen randomly, else round-robin
+			"random": false,
+			// A list of presences shown by the Discord bot while the category is active
+			"presences": [
+				{
+					// If defined, overrides whether the bot is idling
+					"idle": true,
+					/* If defined, overrides the online status
+					   Allowed values: null, ONLINE, IDLE, DO_NOT_DISTURB, INVISIBLE and OFFLINE
+					*/
+					"status": "IDLE",
+					// If defined, overrides the game activity
+					"activity": {
+						/* The type of activity
+						   Allowed values: COMPETING, LISTENING, PLAYING, STREAMING and WATCHING
+						*/
+						"type": "WATCHING",
+						/* The name of the activity
+						   Usages: ${uptime [format]}
+						*/
+						"name": "Minecraft startup",
+						// If defined, provides a link to the activity, e.g. Twitch stream
+						"url": null
+					}
+				}
+			]
+		},
+		"running": {
+			// The number of seconds between presence updates (at least 15s)
+			"interval": 60,
+			// True if presences should be chosen randomly, else round-robin
+			"random": true,
+			// A list of presences shown by the Discord bot while the category is active
+			"presences": [
+				{
+					// If defined, overrides whether the bot is idling
+					"idle": false,
+					/* If defined, overrides the online status
+					   Allowed values: null, ONLINE, IDLE, DO_NOT_DISTURB, INVISIBLE and OFFLINE
+					*/
+					"status": "ONLINE",
+					// If defined, overrides the game activity
+					"activity": {
+						/* The type of activity
+						   Allowed values: COMPETING, LISTENING, PLAYING, STREAMING and WATCHING
+						*/
+						"type": "PLAYING",
+						/* The name of the activity
+						   Usages: ${uptime [format]}
+						*/
+						"name": "Minecraft ${server:version}",
+						// If defined, provides a link to the activity, e.g. Twitch stream
+						"url": null
+					}
+				},
+				{
+					// If defined, overrides whether the bot is idling
+					"idle": false,
+					/* If defined, overrides the online status
+					   Allowed values: null, ONLINE, IDLE, DO_NOT_DISTURB, INVISIBLE and OFFLINE
+					*/
+					"status": "ONLINE",
+					// If defined, overrides the game activity
+					"activity": {
+						/* The type of activity
+						   Allowed values: COMPETING, LISTENING, PLAYING, STREAMING and WATCHING
+						*/
+						"type": "WATCHING",
+						/* The name of the activity
+						   Usages: ${uptime [format]}
+						*/
+						"name": "${server:online} player(s)",
+						// If defined, provides a link to the activity, e.g. Twitch stream
+						"url": null
+					}
+				},
+				{
+					// If defined, overrides whether the bot is idling
+					"idle": false,
+					/* If defined, overrides the online status
+					   Allowed values: null, ONLINE, IDLE, DO_NOT_DISTURB, INVISIBLE and OFFLINE
+					*/
+					"status": "ONLINE",
+					// If defined, overrides the game activity
+					"activity": {
+						/* The type of activity
+						   Allowed values: COMPETING, LISTENING, PLAYING, STREAMING and WATCHING
+						*/
+						"type": "PLAYING",
+						/* The name of the activity
+						   Usages: ${uptime [format]}
+						*/
+						"name": "for ${uptime}",
+						// If defined, provides a link to the activity, e.g. Twitch stream
+						"url": null
+					}
+				}
+			]
+		},
+		"stopping": {
+			// The number of seconds between presence updates (at least 15s)
+			"interval": 60,
+			// True if presences should be chosen randomly, else round-robin
+			"random": false,
+			// A list of presences shown by the Discord bot while the category is active
+			"presences": [
+				{
+					// If defined, overrides whether the bot is idling
+					"idle": false,
+					/* If defined, overrides the online status
+					   Allowed values: null, ONLINE, IDLE, DO_NOT_DISTURB, INVISIBLE and OFFLINE
+					*/
+					"status": "DO_NOT_DISTURB",
+					// If defined, overrides the game activity
+					"activity": {
+						/* The type of activity
+						   Allowed values: COMPETING, LISTENING, PLAYING, STREAMING and WATCHING
+						*/
+						"type": "WATCHING",
+						/* The name of the activity
+						   Usages: ${uptime [format]}
+						*/
+						"name": "Minecraft shutdown",
+						// If defined, provides a link to the activity, e.g. Twitch stream
+						"url": null
+					}
+				}
+			]
+		}
+	}
+}

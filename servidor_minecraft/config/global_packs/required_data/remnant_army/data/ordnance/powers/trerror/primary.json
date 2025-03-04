@@ -1,0 +1,280 @@
+{
+	"type": "origins:multiple",
+	"fire_weapon":{
+		"type": "origins:active_self",
+		"cooldown": 40,
+		"hud_render": {
+			"should_render": false,
+			"sprite_location":"origins:textures/gui/community/spiderkolo/resource_bar_03.png",
+			"bar_index": 7
+		},
+		"entity_action": {
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition":{
+						"type": "origins:resource",
+						"comparison": ">",
+						"resource": "ordnance:engineer/ammo_box",
+						"compare_to": 49
+					},
+					"action":{
+						"type": "origins:raycast",
+						"distance": 48,
+						"block": true,
+						"entity": true,
+						"shape_type": "visual",
+						"fluid_handling": "none",
+						"before_action": {
+							"type": "origins:and",
+							"actions": [
+								{
+									"type": "origins:execute_command",
+									"command": "playsound minecraft:block.piston.contract master @a ~ ~ ~ 0.5 0.3"
+								}
+							]
+						},
+						"hit_action":{
+							"type": "origins:and",
+							"actions":[
+								{
+									"type": "origins:execute_command",
+									"command": "resource change @s ordnance:engineer/ammo_box -50"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "effect give @s minecraft:slowness 2 2 true"
+								},
+								{
+									"type": "origins:execute_command",
+									"command": "summon slime ^ ^2 ^ {CustomName:'[{\"text\":\"Trerror Artillery\",\"color\":\"dark_red\",\"bold\":true}]',Silent:1b,Tags:[\"trshell\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/weaponry_trerror_artillery\",Data:1b,Sources:[\"minecraft:trerrweapon\"]}]}}}"
+								},
+								{
+									"type": "origins:delay",
+									"ticks": 5,
+									"action":{
+										"type": "origins:and",
+										"actions":[
+											{
+												"type": "origins:execute_command",
+												"command": "playsound minecraft:entity.generic.explode master @a ~ ~ ~ 0.5 0.3"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "particle minecraft:poof ^ ^1 ^ 0 0 0 0.5 10 force @a"
+											},
+											{
+												"type": "origins:execute_command",
+												"command": "particle minecraft:explosion ^ ^1 ^ 0 0 0 0 3 normal @a"
+											},
+											{
+												"type": "origins:if_else_list",
+												"actions": [
+													{
+														"condition": {
+															"type": "origins:sneaking",
+															"inverted": true
+														},
+														"action": {
+															"type": "origins:add_velocity",
+															"z": -0.4,
+															"space": "local"
+														}
+													}
+												]
+											},
+											{
+												"type": "origins:delay",
+												"ticks": 20,
+												"action":{
+													"type": "origins:and",
+													"actions":[
+														{
+															"type": "origins:execute_command",
+															"command": "playsound minecraft:block.piston.contract master @a ~ ~ ~ 0.5 0.3"
+														},
+														{
+															"type": "origins:delay",
+															"ticks": 10,
+															"action":{
+																"type": "origins:and",
+																"actions":[
+																	{
+																		"type": "origins:execute_command",
+																		"command": "playsound minecraft:block.piston.extend master @a ~ ~ ~ 0.5 0.3"
+																	},
+																	{
+																		"type": "origins:execute_command",
+																		"command": "effect clear @s minecraft:slowness"
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						},
+						"miss_action": {
+							"type": "origins:execute_command",
+							"command": "tellraw @s \"No valid artillery target found!\""
+						},
+						"command_at_hit": "summon slime ^ ^ ^ {NoAI:1b,NoGravity:1b,Silent:1b,Tags:[\"tretarget\"],cardinal_components:{\"apoli:powers\":{Powers:[{Type:\"ordnance:weapons/cube_marker\",Data:1b,Sources:[\"minecraft:ordweapon\"]}]}}}",
+						"command_step": 1,
+						"command_along_ray_only_on_hit": false
+					}
+				}
+			]
+		},
+		"key": {
+			"key":"key.origins.primary_active",
+			"continuous": false
+		}
+	},
+    "gun_illegal":
+	{
+		"type": "origins:active_self",
+		"cooldown": 40,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action":{
+			"type": "origins:area_of_effect",
+			"radius": 25,
+			"bientity_action":{
+				"type": "origins:and",
+				"actions":[
+					{
+						"type": "origins:damage",
+						"amount": 0,
+						"damage_type": "minecraft:magic"
+					},
+					{
+						"type": "origins:target_action",
+						"action":{
+							"type": "origins:execute_command",
+							"command": "particle minecraft:angry_villager ^ ^2 ^ 0.5 0 0.5 2 3 force @a"
+						}
+					}
+				]
+			},
+			"bientity_condition": {
+				"type": "origins:and",
+				"conditions":
+				[
+					{
+						"type": "origins:can_see"
+					},
+					{
+						"type": "origins:target_condition",
+						"condition": {
+							"type": "origins:or",
+							"conditions":
+							[
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:zombified_piglin"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:enderman"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:warden"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:wolf"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:bee"
+								},
+								{
+									"type": "origins:entity_type",
+									"entity_type": "minecraft:spider"
+								}
+							]
+						}
+					},
+					{
+						"type": "origins:both",
+						"condition": {
+							"type": "origins:or",
+							"conditions":
+							[
+								{
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:living"
+										},
+										{
+											"type": "origins:resource",
+											"comparison": "==",
+											"resource": "othersider:invisible_otherside_otherside",
+											"compare_to": 1
+										},
+										{
+											"type": "origins:power",
+											"power": "othersider:invisible_otherside_otherside"
+										}
+									]
+								},
+								{
+									"type": "origins:and",
+									"conditions":
+									[
+										{
+											"type": "origins:living"
+										},
+										{
+											"type": "origins:or",
+											"conditions":
+											[
+												{
+													"type": "origins:resource",
+													"comparison": "==",
+													"resource": "othersider:invisible_otherside_otherside",
+													"compare_to": 0
+												},
+												{
+													"type": "origins:power",
+													"power": "othersider:invisible_otherside_otherside",
+													"inverted": true
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		"key": {
+			"key":"key.origins.primary_active",
+			"continuous": true
+		}
+	},
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "Active ability, use with %s."
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "Firing weapons will anger the following mobs if they can see you: Zombified Piglin, Warden, Enderman, Bee, Wolf, Spider."
+		}
+	],
+	"name": "Slime Artillery",
+	"description": "When you press your Primary Ability key, you use your ammunition to fire the armament described below.\n \n- Slime Artillery:\nAmmunition Cost: 50\nDamage: 20\nMax Range: 48 Blocks\nDamage Type: Explosion\n \nFires one explosive shell in a parabola targeting the point you are aiming at, which will explode once it reaches its target, once it collides with an entity or in 2 seconds, whichever happens first. This weapon has a chance to misfire (100% in water): The projectile might not hit its target, or it might detonate early or late."
+}

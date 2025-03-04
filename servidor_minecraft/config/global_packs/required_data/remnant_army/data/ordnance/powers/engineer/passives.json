@@ -1,0 +1,1366 @@
+{
+	"type": "origins:multiple",
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "You can only eat items made entirely out of fuel items. Torches and scaffolding are exempt as food items, as are tools like fishing rods and bows.\nFuel does not restore food unless you are not at full hunger. Fuel is always restored if you are missing any.\nYou can not interact with the world while holding a food item unless you sneak.\n> Wooden items, paper, leaves, flowers, saplings, wool = Melon. Restores 1 fuel.\n> Coal, charcoal, blaze powder, gunpowder, campfires = Cooked chicken. Restores 10 fuel.\n> Coal block, blaze rod = Golden carrot. Restores 60 fuel."
+		}
+	],
+	"fuel":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 100,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 7,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_fuel",
+				"compare_to": 0
+			}
+		}
+	},
+	"steam":
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 100,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": true,
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 3,
+			"condition": {
+				"type": "origins:resource",
+				"comparison": ">",
+				"resource": "*:*_steam",
+				"compare_to": 0
+			}
+		}
+	},
+	"model":
+	{
+		"type": "origins:model_color",
+		"red": 0.3,
+		"green": 0.3,
+		"blue": 0.3
+	},
+	"callback":
+	{
+		"type": "origins:action_on_callback",
+		"entity_action_chosen": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add engineer"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add construct"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale divide pehkui:height 2 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale divide pehkui:width 2 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale persist set true @s"
+				}
+			]
+		},
+		"entity_action_added": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add engineer"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add construct"
+				}
+			]
+		},
+		"entity_action_respawned": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add engineer"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add construct"
+				}
+			]
+		},
+		"entity_action_lost": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove engineer"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove construct"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale multiply pehkui:height 2 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale multiply pehkui:width 2 @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "scale persist set false @s"
+				}
+			]
+		},
+		"execute_chosen_when_orb": true
+	},
+	"basehealth": 
+	{
+		"type": "origins:attribute",
+		"update_health": true,
+		"modifiers": {
+			"attribute": "minecraft:generic.max_health",
+			"operation": "multiply_total",
+			"value": -0.4
+		}
+	},
+	"melee":
+	{
+		"type": "origins:modify_damage_dealt",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.4
+		}
+	},
+	"speed":
+	{
+		"type": "origins:attribute",
+		"modifier": {
+			"attribute": "minecraft:generic.movement_speed",
+			"operation": "multiply_total",
+			"value": 0.4
+		}
+	},
+	"immunities": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -0.75,
+			"operation":"multiply_total"
+		},
+		"damage_condition":{
+			"type":"origins:or",
+			"conditions":[
+				{
+					"type": "origins:name",
+					"name": "fall"
+				}
+			]
+		}
+	},
+	"resource_changer":
+	{
+		"type": "origins:action_over_time",
+		"interval": 5,
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:resource",
+										"comparison": "<",
+										"resource": "*:*_steam",
+										"compare_to": 100
+									},
+									{
+										"type": "origins:resource",
+										"comparison": ">",
+										"resource": "*:*_fuel",
+										"compare_to": 0
+									},
+									{
+										"type": "origins:or",
+										"conditions": [
+											{
+												"type": "origins:fluid_height",
+												"fluid": "minecraft:water",
+												"comparison": ">",
+												"compare_to": 0
+											},
+											{
+												"type": "origins:in_block",
+												"block_condition": {
+													"type": "origins:block",
+													"block": "minecraft:water_cauldron"
+												}
+											},
+											{
+												"type": "origins:in_rain"
+											}
+										]
+									}
+								]
+							},
+							"action":{
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_steam",
+										"change": 1
+									},
+									{
+										"type": "origins:chance",
+										"action":{
+											"type": "origins:change_resource",
+											"resource": "*:*_fuel",
+											"change": -1
+										},
+										"chance": 0.2
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "playsound minecraft:block.fire.extinguish master @a ~ ~ ~ 0.1 0.3"
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition":{
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:or",
+										"conditions":[
+											{
+												"type": "origins:on_block",
+												"block_condition": {
+													"type": "origins:in_tag",
+													"tag": "ordnance:metal_blocks"
+												}
+											},
+											{
+												"type": "origins:in_block_anywhere",
+												"block_condition": {
+													"type": "origins:in_tag",
+													"tag": "minecraft:rails"
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:resource",
+										"comparison": "<",
+										"resource": "ordnance:engineer/ammo_box",
+										"compare_to": 400
+									}
+								]
+							},
+							"action":{
+								"type": "origins:change_resource",
+								"resource": "ordnance:engineer/ammo_box",
+								"change": 3
+							}
+						},
+						{
+							"condition":{
+								"type": "origins:and",
+								"conditions": [
+									{
+										"type": "origins:or",
+										"inverted": true,
+										"conditions":[
+											{
+												"type": "origins:on_block",
+												"block_condition": {
+													"type": "origins:in_tag",
+													"tag": "ordnance:metal_blocks"
+												}
+											},
+											{
+												"type": "origins:in_block_anywhere",
+												"block_condition": {
+													"type": "origins:in_tag",
+													"tag": "minecraft:rails"
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:resource",
+										"comparison": "<",
+										"resource": "ordnance:engineer/ammo_box",
+										"compare_to": 400
+									}
+								]
+							},
+							"action":{
+								"type": "origins:chance",
+								"action":{
+									"type": "origins:change_resource",
+									"resource": "ordnance:engineer/ammo_box",
+									"change": 1
+								},
+								"chance": 0.4
+							}
+						}
+					]
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"comparison": "<",
+					"resource": "ordnance:engineer/ammo_box",
+					"compare_to": 400
+				},
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_fuel",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:in_block",
+					"block_condition": {
+						"type": "origins:block",
+						"block": "minecraft:water_cauldron"
+					}
+				},
+				{
+					"type": "origins:fluid_height",
+					"fluid": "minecraft:water",
+					"comparison": ">",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"smoke_trail":
+	{
+		"type": "origins:action_over_time",
+		"interval": 0,
+		"entity_action": {
+			"type": "origins:execute_command",
+			"command": "execute at @s run particle minecraft:campfire_cosy_smoke ^ ^ ^-0.5 0 0 0 0 1 normal @a"
+		},
+		"condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:on_block"
+				},
+				{
+					"type": "origins:sprinting"
+				}
+			]
+		}
+	},
+	"fooder": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 30,
+		"start_value": 0,
+		"hud_render": {
+			"should_render": false
+		},
+		"max_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.player.burp player @a ~ ~ ~"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions": [
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_bad_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 2,
+													"saturation": 0.3
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 1
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "mainhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_ok_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 0.6
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 10
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "mainhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "mainhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_pog_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 1.2
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 60
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "mainhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "offhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_bad_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 2,
+													"saturation": 0.3
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 1
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "offhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "offhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_ok_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 0.6
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 10
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "offhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						},
+						{
+							"condition": {
+								"type": "origins:equipped_item",
+								"equipment_slot": "offhand",
+								"item_condition": {
+									"type": "origins:ingredient",
+									"ingredient": {
+										"tag": "ordnance:ordnance_pog_food"
+									}
+								}
+							},
+							"action": {
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:if_else_list",
+										"actions": [
+											{
+												"condition":{
+													"type": "origins:food_level",
+													"comparison": "<",
+													"compare_to": 20
+												},
+												"action":{
+													"type": "origins:feed",
+													"food": 6,
+													"saturation": 1.2
+												}
+											}
+										]
+									},
+									{
+										"type": "origins:change_resource",
+										"resource": "*:*_fuel",
+										"change": 60
+									},
+									{
+										"type": "origins:equipped_item_action",
+										"equipment_slot": "offhand",
+										"action": {
+											"type": "origins:consume",
+											"amount": 1
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fooder",
+					"operation": "set",
+					"change": 0
+				}
+			]
+		}
+	},
+	"set_to_0": {
+		"type": "origins:active_self",
+		"cooldown": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fooder",
+					"change": 0,
+					"operation": "set"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:or",
+			"inverted": true,
+			"conditions": [
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_bad_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_ok_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_pog_food"
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "offhand",
+					"item_condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_bad_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_ok_food"
+								}
+							},
+							{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"tag": "ordnance:ordnance_pog_food"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		"key": {
+			"key": "key.use"
+		}
+	},
+	"increase_food_resource": {
+		"type": "origins:active_self",
+		"cooldown": 1,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fooder",
+					"change": 1
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:food_level",
+							"comparison": "<",
+							"compare_to": 20
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_fuel",
+							"compare_to": 100
+						}
+					]
+				},
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				}
+			]
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		}
+	},
+	"eat_particle": {
+		"type": "origins:active_self",
+		"cooldown": 4,
+		"hud_render": {
+			"should_render": false
+		},
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "execute positioned ~ ~0.2 ~ rotated as @s run particle minecraft:item minecraft:blaze_powder ^ ^0.6 ^0.2 0.1 0.1 0.1 0.055 4"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.generic.eat player @s ~ ~ ~"
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:food_level",
+							"comparison": "<",
+							"compare_to": 20
+						},
+						{
+							"type": "origins:resource",
+							"comparison": "<",
+							"resource": "*:*_fuel",
+							"compare_to": 100
+						}
+					]
+				},
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				}
+			]
+		},
+		"key": {
+			"key": "key.use",
+			"continuous": true
+		}
+	},
+	"no_food":{
+		"type": "origins:prevent_item_use",
+		"item_condition": {
+			"type": "origins:food"
+		}
+	},
+	"no_place_standing":{
+		"type": "origins:prevent_block_selection",
+		"condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "offhand",
+							"item_condition": {
+								"type": "origins:or",
+								"conditions": [
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_bad_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_ok_food"
+										}
+									},
+									{
+										"type": "origins:ingredient",
+										"ingredient": {
+											"tag": "ordnance:ordnance_pog_food"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"climb":{
+		"type": "origins:climbing",
+		"condition":{
+			"type": "origins:collided_horizontally"
+		},
+		"hold_condition":{
+			"type": "origins:block_collision",
+			"block_condition": {
+				"type": "origins:in_tag",
+				"tag": "ordnance:metal_blocks"
+			}
+		}
+	},
+	"drink_stabilize":
+	{
+		"type": "origins:action_on_item_use",
+		"item_condition": {
+			"type": "origins:ingredient",
+			"ingredient": {
+				"item": "minecraft:potion"
+			}
+		},
+		"entity_action":{
+			"type": "origins:and",
+			"actions":[
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_steam",
+					"change": 15
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_fuel",
+					"change": -5
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.fire.extinguish master @a ~ ~ ~ 0.7 0.3"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute at @s run particle minecraft:poof ^ ^0.6 ^ 0.1 0 0.1 0 3 normal @a"
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:resource",
+			"comparison": ">",
+			"resource": "*:*_fuel",
+			"compare_to": 14
+		}
+	},
+	"railspeed":
+	{
+		"type": "origins:conditioned_attribute",
+		"modifier": {
+			"attribute": "minecraft:generic.movement_speed",
+			"operation": "multiply_total",
+			"value": 1
+		},
+		"tick_rate": 20,
+		"condition":{
+			"type": "origins:and",
+			"conditions":[
+				{
+					"type": "origins:sprinting"
+				},
+				{
+					"type": "origins:in_block_anywhere",
+					"block_condition": {
+						"type": "origins:in_tag",
+						"tag": "minecraft:rails"
+					}
+				}
+			]
+		}
+	},
+	"good_traction":
+	{
+		"type": "origins:modify_slipperiness",
+		"modifier": {
+			"operation": "addition",
+			"value": -0.2
+		},
+		"block_condition": {
+			"type": "origins:in_tag",
+			"tag": "minecraft:ice"
+		}
+	},
+	"no_jumping":
+	{
+		"type": "origins:modify_jump",
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -1
+		},
+		"condition":{
+			"type": "origins:or",
+			"inverted": true,
+			"conditions":[
+				{
+					"type": "origins:on_block",
+					"block_condition": {
+						"type": "origins:in_tag",
+						"tag": "ordnance:metal_blocks"
+					}
+				},
+				{
+					"type": "origins:in_block_anywhere",
+					"block_condition": {
+						"type": "origins:in_tag",
+						"tag": "minecraft:rails"
+					}
+				}
+			]
+		}
+	},
+	"lesshungerifsteam":
+	{
+		"type": "origins:modify_exhaustion",
+		"modifier": {
+			"operation": "multiply_base",
+			"value": -0.5
+		},
+		"condition":{
+			"type": "origins:food_level",
+			"comparison": ">",
+			"compare_to": 0
+		}
+	},
+	"heatproof_plate": 
+	{
+		"type": "origins:modify_damage_taken",
+		"modifier": {
+			"operation": "addition",
+			"value": -1
+		},
+		"damage_condition":{
+			"type":"origins:or",
+			"inverted": true,
+			"conditions":[
+				{
+					"type": "origins:name",
+					"name": "drown"
+				}
+			]
+		}
+	},
+	"heatproof_plate2": 
+	{
+		"type": "origins:modify_damage_taken",
+		"damage_condition":{
+			"type": "origins:in_tag",
+			"tag": "minecraft:is_fire"
+		},
+		"modifier": {
+			"operation": "multiply_total",
+			"value": -0.75
+		}
+	},
+	"weld":
+	{
+		"type": "origins:modify_damage_dealt",
+		"bientity_action":{
+			"type": "origins:and",
+			"actions":[
+				{
+					"type": "origins:target_action",
+					"action": {
+						"type": "origins:and",
+						"actions":[
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.respawn_anchor.charge ambient @a ~ ~ ~ 0.3 2"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "power grant @s ordnance:engineer/welded tempengi"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:actor_action",
+					"action": {
+						"type": "origins:and",
+						"actions":[
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.fire.extinguish ambient @a ~ ~ ~ 0.3 1"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "*:*_fuel",
+								"change": -5
+							}
+						]
+					}
+				}
+			]
+		},
+		"damage_condition": {
+			"type": "origins:projectile",
+			"inverted": true
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"comparison": ">",
+					"resource": "*:*_fuel",
+					"compare_to": 4
+				},
+				{
+					"type": "origins:or",
+					"conditions": [
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:golden_sword"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:golden_axe"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:iron_sword"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:iron_axe"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:netherite_sword"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:netherite_axe"
+								}
+							}
+						},
+						{
+							"type": "origins:equipped_item",
+							"equipment_slot": "mainhand",
+							"item_condition":{
+								"type": "origins:ingredient",
+								"ingredient": {
+									"item": "minecraft:trident"
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	},
+	"name": "Manufacture Munitions",
+	"description": "You produce 12 munitions per second while you are on a metallic block, and ~2 otherwise. Munitions are used by your Homing Rocket (your Primary Ability) and can be shared with other abilities.\n§f§nLight Model§r\nYour size is decreased by 50%, your maximum health and melee damage are decreased by 40%, and your walking speed is increased by the same amount.\n§f§nInternal Boiler§r\nYou are equipped with a boiler that can absorb water near you, as well as any water you drink to convert it to Steam with heat from burning fuel (1 fuel used ~ 3 steam). While you have Steam, you get 50% less hungry.\n§f§nHeat-Resistant Plating§r\nYou take 75% less damage from fire and all incoming damage is decreased by a flat 1 damage.\n§f§nFuel Conversion§r\nYou can not eat normal food. Instead, you must consume items you can burn and gain fuel from. The amount of food/saturation and fuel you get depends on the item consumed. Sneaking prevents you from eating.\n§f§nCredit Where It’s Due§r\nEnemies killed with your Homing Rocket do not drop experience.\n§f§nDevastation of War§r\nYour Homing Rocket can destroy items, making it harder for you to loot anything.\n§f§nMagnetic Treads§r\nYou can not jump unless you are on a metallic block, but you can climb the sides of blocks, you gain double speed while sprinting on rails, and do not trigger landmines or slip on ice.\n§f§nArc-Welding§r\nIf you strike a creature with a metal weapon (gold, iron, tridents or netherite) while you have fuel, you spend 5 fuel and inflict the Welded condition on them. Welded constructs (like Ordnance or Upkeep) recover 1.52 HP per second for 5 seconds. Welded creatures that are not constructs take 2 lightning damage over 5 seconds instead."
+}

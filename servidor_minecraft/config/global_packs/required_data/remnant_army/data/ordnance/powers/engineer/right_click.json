@@ -1,0 +1,250 @@
+{
+
+    "type": "origins:multiple",
+	"heal_upgrade":
+	{
+		"type": "origins:action_on_entity_use",
+		"bientity_action":{
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:actor_action",
+					"action": 
+					{
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:equipped_item_action",
+								"equipment_slot": "mainhand",
+								"action": {
+									"type": "origins:consume",
+									"amount": 1
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:target_action",
+					"action": 
+					{
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:heal",
+								"amount": 1.52
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.smithing_table.use master @a ~ ~ ~ 1 0.8"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "particle heart ~ ~0.5 ~ 0.3 0.3 0.3 0.009 4 normal @a"
+							},
+							{
+								"type": "origins:if_else_list",
+								"actions":[
+									{
+										"condition":{
+											"type": "origins:power",
+											"power": "ordnance:upkeep/invincible_seats"
+										},
+										"action":{
+											"type": "origins:execute_command",
+											"command": "power grant @s ordnance:engineer/ammo_box engineer"
+										}
+									}
+								]
+							},
+							{
+								"type": "origins:if_else_list",
+								"actions":[
+									{
+										"condition":{
+											"type": "origins:entity_type",
+											"entity_type": "minecraft:iron_golem"
+										},
+										"action":{
+											"type": "origins:execute_command",
+											"command": "power grant @s ordnance:engineer/valiant_self_destruct engineer"
+										}
+									}
+								]
+							},
+							{
+								"type": "origins:if_else_list",
+								"actions":[
+									{
+										"condition":{
+											"type": "origins:entity_type",
+											"entity_type": "minecraft:snow_golem"
+										},
+										"action":{
+											"type": "origins:execute_command",
+											"command": "power grant @s ordnance:engineer/metallic_endoskeleton engineer"
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		"bientity_condition":{
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:target_condition",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:living"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:distance",
+					"comparison": "<=",
+					"compare_to": 4
+				}
+			]
+		},
+		"hands": [
+			"main_hand"
+		],
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking",
+					"inverted": true
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition":{
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:copper_ingot"
+						}
+					}
+				}
+			]
+		}
+	},
+	"self_heal":
+	{
+		"type": "origins:active_self",
+		"cooldown": 60,
+		"entity_action":{
+			"type": "origins:and",
+			"actions":[
+				{
+					"type": "origins:equipped_item_action",
+					"equipment_slot": "mainhand",
+					"action": {
+						"type": "origins:consume",
+						"amount": 1
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.smithing_table.use master @a ~ ~ ~ 1 0.8"
+				},
+				{
+					"type": "origins:heal",
+					"amount": 1.52
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "particle heart ~ ~0.5 ~ 0.3 0.3 0.3 0.009 4 normal @a"
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions":[
+						{
+							"condition":{
+								"type": "origins:power",
+								"power": "ordnance:upkeep/invincible_seats"
+							},
+							"action":{
+								"type": "origins:execute_command",
+								"command": "power grant @s ordnance:engineer/ammo_box engineer"
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions":[
+						{
+							"condition":{
+								"type": "origins:entity_type",
+								"entity_type": "minecraft:iron_golem"
+							},
+							"action":{
+								"type": "origins:execute_command",
+								"command": "power grant @s ordnance:engineer/valiant_self_destruct engineer"
+							}
+						}
+					]
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions":[
+						{
+							"condition":{
+								"type": "origins:entity_type",
+								"entity_type": "minecraft:snow_golem"
+							},
+							"action":{
+								"type": "origins:execute_command",
+								"command": "power grant @s ordnance:engineer/metallic_endoskeleton engineer"
+							}
+						}
+					]
+				}
+			]
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:sneaking"
+				},
+				{
+					"type": "origins:equipped_item",
+					"equipment_slot": "mainhand",
+					"item_condition":{
+						"type": "origins:ingredient",
+						"ingredient": {
+							"item": "minecraft:copper_ingot"
+						}
+					}
+				}
+			]
+		},
+		"key": {
+			"key":"key.use",
+			"continuous": false
+		}
+	},
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "Active ability, use with %s."
+		},
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/star.png",
+			"text": "Iron golems gain the ability to self-destruct on death, and snow golems become very tanky and deal damage when they are hurt."
+		}
+	],
+	"name": "Hyper-Upgrade",
+	"description": "You can right click a creature while holding a copper ingot to heal it or yourself (sneaking required for self-heals) for 1 hit point (even if they are not constructs). Some constructs, such as Upkeep’s [Create Seats] have additional effects when healed in this way."
+}

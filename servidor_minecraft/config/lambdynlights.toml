@@ -1,0 +1,143 @@
+# LambDynamicLights configuration.
+# The dynamic lights mode
+mode = "fancy"
+
+# Light sources settings.
+[light_sources]
+	# Enables water-sensitive light sources check. This means that water-sensitive items will not light up when submerged in water.
+	water_sensitive_check = true
+	# Enable block entities light source.
+	block_entities = true
+	# Enable entities light source.
+	entities = true
+	# Enable first-person player light source.
+	self = true
+	# TNT lighting mode. May be off, simple or fancy.
+	tnt = "off"
+	# Creeper lighting mode. May be off, simple or fancy.
+	creeper = "simple"
+
+	[light_sources.settings]
+
+		[light_sources.settings.entities]
+
+			[light_sources.settings.entities.minecraft]
+				bee = true
+				axolotl = true
+				egg = true
+				arrow = true
+				cow = true
+				magma_cube = true
+				pig = true
+				allay = true
+				skeleton = true
+				bat = true
+				husk = true
+				camel = true
+				experience_bottle = true
+				rabbit = true
+				firework_rocket = true
+				armor_stand = true
+				drowned = true
+				experience_orb = true
+				dolphin = true
+				item = true
+				salmon = true
+				piglin_brute = true
+				item_frame = true
+				horse = true
+				ender_dragon = true
+				evoker = true
+				glow_squid = true
+				glow_item_frame = false
+				squid = true
+				creeper = true
+				enderman = true
+				dragon_fireball = true
+				chicken = true
+				donkey = true
+				evoker_fangs = true
+				fox = true
+				tropical_fish = true
+				chest_minecart = true
+				slime = true
+				pillager = true
+				iron_golem = true
+				area_effect_cloud = true
+				piglin = true
+				blaze = true
+				end_crystal = true
+				endermite = true
+				cat = true
+				zombie = true
+				ender_pearl = true
+				sheep = true
+				player = true
+				pufferfish = true
+				potion = true
+				eye_of_ender = true
+				villager = true
+				wolf = true
+				zombie_villager = true
+				block_display = true
+				elder_guardian = true
+				chest_boat = true
+				boat = true
+				falling_block = true
+				painting = true
+				cave_spider = true
+				cod = true
+				witch = true
+				spider = true
+				command_block_minecart = true
+
+			[light_sources.settings.entities.graveyard]
+				acolyte = true
+				corrupted_vindicator = true
+				skeleton_creeper = true
+				corrupted_pillager = true
+				ghoul = true
+				nightmare = true
+
+			[light_sources.settings.entities.clutter]
+				jellyfish = true
+				emperor_penguin = true
+				butterfly = true
+				mossbloom = true
+				manta_ray = true
+				beaver = true
+				seahorse = true
+
+			[light_sources.settings.entities.mythicmounts]
+				firebird = true
+				nudibranch = true
+				geckotoalizard = true
+				acencia = true
+
+			[light_sources.settings.entities.batsgalore]
+				alex_bat = true
+				herobrine_bat = true
+				jack_o_lantern_projectile = true
+				pumpkin_bat = true
+				biggest_fan_bat = true
+				player_bat = true
+				skeleton_bat = true
+				steve_bat = true
+
+			[light_sources.settings.entities.adventurez]
+				orc = true
+				amethyst_golem = true
+
+			[light_sources.settings.entities.snowyspirit]
+				sled = true
+
+			[light_sources.settings.entities.waterballoon]
+				thrown_balloon = true
+
+			[light_sources.settings.entities.artifacts]
+				mimic = true
+
+			[light_sources.settings.entities.cardiac]
+				thrown_life_bottle = true
+				life_orb = true
+

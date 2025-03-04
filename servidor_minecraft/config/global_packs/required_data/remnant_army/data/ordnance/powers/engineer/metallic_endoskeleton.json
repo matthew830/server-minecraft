@@ -1,0 +1,162 @@
+{
+	"type": "origins:multiple",
+	"basehealth": 
+	{
+		"type": "origins:attribute",
+		"update_health": true,
+		"modifiers": {
+			"attribute": "minecraft:generic.max_health",
+			"operation": "multiply_total",
+			"value": 4
+		}
+	},
+	"resistances": 
+	{
+		"type":"origins:modify_damage_taken",
+		"modifier":{
+			"value": -0.8,
+			"operation":"multiply_total"
+		}
+	},
+	"retaliation":
+	{
+		"type": "origins:attacker_action_when_hit",
+		"entity_action":{
+			"type": "origins:if_else_list",
+			"actions": [
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": "<",
+								"compare_to": 8
+							}
+						]
+					},
+					"action": {
+						"type": "origins:damage",
+						"amount": 2,
+						"source": {
+							"name": "lightning",
+							"bypasses_armor": true
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": ">=",
+								"compare_to": 8
+							},
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": "<",
+								"compare_to": 12
+							}
+						]
+					},
+					"action": {
+						"type": "origins:damage",
+						"amount": 4,
+						"source": {
+							"name": "lightning",
+							"bypasses_armor": true
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": ">=",
+								"compare_to": 12
+							},
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": "<",
+								"compare_to": 16
+							}
+						]
+					},
+					"action": {
+						"type": "origins:damage",
+						"amount": 7,
+						"source": {
+							"name": "lightning",
+							"bypasses_armor": true
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": ">=",
+								"compare_to": 16
+							},
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": "<",
+								"compare_to": 20
+							}
+						]
+					},
+					"action": {
+						"type": "origins:damage",
+						"amount": 14,
+						"source": {
+							"name": "lightning",
+							"bypasses_armor": true
+						}
+					}
+				},
+				{
+					"condition": {
+						"type": "origins:or",
+						"conditions": [
+							{
+								"type": "origins:enchantment",
+								"enchantment": "minecraft:protection",
+								"calculation": "sum",
+								"comparison": ">=",
+								"compare_to": 20
+							}
+						]
+					},
+					"action": {
+						"type": "origins:damage",
+						"amount": 20,
+						"source": {
+							"name": "lightning",
+							"bypasses_armor": true
+						}
+					}
+				}
+			]
+		},
+		"cooldown": 1
+	}
+}

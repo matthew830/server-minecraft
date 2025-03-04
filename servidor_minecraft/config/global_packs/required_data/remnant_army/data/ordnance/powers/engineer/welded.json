@@ -1,0 +1,239 @@
+{
+	"type": "origins:multiple",
+	"remove": 
+	{
+		"type": "origins:resource",
+		"min": 0,
+		"max": 5,
+		"start_value": 5,
+		"hud_render": {
+			"should_render": false
+		},
+		"min_action":{
+			"type": "origins:delay",
+			"ticks": 10,
+				"action":{
+				"type": "origins:execute_command",
+				"command": "power revoke @s ordnance:engineer/welded tempengi"
+			}
+		}
+	},
+	"timer": 
+	{
+		"type": "origins:action_over_time",
+		"interval": 20,
+		"entity_action":{
+			"type": "origins:and",
+			"actions":[
+				{
+					"type": "origins:change_resource",
+					"resource": "*:*_remove",
+					"change": -1
+				},
+				{
+					"type": "origins:if_else_list",
+					"actions":[
+						{
+							"condition":{
+								"type": "origins:or",
+								"conditions":[
+									{
+										"type": "origins:nbt",
+										"nbt": "{Tags: ['construct']}"
+									},
+									{
+										"type": "origins:entity_type",
+										"entity_type": "minecraft:iron_golem"
+									},
+									{
+										"type": "origins:entity_type",
+										"entity_type": "minecraft:snow_golem"
+									}
+								]
+							},
+							"action":{
+								"type": "origins:and",
+								"actions": [
+									{
+										"type": "origins:heal",
+										"amount": 1.52
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "playsound minecraft:block.smithing_table.use master @a ~ ~ ~ 1 0.8"
+									},
+									{
+										"type": "origins:execute_command",
+										"command": "particle heart ~ ~0.5 ~ 0.3 0.3 0.3 0.009 4 normal @a"
+									}
+								]
+							}
+						},
+						{
+							"condition":{
+								"type": "origins:and",
+								"inverted": true,
+								"conditions":[
+									{
+										"type": "origins:nbt",
+										"nbt": "{Tags: ['construct']}"
+									},
+									{
+										"type": "origins:entity_type",
+										"entity_type": "minecraft:iron_golem"
+									},
+									{
+										"type": "origins:entity_type",
+										"entity_type": "minecraft:snow_golem"
+									}
+								]
+							},
+							"action":{
+								"type": "origins:if_else_list",
+								"actions": [
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": "<",
+													"compare_to": 8
+												}
+											]
+										},
+										"action": {
+											"type": "origins:damage",
+											"amount": 2,
+											"source": {
+												"name": "lightning",
+												"bypasses_armor": true
+											}
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": ">=",
+													"compare_to": 8
+												},
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": "<",
+													"compare_to": 12
+												}
+											]
+										},
+										"action": {
+											"type": "origins:damage",
+											"amount": 4,
+											"source": {
+												"name": "lightning",
+												"bypasses_armor": true
+											}
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": ">=",
+													"compare_to": 12
+												},
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": "<",
+													"compare_to": 16
+												}
+											]
+										},
+										"action": {
+											"type": "origins:damage",
+											"amount": 7,
+											"source": {
+												"name": "lightning",
+												"bypasses_armor": true
+											}
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:and",
+											"conditions": [
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": ">=",
+													"compare_to": 16
+												},
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": "<",
+													"compare_to": 20
+												}
+											]
+										},
+										"action": {
+											"type": "origins:damage",
+											"amount": 14,
+											"source": {
+												"name": "lightning",
+												"bypasses_armor": true
+											}
+										}
+									},
+									{
+										"condition": {
+											"type": "origins:or",
+											"conditions": [
+												{
+													"type": "origins:enchantment",
+													"enchantment": "minecraft:protection",
+													"calculation": "sum",
+													"comparison": ">=",
+													"compare_to": 20
+												}
+											]
+										},
+										"action": {
+											"type": "origins:damage",
+											"amount": 20,
+											"source": {
+												"name": "lightning",
+												"bypasses_armor": true
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		"condition":{
+			"type": "origins:resource",
+			"comparison": "!=",
+			"resource": "*:*_remove",
+			"compare_to": 0
+		}
+	}
+}

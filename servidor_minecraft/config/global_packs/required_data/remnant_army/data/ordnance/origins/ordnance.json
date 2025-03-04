@@ -1,0 +1,14 @@
+{
+	"powers": [
+		"ordnance:ordnance_passives",
+		"ordnance:ordnance_primary",
+		"ordnance:swap_weapons",
+		"ordnance:ordnance_secondary"
+	],
+	"icon": "minecraft:tnt_minecart",
+	"unchoosable": false,
+	"order": 1,
+	"impact": 3,
+	"name": "Ordnance",
+	"description": "Equal parts living being and war machine, Ordnance is a remnant of the technology of a war fought in ancient times come to life. Puppeteered by insects, spirits or similar other means, it has been reactivated in a time where fuel sources are abundant once again. It is alive, and it is about to make it everyone's problem."
+}

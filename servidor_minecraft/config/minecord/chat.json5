@@ -1,0 +1,111 @@
+{
+	// Chat Configurations
+	"entries": [
+		{
+			// A channel identifier in Discord to observe
+			"id": 0,
+			// If non-empty, reduces the scope of all events to the listed Minecraft dimension IDs, e.g. 'minecraft:the_nether'
+			"dimensions": [],
+			// Minecraft events relayed to Discord
+			"discord": {
+				/* A player sent an in-game chat message
+				   Usages: ${message}
+				*/
+				"chat": "`${minecord:world}` **${minecord:player}** > ${message}",
+				// True if links are purged from player messages before being forwarded to Discord
+				"purgeLinks": false,
+				/* A player sent an in-game message via the '/me' command
+				   Usages: ${action}
+				*/
+				"emote": "`${minecord:world}` **${minecord:player}** _${action}_",
+				/* An admin broadcast an in-game message via the '/say' command
+				   Usages: ${message}
+				*/
+				"say": "**[${minecord:player}]** ${message}",
+				/* An admin broadcast an in-game message to all players via the '/tellraw @a' command
+				   Usages: ${message}
+				*/
+				"tellraw": "${message}",
+				/* A player had died
+				   Usages: ${cause}, ${exp}, ${lifespan [format]} and ${score}
+				*/
+				"death": "**${minecord:player}** ${cause}! :skull:\n_${minecord:world} at ${player:pos_x 0}, ${player:pos_y 0}, ${player:pos_z 0}_",
+				/* A named animal/monster (with name tag) had died
+				   Usages: ${name}, ${cause}, ${pos_x}, ${pos_y} and ${pos_z}
+				*/
+				"grief": "**${name}** ${cause}! :coffin:\n_${minecord:world} at ${pos_x}, ${pos_y}, ${pos_z}_",
+				/* A player unlocked an advancement task
+				   Usages: ${title} and ${description}
+				*/
+				"advancementTask": "**${minecord:player}** has made the advancement **${title}**! :clap:\n_${description}_",
+				/* A player reached an advancement goal
+				   Usages: ${title} and ${description}
+				*/
+				"advancementGoal": "**${minecord:player}** has reached the goal **${title}**! :clap:\n_${description}_",
+				/* A player completed an advancement challenge
+				   Usages: ${title} and ${description}
+				*/
+				"advancementChallenge": "**${minecord:player}** has completed the challenge **${title}**! :trophy:\n_${description}_",
+				/* A player teleported to another dimension
+				   Usages: ${world}, ${pos_x}, ${pos_y}, ${pos_z}, ${origin}, ${origin_pos_x}, ${origin_pos_y} and ${origin_pos_z}
+				*/
+				"teleport": "**${minecord:player}** entered ${world}. :cyclone:",
+				// A player joined the game
+				"join": "**${minecord:player}** joined!",
+				// A player left the game
+				"leave": "**${minecord:player}** left!",
+				// The server began to start
+				"starting": "Server is starting... :fingers_crossed:",
+				/* The server started and is accepting connections
+				   Usages: ${uptime [format]}
+				*/
+				"started": "Server started (took ${uptime s.SSS}s) :ok_hand:",
+				/* The server began to stop
+				   Usages: ${uptime [format]}
+				*/
+				"stopping": "Server is stopping... :raised_hand:",
+				/* The server stopped and is offline
+				   Usages: ${uptime [format]}
+				*/
+				"stopped": "Server stopped! :no_entry:",
+				/* The server stopped unexpectedly and is inaccessible
+				   Usages: ${reason} and ${uptime [format]}
+				*/
+				"crashed": "Server crash detected! :warning:\n_${reason}_",
+				// True if a crash report should be attached to any server crash messages
+				"uploadCrashReport": false
+			},
+			// Discord events relayed to Minecraft
+			"minecraft": {
+				/* A user sent a message
+				   Usages: ${author}, ${tag}, ${username}, ${discriminator}, ${message} and ${raw}
+				*/
+				"chat": "<<cmd:'@${tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${author}</color></hover></cmd>> ${message}",
+				/* A user sent a message in reply to another
+				   Usages: ${author}, ${tag}, ${username}, ${discriminator}, ${message}, ${raw}, ${reply_author}, ${reply_tag}, ${reply_username}, ${reply_discriminator}, ${reply_message} and ${reply_raw}
+				*/
+				"reply": "<<cmd:'@${tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${author}</color></hover></cmd>> (in reply to <cmd:'@${reply_tag} '><hover:show_text:'${reply_message}'><color:#00aaff>${reply_author}</color></hover></cmd>) ${message}",
+				/* A user edited their recently sent message
+				   Usages: ${author}, ${tag}, ${username}, ${discriminator}, ${diff}, ${message}, ${raw}, ${original} and ${original_raw}
+				*/
+				"edit": "<<cmd:'@${tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${author}</color></hover></cmd>> ${diff}",
+				/* A user reacted to a recent message
+				   Usages: ${issuer}, ${issuer_tag}, ${issuer_username}, ${issuer_discriminator}, ${author}, ${author_tag}, ${author_username}, ${author_discriminator} and ${emote}
+				*/
+				"react": "<cmd:'@${issuer_tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${issuer}</color></hover></cmd> reacted with <green>${emote}</green> to <cmd:'@${author_tag} '><color:#00aaff>${author}</color></cmd>'s message",
+				/* A user removed their reaction from a recent message
+				   Usages: ${issuer}, ${issuer_tag}, ${issuer_username}, ${issuer_discriminator}, ${author}, ${author_tag}, ${author_username}, ${author_discriminator} and ${emote}
+				*/
+				"unreact": "<cmd:'@${issuer_tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${issuer}</color></hover></cmd> removed their reaction of <red>${emote}</red> from <cmd:'@${author_tag} '><color:#00aaff>${author}</color></cmd>'s message",
+				/* A user sent a message that contained stickers
+				   Usages: ${author}, ${tag}, ${username}, ${discriminator}, ${url} and ${name}
+				*/
+				"sticker": "<<cmd:'@${tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${author}</color></hover></cmd>> <url:'${url}'><hover:show_text:'Sticker'><underline><blue>${name}</blue></underline></hover></url>",
+				/* A user sent a message that contained attachments
+				   Usages: ${author}, ${tag}, ${username}, ${discriminator}, ${url}, ${name}, ${ext} and ${size}
+				*/
+				"attachment": "<<cmd:'@${tag} '><hover:show_text:'<i>Sent from Discord</i>'><color:#00aaff>${author}</color></hover></cmd>> <url:'${url}'><hover:show_text:'${ext} (${size})'><underline><blue>${name}</blue></underline></hover></url>"
+			}
+		}
+	]
+}

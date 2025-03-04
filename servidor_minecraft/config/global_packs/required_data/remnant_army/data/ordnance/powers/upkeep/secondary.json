@@ -1,0 +1,46 @@
+{
+
+    "type": "origins:multiple",
+	"inventory":
+	{
+		"type": "origins:inventory",
+		"title": "Cargo Hold",
+		"container_type": "double_chest",
+		"drop_on_death": true,
+		"key": {
+			"key":"key.origins.secondary_active",
+			"continuous": false
+		}
+	},
+	"sound_open":
+	{
+		"type": "origins:active_self",
+		"cooldown": 10,
+		"entity_action":{
+			"type": "origins:and",
+			"actions":[
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.barrel.open master @a ~ ~ ~ 0.8 0.75"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.grindstone.use master @a ~ ~ ~ 1 0.5"
+				}
+			]
+		},
+		"key": {
+			"key":"key.origins.secondary_active",
+			"continuous": false
+		}
+	},
+	"badges": [
+		{
+			"type": "origins:keybind",
+			"sprite": "origins:textures/gui/badge/active.png",
+			"text": "Active ability, use with %s."
+		}
+	],
+	"name": "Open Cargo Hold",
+	"description": "Open a large inventory to store your cargo in. This inventory drops on death."
+}
